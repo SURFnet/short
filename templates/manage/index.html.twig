@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - manage{% endblock %}
+
+{% block body %}
+
+  {% include 'manage/partials/linkform.html.twig' %}
+
+{% if short_urls|length > 0 %}
+
+  <h4 class="mb-3">Eerder aangemaakte linkjes:</h4>
+
+  {% include 'manage/partials/linklist.html.twig' %}
+
+{% endif %}
+{% endblock %}

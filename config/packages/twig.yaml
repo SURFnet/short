@@ -1,0 +1,8 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+
+    globals:
+        APP_NAME: '%app.name%'
+        APP_URLDOMAIN: '%app.urldomain%'
+        APP_PAYOFF: '%app.payoff%'
+        APP_LOGOUTURL: '%app.security.logouturl%'

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - {{ APP_PAYOFF }}{% endblock %}
+
+{% block body %}
+      <div class="row justify-content-center">
+	   <div class="col-sm-4 mb-4 text-center">
+            Om zelf een link te verkorten:<br>
+		<a href="/manage/" class="btn btn-primary btn-lg btn-block mt-2 SCknop"><i class="fas fa-sign-in-alt"></i> Login met SURFconext</a>
+        </div>
+      </div>
+
+     <div class="row mt-3 justify-content-center">
+         <div class="col-sm-4">
+	 <p><span class="font-weight-bold">Wat is het?</span><br>
+         Met {{ APP_NAME }} kun je voor lange URLs een korte link aanmaken die begint met {{ APP_URLDOMAIN }}.
+		{{ APP_NAME }} is veilig en privacy-vriendelijk.</p>
+         </div>
+         <div class="col-sm-4">
+	        <p><span class="font-weight-bold">Hoe werkt het?</span><br>
+		Verkort zelf een link door hierboven op <em>Login met SURFconext</em> te klikken en je eigen instelling te selecteren.
+                </p>
+         </div>
+     </div>
+     <div class="row justify-content-center">
+         <div class="col-sm-4">
+		<p>De links kunnen alleen aangemaakt worden door geverifieerde
+		personen uit het Nederlandse hoger onderwijs en onderzoek.
+                Bezoekers van de links worden niet getrackt of gevolgd. <a href="{{ path('app_info_about') }}">Lees meer…</a></p>
+  
+         </div>
+
+         <div class="col-sm-4">
+	 <p>Staat je instelling er nog niet bij, of heb je andere vragen over het gebruik van {{ APP_NAME }}?
+         <a href="{{ path('app_info_support') }}">Naar support…</a></p>
+         </div>
+
+    </div>
+{% endblock %}

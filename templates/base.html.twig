@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}{{ APP_NAME }}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ asset('/css/fontawesome-all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('/css/short.css') }}">
+    <link rel="shortcut icon" href="{{ asset('/favicon.ico') }}">
+    <meta name="theme-color" content="#ffffff">
+  </head>
+  <body class="bg-light">
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <div class="systray">
+    {% if is_granted('ROLE_ADMIN') %}
+        <a href="{{ path('app_manage_admin') }}" class="mr-2"><i class="fas fa-cog"></i></a>
+        <a href="{{ path('app_manage_stats') }}" class="mr-2"><i class="fas fa-chart-bar"></i></a>
+        <a href="{{ path('app_manage_index') }}" class="mr-2"><i class="fas fa-undo"></i></a>
+    {% endif %}
+        <a href="{{ APP_LOGOUTURL }}"><i class="fas fa-power-off"></i></a>
+    </div>
+{% endif %}
+
+    <div class="container">
+
+      <div class="py-3 text-center">
+
+        {% if app.request.attributes.get('_route') == 'app_info_index' %}
+          <h1 class="SCblauw display-4">{{ APP_NAME }}</h1>
+          <p class="lead">{{ APP_PAYOFF }}</p>
+        {% else %}
+          <h2 class="SCblauw">{{ APP_NAME }}{% if app.request.get('_route') == 'app_manage_admin' or app.request.get('_route') == 'app_manage_stats'  %} <span class="SURForanje">admin</span>{% endif %}</h2>
+          <p class="">{{ APP_PAYOFF }}</p>
+        {% endif %}
+      </div>
+
+{% block body %}{% endblock %}
+
+    </div>
+
+    <footer class="my-1 pt-1 text-muted text-center text-small">
+      <img src="{{ asset('/images/SURF_ENDORSED_fc.png') }}" class="endossering" alt="Powered by SURF">
+      <ul class="list-inline">
+        <li class="list-inline-item"><a href="{{ path('app_info_index') }}">Home</a></li>
+        <li class="list-inline-item"><a href="{{ path('app_info_about') }}">Privacy (by design)</a></li>
+        <li class="list-inline-item"><a href="{{ path('app_info_support') }}">Support</a></li>
+      </ul>
+    </footer>
+
+    <script src="{{ asset('/js/jquery.slim.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/js/bootstrap-confirmation.min.js') }}"></script>
+    <script src="{{ asset('/js/clipboard.min.js') }}"></script>
+    <script src="{{ asset('/js/short.js') }}"></script>
+  </body>
+</html>

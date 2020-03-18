@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: "ProximaNovaSoftBold"; src: url("/fonts/proxima_nova_soft_bold-webfont-two.eot"); src: url("/fonts/proxima_nova_soft_bold-webfont-two.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima_nova_soft_bold-webfont-two.svg#proxima_nova_softbold") format("svg"), url("/fonts/proxima_nova_soft_bold-webfont-two.woff") format("woff"), url("/fonts/proxima_nova_soft_bold-webfont-two.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+.container {
+	max-width: 1060px;
+}
+.containerExtra {
+	max-width: 99%;
+	float: none;
+	display: block;
+	margin: 0 auto;
+}
+
+.container h1,h2{
+	font-family: ProximaNovaSoftBold, sans-serif;
+}
+
+.SCknop{
+	background-color:#4db3cf;
+	color:white;
+	border: 1px solid #ced4da;
+}
+.SCknop:hover{
+	background-color:#ed6b06;
+	
+}
+.SCblauw{
+	color:#4db3cf;
+}
+.SURForanje{
+	color:#ed6b06;
+}
+.telang{
+	max-width: 140px;
+}
+
+@media only screen and (max-width: 800px) {
+	.tableverstop td:nth-child(4),
+	.tableverstop th:nth-child(4) {display: none;}
+}
+@media only screen and (max-width: 640px) {
+	.tableverstop td:nth-child(2),
+	.tableverstop th:nth-child(2){display: none;}
+}
+
+a {
+	color:#4db3cf;
+}
+a:hover{
+	color:#ed6b06;
+}
+a:hover, a:visited, a:link, a:active
+{
+	text-decoration: none;
+}
+.fabutton {
+	background: none;
+	padding: 0px;
+	border: none;
+}
+.endossering {
+	width: 150px;
+	margin-top: 2em;
+}
+.beetjezwart{
+	color: #404040;
+}
+.actieknop {
+	margin-right:8px;
+}
+tr.deleted td, tr.deleted a, tr.deleted i, tr.deleted th {
+	text-decoration: line-through;
+	color: silver;
+}
+.systray {
+	position: fixed;
+	top: .5em;
+	right: .5em;
+}
+ol.list-group {
+	list-style: decimal inside;
+}
+
+.list-group-item {
+	display: list-item;
+}

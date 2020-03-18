@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - admin{% endblock %}
+
+{% block body %}
+
+  {% include 'manage/partials/linkform.html.twig' with {'is_admin': true } %}
+
+{% if short_urls|length > 0 %}
+
+  <h4 class="mb-3">Alle linkjes:</h4>
+
+  {% include 'manage/partials/linklist.html.twig' with {'is_admin': true } %}
+
+{% endif %}
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ parent() }} - aangemaakt{% endblock %}
+
+{% block body %}
+
+  {% set shorturlfull = 'https://' ~ APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+  <div class="row">
+    <div class="col-md-12 mb-3">
+      <h4 class="mb-3 rotating-css">Je nieuwe link is klaar voor gebruik</h4>
+                <hr class="mb-3">
+                        Je nieuwe link is:<br/>
+                        <b>{{ shorturlfull }}</b><br/><br/>
+
+                        Deze verwijst naar:<br/>
+                        <b>{{ short_url.longUrl }}</b><br/><br/>
+
+                        Even testen?<br/>
+                        <a href="{{ shorturlfull }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i> {{ shorturlfull }}</a><br/><br/>
+
+                        Kopieer link naar klembord:<br/>
+                        <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> Kopieer </a>
+                <hr class="mb-3">
+                <a class="btn btn-primary btn-lg btn-block SCknop" href="{{ path('app_manage_index') }}">Terug naar je overzicht</a>
+    </div>
+  </div>
+
+
+{% endblock %}

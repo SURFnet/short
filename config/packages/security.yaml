@@ -1,0 +1,22 @@
+security:
+    providers:
+        short_user_provider:
+            id: App\Security\UserProvider
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        manage:
+            pattern: ^/manage/
+            stateless: true
+            remote_user:
+                user: REDIRECT_REMOTE_USER
+                provider: short_user_provider
+
+        main:
+            anonymous: lazy
+
+    access_control:
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }

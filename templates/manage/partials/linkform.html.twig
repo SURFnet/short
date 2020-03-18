@@ -1,0 +1,34 @@
+<div class="row">
+   <div class="col-md-12 mb-4">
+      <h4 class="mb-3">Verkort een linkje:</h4>
+      <form class="needs-validation" action="{{ path('app_manage_create') }}" method="post" novalidate>
+      <input type="hidden" name="_token" value="{{ csrf_token('create-form') }}">
+
+      <div class="mb-3">
+        <div class="input-group">
+          <div class="input-group-prepend">
+	    <span class="input-group-text"><i class="fa fa-map-signs SURForanje"></i></span>
+          </div>
+          <input type="url" class="form-control" name="url" id="linkie" placeholder="Geef hier de originele link (URL) in" required autofocus autocomplete="off">
+          <div class="invalid-feedback" style="width: 100%;margin-top:10px;">
+	    <i class="fa fa-exclamation-circle SURForanje"></i> Oepsie, dit is niet helemaal een correcte URL, mogelijk een tikfout of ontbreekt de http:// of https:// aan het begin van de URL!
+          </div>
+        </div>
+
+        {% if is_admin is defined %}
+          <div class="input-group">
+            <div class="input-group-prepend">
+               <span class="input-group-text">https://{{ APP_URLDOMAIN }}/</span>
+            </div>
+            <input type="text" class="form-control" name="shortcode" placeholder="De gewenste shortcode (leeg voor autogenerate)" autocomplete="off">
+          </div>
+       {% endif %}
+
+      </div>
+
+      <hr class="mb-3">
+
+      <button class="btn btn-primary btn-lg btn-block SCknop" type="submit">Verkort!</button>
+    </form>
+  </div>
+</div>
