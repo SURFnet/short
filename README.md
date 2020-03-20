@@ -89,6 +89,18 @@ Protocols h2 h2c http/1.1
 		MellonSPentityId "https://example.org"
 		MellonOrganizationName "Example bv"
 		MellonDefaultLoginPath "/manage/"
+		MellonCookieSameSite None
+
+		BrowserMatch "\(iP.+; CPU .*OS 12[_\d]*.*\) AppleWebKit\/" MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "\(Macintosh;.*Mac OS X 10_14[_\d]*.*\) AppleWebKit\/" MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "^Mozilla\/[\.\d]+ \(Macintosh;.*Mac OS X 10_14[_\d]*.*\) .* AppleWebKit\/[\.\d]+ \(KHTML, like Gecko\)$" MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "UCBrowser\/(8|9|10|11)\.(\d+)\.(\d+)[\.\d]* " MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "UCBrowser\/12\.13\.[0-1][\.\d]* " MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "UCBrowser\/12\.1[0-2]\.(\d+)[\.\d]* " MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "UCBrowser\/12\.\d\.(\d+)[\.\d]* " MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "Chrom[^ \/]+\/6[0-6][\.\d]* " MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "Chrom[^ \/]+\/5[1-9][\.\d]* " MELLON_DISABLE_SAMESITE=1
+		BrowserMatch "Outlook-iOS" MELLON_DISABLE_SAMESITE=1
 	</Location>
 
 	<Location /manage>
