@@ -33,10 +33,17 @@ class ManageController extends AbstractController
             throw new \Exception("Invalid URL '$url'");
         }
 
-        $urlbase = 'https://' . $this->getParameter('app.urldomain');
+        $urlhost = parse_url($url, PHP_URL_HOST);
+        if ($urlhost === FALSE) {
+            throw new \Exception("Malformed URL '$url'");
+        }
 
-        if (substr($url, 0, strlen($urlbase)) == $urlbase) {
-            throw new \Exception("URL may not start with " . $urlbase);
+        $banned = $this->getParameter('app.targeturl.forbiddendomains');
+        // Also don't want people to create links pointing to ourselves.
+        $banned[] = $this->getParameter('app.urldomain');
+
+        if (in_array(strtolower($urlhost), $banned, TRUE)) {
+            throw new \Exception("Target URL may not start with " . $urlhost);
         }
 
         return $url;
@@ -47,7 +54,7 @@ class ManageController extends AbstractController
         $submittedToken = $request->request->get('_token');
         if (!$this->isCsrfTokenValid($name, $submittedToken)) {
             throw new \Exception("Invalid CSRF token received for $name");
-	}
+        }
     }
 
     /**
@@ -111,7 +118,7 @@ class ManageController extends AbstractController
      */
     public function createAction(Request $request) : Response
     {
-	$this->verifyCSRF('create-form', $request);
+        $this->verifyCSRF('create-form', $request);
 
         $repository = $this->getDoctrine()->getRepository(ShortUrl::class);
         $em = $this->getDoctrine()->getManager();
@@ -176,7 +183,7 @@ class ManageController extends AbstractController
      */
     public function editAction(Request $request) : Response
     {
-	$this->verifyCSRF('edit-form', $request);
+        $this->verifyCSRF('edit-form', $request);
 
         $repository = $this->getDoctrine()->getRepository(ShortUrl::class);
 

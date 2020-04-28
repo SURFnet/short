@@ -13,6 +13,7 @@ parameters:
     app.shortcode.chars: 'abcdefghjkmnpqrtuvwxy346789'
     # note: should match routes.yaml regexp
     app.shortcode.forbiddenchars: '/[^a-z0-9-]/'
+    app.targeturl.forbiddendomains: ['u.nu', 'bit.ly', 'is.gd', 'tinyurl.com']
     app.health.minimumurls: 10
 
 services:
