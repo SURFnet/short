@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\ShortUrl;
+use App\Exception\ShortUserException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,12 +31,12 @@ class ManageController extends AbstractController
     {
         $url = filter_var($url, FILTER_SANITIZE_URL);
         if ( filter_var($url, FILTER_VALIDATE_URL) === false ) {
-            throw new \Exception("Invalid URL '$url'");
+            throw new ShortUserException("Invalid URL '$url'");
         }
 
         $urlhost = parse_url($url, PHP_URL_HOST);
         if ($urlhost === FALSE) {
-            throw new \Exception("Malformed URL '$url'");
+            throw new ShortUserException("Malformed URL '$url'");
         }
 
         $banned = $this->getParameter('app.targeturl.forbiddendomains');
@@ -43,7 +44,7 @@ class ManageController extends AbstractController
         $banned[] = $this->getParameter('app.urldomain');
 
         if (in_array(strtolower($urlhost), $banned, TRUE)) {
-            throw new \Exception("Target URL may not start with " . $urlhost);
+            throw new ShortUserException("Target URL may not start with " . $urlhost);
         }
 
         return $url;
@@ -140,12 +141,12 @@ class ManageController extends AbstractController
         if($this->isGranted('ROLE_ADMIN') && $shortcode = $request->request->get('shortcode')) {
             $shortcode = strtolower(trim($shortcode));
             if ( preg_match($this->getParameter('app.shortcode.forbiddenchars'), $shortcode) ) {
-                throw new \Exception("Shortcode contains invalid characters");
+                throw new ShortUserException("Shortcode contains invalid characters");
             }
 
             $urlexists = $repository->findOneBy(['shortUrl' => $shortcode]);
             if ($urlexists !== null) {
-                throw new \Exception("Shortcode already exists");
+                throw new ShortUserException("Shortcode already exists");
             }
 
             $shortUrl->setShortUrl($shortcode);
