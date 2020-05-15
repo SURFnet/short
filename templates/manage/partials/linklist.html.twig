@@ -5,6 +5,7 @@
       <th style="width: 65px;" scope="col">Clicks</th>
       <th style="width: 110px;" scope="col">Verkort</th>
       <th style="width: 105px;" scope="col">Datum</th>
+      {% if is_admin is defined %}<th width="60px" scope="col">Eigenaar</th>{% endif %}
       <th scope="col">Originele link</th>
     </tr>
   </thead>
@@ -33,6 +34,7 @@
       <th scope="row">{{ url.clicks }}</th>
       <td>{% if not url.deleted %}<a target="_blank" href="{{ shorturlfull }}">{{ shorturlshort }}</a>{% else %}{{ shorturlshort }}{% endif %}</td>
       <td>{{ url.created|date("Y-m-d") }}</td>
+      {% if is_admin is defined %}<td class="small">{{ url.owner }}</td>{% endif %}
       <td class="text-truncate telang"><a href="{{ url.longUrl }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i></a> {{url.longUrl }}</td>
       </tr>
 {% endfor %}
