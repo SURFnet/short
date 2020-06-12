@@ -1,3 +1,15 @@
+quickresponse:
+  path: /{req}~
+  controller: App\Controller\RedirectController::quickResponseAction
+  requirements:
+      req: "[a-zA-Z0-9-]+"
+
+preview:
+  path: /{req}
+  controller: App\Controller\RedirectController::previewAction
+  requirements:
+      req: "[a-zA-Z0-9-]+\\+"
+
 redirect:
   path: /{req}
   controller: App\Controller\RedirectController::redirectAction
