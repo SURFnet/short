@@ -116,7 +116,7 @@ class ShortUrl
         return $this->created;
     }
 
-    public function getUpdated(): \DateTimeInterface
+    public function getUpdated(): ?\DateTimeInterface
     {
         return $this->updated;
     }
