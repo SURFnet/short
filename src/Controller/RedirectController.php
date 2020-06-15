@@ -46,8 +46,6 @@ class RedirectController extends AbstractController
         return $this->render('redirect/preview.html.twig', [
             'short' => $shortUrl->getShortUrl(),
             'long' => $shortUrl->getLongUrl(),
-            'created' => $shortUrl->getCreated(),
-            'updated' => $shortUrl->getUpdated(),
             ] );
     }
 
