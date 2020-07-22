@@ -1,30 +1,30 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - stats{% endblock %}
+{% block title %}{{ 'title.stats' | trans({'%parent%': parent()}) }}{% endblock %}
 
 {% block body %}
 
-  <h3 class="mb-3">Stats</h3>
+    <h3 class="mb-3">Stats</h3>
 
-<h4>Allertijden</h4>
-<p>Totaal aantal links: {{ stats.total.cnt }}<br>
-Totaal aantal kliks: {{ stats.total.clk }}<br>
-Aantal unieke gebruikers: {{ stats.total.uniqueusers }}<br>
-</p>
+    <h4>{{ 'title.all_time' | trans }}</h4>
+    <p>
+        {{ 'stats.links_count' | trans({'%value%': stats.total.cnt}) }}<br/>
+        {{ 'stats.clicks_count' | trans({'%value%': stats.total.clk}) }}<br/>
+        {{ 'stats.users_count' | trans({'%value%': stats.total.uniqueusers}) }}
+    </p>
 
-<h4>Periode</h4>
-<form>
-Periode van <input type="date" name="van" value="{{ van ?? '' }}">
-tot <input type="date" name="tot" value="{{ tot ?? '' }}"> (inclusief).
-<input type="submit">
-</form>
+    <h4>{{ 'title.date_range' | trans }}</h4>
+    <form>
+        {{ 'input.date_range' | trans({'%from%': van ?? '', '%to%': tot ?? ''}) | raw }}
+        <input type="submit">
+    </form>
 
-{% if van %}
-  <p>Links aangemaakt deze periode: {{ stats.period.cnt }}<br>
-  Kliks op links aangemaakt in deze periode: {{ stats.period.clk }}<br>
-  Aantal unieke gebruikers die een link aanmaakten deze periode: {{ stats.period.uniqueusers }}<br>
-  </p>
-{% endif %}
-
+    {% if van %}
+        <p>
+            {{ 'stats.date_range_links_count' | trans({'%value%': stats.period.cnt}) }}<br/>
+            {{ 'stats.date_range_clicks_count' | trans({'%value%': stats.period.clk}) }}<br/>
+            {{ 'stats.date_range_users_count' | trans({'%value%': stats.period.uniqueusers}) }}
+        </p>
+    {% endif %}
 
 {% endblock %}

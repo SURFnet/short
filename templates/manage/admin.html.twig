@@ -4,13 +4,13 @@
 
 {% block body %}
 
-  {% include 'manage/partials/linkform.html.twig' with {'is_admin': true } %}
+    {% include 'manage/partials/linkform.html.twig' with {'is_admin': true } %}
 
-{% if short_urls|length > 0 %}
+    {% if short_urls|length > 0 %}
 
-  <h4 class="mb-3">Alle linkjes:</h4>
+        <h4 class="mb-3">{{ 'title.all_links'|trans }}</h4>
 
-  {% include 'manage/partials/linklist.html.twig' with {'is_admin': true } %}
+        {% include 'manage/partials/linklist.html.twig' with {'is_admin': true } %}
 
-{% endif %}
+    {% endif %}
 {% endblock %}

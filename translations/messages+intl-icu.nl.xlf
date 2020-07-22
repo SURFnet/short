@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="nl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="button.login">
+                <source>button.login</source>
+                <target>Login met SURFconext</target>
+            </trans-unit>
+            <trans-unit id="menu.about">
+                <source>menu.about</source>
+                <target>Privacy (by design)</target>
+            </trans-unit>
+            <trans-unit id="menu.home">
+                <source>menu.home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="menu.support">
+                <source>menu.support</source>
+                <target>Support</target>
+            </trans-unit>
+            <trans-unit id="text.to_create_link">
+                <source>text.to_create_link</source>
+                <target>Om zelf een link te verkorten:</target>
+            </trans-unit>
+            <trans-unit id="title.previous_links">
+                <source>title.previous_links</source>
+                <target>Eerder aangemaakte linkjes:</target>
+            </trans-unit>
+            <trans-unit id="title.shorten_link">
+                <source>title.shorten_link</source>
+                <target>Verkort een linkje:</target>
+            </trans-unit>
+            <trans-unit id="error.wrong_url">
+                <source>error.wrong_url</source>
+                <target>Oepsie, dit is niet helemaal een correcte URL, mogelijk een tikfout of ontbreekt de http:// of https:// aan het begin van de URL!</target>
+            </trans-unit>
+            <trans-unit id="placeholder.enter_url">
+                <source>placeholder.enter_url</source>
+                <target>Geef hier de originele link (URL) in</target>
+            </trans-unit>
+            <trans-unit id="placeholder.enter_short_code">
+                <source>placeholder.enter_short_code</source>
+                <target>De gewenste shortcode (leeg voor autogenerate)</target>
+            </trans-unit>
+            <trans-unit id="button.shorten_it">
+                <source>button.shorten_it</source>
+                <target>Verkort!</target>
+            </trans-unit>
+            <trans-unit id="title.actions">
+                <source>title.actions</source>
+                <target>Acties</target>
+            </trans-unit>
+            <trans-unit id="title.clicks">
+                <source>title.clicks</source>
+                <target>Clicks</target>
+            </trans-unit>
+            <trans-unit id="title.shortened">
+                <source>title.shortened</source>
+                <target>Verkort</target>
+            </trans-unit>
+            <trans-unit id="title.date">
+                <source>title.date</source>
+                <target>Datum</target>
+            </trans-unit>
+            <trans-unit id="title.owner">
+                <source>title.owner</source>
+                <target>Eigenaar</target>
+            </trans-unit>
+            <trans-unit id="title.original_link">
+                <source>title.original_link</source>
+                <target>Originele link</target>
+            </trans-unit>
+            <trans-unit id="tooltip.copy_url">
+                <source>tooltip.copy_url</source>
+                <target>Kopieer verkorte url naar het klembord</target>
+            </trans-unit>
+            <trans-unit id="tooltip.edit_url">
+                <source>tooltip.edit_url</source>
+                <target>Bewerk de originele url</target>
+            </trans-unit>
+            <trans-unit id="tooltip.remove_url">
+                <source>tooltip.copy_url</source>
+                <target>Verwijder {shorturlshort}?</target>
+            </trans-unit>
+            <trans-unit id="title.all_links">
+                <source>title.all_links</source>
+                <target>Alle linkjes:</target>
+            </trans-unit>
+            <trans-unit id="title.created">
+                <source>title.created</source>
+                <target>{parent} - aangemaakt</target>
+            </trans-unit>
+            <trans-unit id="title.new_link_is">
+                <source>title.new_link_is</source>
+                <target>Je nieuwe link is:</target>
+            </trans-unit>
+            <trans-unit id="title.link_refers_to">
+                <source>title.link_refers_to</source>
+                <target>Deze verwijst naar:</target>
+            </trans-unit>
+            <trans-unit id="title.test_link">
+                <source>title.test_link</source>
+                <target>Even testen?</target>
+            </trans-unit>
+            <trans-unit id="title.copy_link">
+                <source>title.copy_link</source>
+                <target>Kopieer link naar klembord:</target>
+            </trans-unit>
+            <trans-unit id="action.copy">
+                <source>action.copy</source>
+                <target>Kopieer</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_overview">
+                <source>action.back_to_overview</source>
+                <target>Terug naar je overzicht</target>
+            </trans-unit>
+            <trans-unit id="title.new_link_created">
+                <source>title.new_link_created</source>
+                <target>Je nieuwe link is klaar voor gebruik</target>
+            </trans-unit>
+            <trans-unit id="title.edit">
+                <source>title.edit</source>
+                <target>{parent} - bewerken</target>
+            </trans-unit>
+            <trans-unit id="title.edit_link">
+                <source>title.edit_link</source>
+                <target>Link aanpassen voor {shorturlshort}:</target>
+            </trans-unit>
+            <trans-unit id="placeholder.enter_edited_link">
+                <source>placeholder.enter_edited_link</source>
+                <target>Geef hier de nieuwe link (URL) in</target>
+            </trans-unit>
+            <trans-unit id="error.type_correct_url">
+                <source>error.type_correct_url</source>
+                <target>Type of plak hierboven een (correcte) URL.</target>
+            </trans-unit>
+            <trans-unit id="action.modify">
+                <source>action.modify</source>
+                <target>Aanpassen</target>
+            </trans-unit>
+            <trans-unit id="title.manage">
+                <source>title.manage</source>
+                <target>{parent} - manage</target>
+            </trans-unit>
+            <trans-unit id="title.stats">
+                <source>title.stats</source>
+                <target>{parent} - stats</target>
+            </trans-unit>
+            <trans-unit id="title.all_time">
+                <source>title.all_time</source>
+                <target>Allertijden</target>
+            </trans-unit>
+            <trans-unit id="stats.links_count">
+                <source>stats.links_count</source>
+                <target>Totaal aantal links: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.clicks_count">
+                <source>stats.clicks_count</source>
+                <target>Totaal aantal kliks: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.users_count">
+                <source>stats.users_count</source>
+                <target>Aantal unieke gebruikers: {value}</target>
+            </trans-unit>
+            <trans-unit id="title.date_range">
+                <source>title.date_range</source>
+                <target>Periode</target>
+            </trans-unit>
+            <trans-unit id="input.date_range">
+                <source>input.date_range</source>
+                <target>
+                    <![CDATA[
+                        Periode van <input type="date" name="van" value="{from}">
+                        tot <input type="date" name="tot" value="{to}"> (inclusief).
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="stats.date_range_links_count">
+                <source>stats.date_range_links_count</source>
+                <target>Links aangemaakt deze periode: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.date_range_clicks_count">
+                <source>stats.date_range_clicks_count</source>
+                <target>Kliks op links aangemaakt in deze periode: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.date_range_users_count">
+                <source>stats.date_range_users_count</source>
+                <target>Aantal unieke gebruikers die een link aanmaakten deze periode: {value}</target>
+            </trans-unit>
+            <trans-unit id="action.admin">
+                <source>action.admin</source>
+                <target>admin</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="button.login">
+                <source>button.login</source>
+                <target>Login with SURFconext</target>
+            </trans-unit>
+            <trans-unit id="menu.about">
+                <source>menu.about</source>
+                <target>Privacy (by design)</target>
+            </trans-unit>
+            <trans-unit id="menu.home">
+                <source>menu.home</source>
+                <target>Home</target>
+            </trans-unit>
+            <trans-unit id="menu.support">
+                <source>menu.support</source>
+                <target>Support</target>
+            </trans-unit>
+            <trans-unit id="text.to_create_link">
+                <source>text.to_create_link</source>
+                <target>To shorten your own link:</target>
+            </trans-unit>
+            <trans-unit id="title.previous_links">
+                <source>title.previous_links</source>
+                <target>Previously created links:</target>
+            </trans-unit>
+            <trans-unit id="title.shorten_link">
+                <source>title.shorten_link</source>
+                <target>Shorten a link:</target>
+            </trans-unit>
+            <trans-unit id="error.wrong_url">
+                <source>error.wrong_url</source>
+                <target>Oopsie, this is not quite a correct URL, possibly a typo or missing the http:// or https:// at the beginning of the URL!</target>
+            </trans-unit>
+            <trans-unit id="placeholder.enter_url">
+                <source>placeholder.enter_url</source>
+                <target>Enter the original link (URL) here</target>
+            </trans-unit>
+            <trans-unit id="placeholder.enter_short_code">
+                <source>placeholder.enter_short_code</source>
+                <target>The desired short code (empty for autogenerate)</target>
+            </trans-unit>
+            <trans-unit id="button.shorten_it">
+                <source>button.shorten_it</source>
+                <target>Shorten it!</target>
+            </trans-unit>
+            <trans-unit id="title.actions">
+                <source>title.actions</source>
+                <target>Actions</target>
+            </trans-unit>
+            <trans-unit id="title.clicks">
+                <source>title.clicks</source>
+                <target>Clicks</target>
+            </trans-unit>
+            <trans-unit id="title.shortened">
+                <source>title.shortened</source>
+                <target>Shortened</target>
+            </trans-unit>
+            <trans-unit id="title.date">
+                <source>title.date</source>
+                <target>Date</target>
+            </trans-unit>
+            <trans-unit id="title.owner">
+                <source>title.owner</source>
+                <target>Owner</target>
+            </trans-unit>
+            <trans-unit id="title.original_link">
+                <source>title.original_link</source>
+                <target>Original link</target>
+            </trans-unit>
+            <trans-unit id="tooltip.copy_url">
+                <source>tooltip.copy_url</source>
+                <target>Copy short url to clipboard</target>
+            </trans-unit>
+            <trans-unit id="tooltip.edit_url">
+                <source>tooltip.edit_url</source>
+                <target>Edit the original url</target>
+            </trans-unit>
+            <trans-unit id="tooltip.remove_url">
+                <source>tooltip.remove_url</source>
+                <target>Remove {shorturlshort}?</target>
+            </trans-unit>
+            <trans-unit id="title.all_links">
+                <source>title.all_links</source>
+                <target>All links:</target>
+            </trans-unit>
+            <trans-unit id="title.created">
+                <source>title.created</source>
+                <target>{parent} - created</target>
+            </trans-unit>
+            <trans-unit id="title.new_link_is">
+                <source>title.new_link_is</source>
+                <target>Your new link is:</target>
+            </trans-unit>
+            <trans-unit id="title.link_refers_to">
+                <source>title.link_refers_to</source>
+                <target>This one refers to:</target>
+            </trans-unit>
+            <trans-unit id="title.test_link">
+                <source>title.test_link</source>
+                <target>Want to test it?</target>
+            </trans-unit>
+            <trans-unit id="title.copy_link">
+                <source>title.copy_link</source>
+                <target>Copy link to clipboard:</target>
+            </trans-unit>
+            <trans-unit id="action.copy">
+                <source>action.copy</source>
+                <target>Copy</target>
+            </trans-unit>
+            <trans-unit id="action.back_to_overview">
+                <source>action.back_to_overview</source>
+                <target>Back to your overview</target>
+            </trans-unit>
+            <trans-unit id="title.new_link_created">
+                <source>title.new_link_created</source>
+                <target>Your new link is ready to use</target>
+            </trans-unit>
+            <trans-unit id="title.edit">
+                <source>title.edit</source>
+                <target>{parent} - edit</target>
+            </trans-unit>
+            <trans-unit id="title.edit_link">
+                <source>title.edit_link</source>
+                <target>Adjust link for {shorturlshort}:</target>
+            </trans-unit>
+            <trans-unit id="placeholder.enter_edited_link">
+                <source>placeholder.enter_edited_link</source>
+                <target>Enter the new link (URL) here</target>
+            </trans-unit>
+            <trans-unit id="error.type_correct_url">
+                <source>error.type_correct_url</source>
+                <target>Type or paste a (correct) URL above.</target>
+            </trans-unit>
+            <trans-unit id="action.modify">
+                <source>action.modify</source>
+                <target>Modify</target>
+            </trans-unit>
+            <trans-unit id="title.manage">
+                <source>title.manage</source>
+                <target>{parent} - manage</target>
+            </trans-unit>
+            <trans-unit id="title.stats">
+                <source>title.stats</source>
+                <target>{parent} - stats</target>
+            </trans-unit>
+            <trans-unit id="title.all_time">
+                <source>title.all_time</source>
+                <target>All time</target>
+            </trans-unit>
+            <trans-unit id="stats.links_count">
+                <source>stats.links_count</source>
+                <target>Total number of links: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.clicks_count">
+                <source>stats.clicks_count</source>
+                <target>Total number of clicks: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.users_count">
+                <source>stats.users_count</source>
+                <target>Number of unique users: {value}</target>
+            </trans-unit>
+            <trans-unit id="title.date_range">
+                <source>title.date_range</source>
+                <target>Period</target>
+            </trans-unit>
+            <trans-unit id="input.date_range">
+                <source>input.date_range</source>
+                <target>
+                    <![CDATA[
+                        Period from <input type="date" name="van" value="{from}">
+                        to <input type="date" name="tot" value="{to}"> (including).
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="stats.date_range_links_count">
+                <source>stats.date_range_links_count</source>
+                <target>Links created this period: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.date_range_clicks_count">
+                <source>stats.date_range_clicks_count</source>
+                <target>Clicks on links created in this period: {value}</target>
+            </trans-unit>
+            <trans-unit id="stats.date_range_users_count">
+                <source>stats.date_range_users_count</source>
+                <target>Number of unique users who created a link this period: {value}</target>
+            </trans-unit>
+            <trans-unit id="action.admin">
+                <source>action.admin</source>
+                <target>admin</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>
