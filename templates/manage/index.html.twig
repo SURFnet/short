@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - manage{% endblock %}
+{% block title %}{{ 'title.manage' | trans({'%parent%': parent()}) }}{% endblock %}
 
 {% block body %}
 
-  {% include 'manage/partials/linkform.html.twig' %}
+    {% include 'manage/partials/linkform.html.twig' %}
 
-{% if short_urls|length > 0 %}
+    {% if short_urls|length > 0 %}
 
-  <h4 class="mb-3">Eerder aangemaakte linkjes:</h4>
+        <h4 class="mb-3">{{ 'title.previous_links'|trans }}</h4>
 
-  {% include 'manage/partials/linklist.html.twig' %}
+        {% include 'manage/partials/linklist.html.twig' %}
 
-{% endif %}
+    {% endif %}
 {% endblock %}

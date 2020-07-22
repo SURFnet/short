@@ -1,42 +1,42 @@
 <table class="table table-hover table-striped table-sm tableverstop">
-  <thead>
+    <thead>
     <tr>
-      <th style="width: 90px;" scope="col">Acties</th>
-      <th style="width: 65px;" scope="col">Clicks</th>
-      <th style="width: 110px;" scope="col">Verkort</th>
-      <th style="width: 105px;" scope="col">Datum</th>
-      {% if is_admin is defined %}<th width="60px" scope="col">Eigenaar</th>{% endif %}
-      <th scope="col">Originele link</th>
+        <th style="width: 90px;" scope="col">{{ 'title.actions'|trans }}</th>
+        <th style="width: 65px;" scope="col">{{ 'title.clicks'|trans }}</th>
+        <th style="width: 110px;" scope="col">{{ 'title.shortened'|trans }}</th>
+        <th style="width: 105px;" scope="col">{{ 'title.date'|trans }}</th>
+        {% if is_admin is defined %}<th width="60px" scope="col">{{ 'title.owner'|trans }}</th>{% endif %}
+        <th scope="col">{{ 'title.original_link'|trans }}</th>
     </tr>
-  </thead>
-  <tbody>
-{% set csrf_token = csrf_token('edit-form') %}
-{% for url in short_urls %}
-    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
-    {% set shorturlfull = 'https://' ~ shorturlshort %}
-    {% set disablebutton = url.deleted and not is_admin is defined ? 'disabled':'' %}
-    <tr {% if url.deleted %}class="deleted"{% endif %}>
-    <td>
-    <form action="{{ path('app_manage_edit') }}" method="post">
-    <input type="hidden" name="_token" value="{{ csrf_token }}">
-    <input type="hidden" name="url" value="{{ url.shortUrl }}">
-    <button {{ disablebutton }} class="fabutton actieknop cpy" type="button" data-clipboard-text="{{ shorturlfull }}" data-toggle="tooltip" data-original-title="Kopieer verkorte url naar het klembord">
-    <i class="fa fa-clipboard beetjezwart"></i>
-    </button>
-    <button {{ disablebutton }} type="submit" name="edit" class="actieknop fabutton" data-toggle="tooltip" data-original-title="Bewerk de originele url">
-    <i class="fa fa-edit SCblauw"></i>
-    </button>
-    <button {{ disablebutton }} type="submit" name="delete" class="actieknop fabutton" data-toggle="confirmation" data-title="Verwijder {{ shorturlshort }}?">
-    <i class="fa fa-trash-alt SURForanje" title="Verwijder {{ shorturlshort }}"></i>
-    </button>
-    </form>
-    </td>
-      <th scope="row">{{ url.clicks }}</th>
-      <td>{% if not url.deleted %}<a target="_blank" href="{{ shorturlfull }}">{{ shorturlshort }}</a>{% else %}{{ shorturlshort }}{% endif %}</td>
-      <td>{{ url.created|date("Y-m-d") }}</td>
-      {% if is_admin is defined %}<td class="small">{{ url.owner }}</td>{% endif %}
-      <td class="text-truncate telang"><a href="{{ url.longUrl }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i></a> {{url.longUrl }}</td>
-      </tr>
-{% endfor %}
-  </tbody>
+    </thead>
+    <tbody>
+    {% set csrf_token = csrf_token('edit-form') %}
+    {% for url in short_urls %}
+        {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
+        {% set shorturlfull = 'https://' ~ shorturlshort %}
+        {% set disablebutton = url.deleted and not is_admin is defined ? 'disabled':'' %}
+        <tr {% if url.deleted %}class="deleted"{% endif %}>
+            <td>
+                <form action="{{ path('app_manage_edit') }}" method="post">
+                    <input type="hidden" name="_token" value="{{ csrf_token }}">
+                    <input type="hidden" name="url" value="{{ url.shortUrl }}">
+                    <button {{ disablebutton }} class="fabutton actieknop cpy" type="button" data-clipboard-text="{{ shorturlfull }}" data-toggle="tooltip" data-original-title="{{ 'tooltip.copy_url'|trans }}">
+                        <i class="fa fa-clipboard beetjezwart"></i>
+                    </button>
+                    <button {{ disablebutton }} type="submit" name="edit" class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}">
+                        <i class="fa fa-edit SCblauw"></i>
+                    </button>
+                    <button {{ disablebutton }} type="submit" name="delete" class="actieknop fabutton" data-toggle="confirmation" data-title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}">
+                        <i class="fa fa-trash-alt SURForanje" title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}"></i>
+                    </button>
+                </form>
+            </td>
+            <th scope="row">{{ url.clicks }}</th>
+            <td>{% if not url.deleted %}<a target="_blank" href="{{ shorturlfull }}">{{ shorturlshort }}</a>{% else %}{{ shorturlshort }}{% endif %}</td>
+            <td>{{ url.created|date("Y-m-d") }}</td>
+            {% if is_admin is defined %}<td class="small">{{ url.owner }}</td>{% endif %}
+            <td class="text-truncate telang"><a href="{{ url.longUrl }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i></a> {{url.longUrl }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
 </table>
