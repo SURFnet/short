@@ -7,16 +7,16 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        manage:
-            pattern: ^/manage/
-            stateless: true
-            remote_user:
-                user: REDIRECT_REMOTE_USER
-                provider: short_user_provider
-
         main:
-            anonymous: lazy
+            pattern: '^/'
+            guard:
+                authenticators:
+                    - App\Security\Guard\ApacheModAuthMellonGuardAuthenticator
+            anonymous: true
+            switch_user: true
 
     access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
+        - { path: '^/manage', role: 'ROLE_USER' }
+        - { path: '^/connect/(mellon)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+        - { path: '^/connect/(mellon)/check', role: 'ROLE_USER' }
+        - { path: '^/', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }

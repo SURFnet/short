@@ -56,7 +56,7 @@ Protocols h2 h2c http/1.1
 <VirtualHost _default_:80>
         Servername example.org
         ServerAdmin root@example.org
- 
+
 	Redirect permanent / https://example.org/
 </VirtualHost>
 
@@ -79,7 +79,7 @@ Protocols h2 h2c http/1.1
 		RewriteCond %{REQUEST_FILENAME} !-f
 		RewriteRule ^(.*)$ index.php [QSA,L]
         </Directory>
-	
+
 	<Location />
 		MellonIdPMetadataFile /etc/apache2/mellon/idp-metadata.xml
 		MellonIdPPublicKeyFile /etc/apache2/mellon/idp-cert.pem
@@ -103,7 +103,7 @@ Protocols h2 h2c http/1.1
 		BrowserMatch "Outlook-iOS" MELLON_DISABLE_SAMESITE=1
 	</Location>
 
-	<Location /manage>
+	<Location /connect/mellon/check>
 		Header always set X-Frame-Options "DENY"
 		Header always set Referrer-Policy "origin"
 
