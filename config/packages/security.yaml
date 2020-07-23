@@ -12,6 +12,10 @@ security:
             guard:
                 authenticators:
                     - App\Security\Guard\ApacheModAuthMellonGuardAuthenticator
+            logout:
+                path: '/logout'
+                target: '/'
+                success_handler: App\Security\Guard\GuardLogoutSuccesHandler
             anonymous: true
             switch_user: true
 

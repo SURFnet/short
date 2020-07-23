@@ -16,6 +16,9 @@ redirect:
   requirements:
       req: "[a-zA-Z0-9-]+"
 
+logout:
+    path: /logout
+
 connect_mellon_start:
     path: /connect/mellon
     controller: App\Controller\Security\ApacheModAuthMellonCheckStart
