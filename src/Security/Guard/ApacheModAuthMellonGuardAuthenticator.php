@@ -70,6 +70,8 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
             $targetPath = $this->router->generate('app_info_index');
         }
 
+        $request->getSession()->set('mod_auth_mellon', true);
+
         return new RedirectResponse($targetPath);
     }
 
