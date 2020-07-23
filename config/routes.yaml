@@ -15,3 +15,12 @@ redirect:
   controller: App\Controller\RedirectController::redirectAction
   requirements:
       req: "[a-zA-Z0-9-]+"
+
+connect_mellon_start:
+    path: /connect/mellon
+    controller: App\Controller\Security\ApacheModAuthMellonCheckStart
+
+connect_mellon_check:
+    path: /connect/mellon/check
+    controller: App\Controller\Security\ApacheModAuthMellonCheckController
+
