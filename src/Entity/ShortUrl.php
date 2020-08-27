@@ -45,7 +45,7 @@ class ShortUrl
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime", nullable=false, options={"default": "CURRENT_TIMESTAMP"}))
+     * @ORM\Column(name="created", type="datetime", nullable=false))
      */
     private $created;
 
@@ -69,6 +69,11 @@ class ShortUrl
      * @ORM\Column(name="deleted", type="boolean", nullable=false)
      */
     private $deleted = 0;
+
+    public function __construct()
+    {
+        $this->created = new \DateTime();
+    }
 
     public function getId(): int
     {
