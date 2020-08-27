@@ -24,10 +24,23 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
      * @var RouterInterface
      */
     private $router;
+    /**
+     * @var string
+     */
+    private $modAuthMellonRoleAttribute;
+    /**
+     * @var string
+     */
+    private $modAuthMellonRoleValue;
 
-    public function __construct(RouterInterface $router)
-    {
+    public function __construct(
+        RouterInterface $router,
+        string $modAuthMellonRoleAttribute,
+        string $modAuthMellonRoleValue
+    ) {
         $this->router = $router;
+        $this->modAuthMellonRoleAttribute = $modAuthMellonRoleAttribute;
+        $this->modAuthMellonRoleValue = $modAuthMellonRoleValue;
     }
 
     public function supports(Request $request)
@@ -37,17 +50,19 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
 
     public function getCredentials(Request $request)
     {
-        return $request->server->get('REDIRECT_REMOTE_USER');
+        return [
+            'username' => $request->server->get('REDIRECT_REMOTE_USER'),
+            'admin' => $this->checkIsAdmin($request),
+        ];
     }
-
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        if (null === $credentials) {
+        if (null === $credentials['username']) {
             return null;
         }
 
-        return new User($credentials);
+        return new User($credentials['username'], $credentials['admin']);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -87,5 +102,23 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
     public function supportsRememberMe()
     {
         return false;
+    }
+
+    private function checkIsAdmin(Request $request): bool
+    {
+        $idx = 0;
+        while(1) {
+            $attribute = sprintf('REDIRECT_MELLON_%s_%d', $this->modAuthMellonRoleAttribute, $idx);
+
+            if (!$request->server->has($attribute)) {
+                return false;
+            }
+
+            if ($request->server->get($attribute) === $this->modAuthMellonRoleValue) {
+                return true;
+            }
+
+            $idx++;
+        }
     }
 }

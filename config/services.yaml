@@ -23,6 +23,8 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
             string $modAuthMellonLogout: '%app.security.logouturl%'
+            string $modAuthMellonRoleAttribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
+            string $modAuthMellonRoleValue: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
