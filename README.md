@@ -124,6 +124,18 @@ Protocols h2 h2c http/1.1
 </VirtualHost>
 ```
 
+## Administrator users
+
+To assign an administrator role to certain users, you need to set up a SAML attribute
+where you look for a certain value. Only users that contain that value will be
+assigned as administrators.
+
+Assign the environment variables `APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE` and
+`APP_MOD_AUTH_MELLON_ROLE_VALUE` you will find in the .env file. Vg:
+
+    APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE=eduPersonEntitlement
+    APP_MOD_AUTH_MELLON_ROLE_VALUE=urn:mace:domain:service:admin
+
 ## Health endpoint
 
 There's an endpoint at `/health` which will return a 200 HTTP status code
@@ -137,3 +149,4 @@ Apache 2.0 license
 ## Contact
 
 kort@surfnet.nl
+APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE
