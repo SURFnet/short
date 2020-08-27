@@ -24,3 +24,6 @@ security:
         - { path: '^/connect/(mellon)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
         - { path: '^/connect/(mellon)/check', role: 'ROLE_USER' }
         - { path: '^/', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+
+    role_hierarchy:
+        ROLE_ADMIN: ROLE_USER
