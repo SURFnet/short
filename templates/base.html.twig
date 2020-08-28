@@ -1,3 +1,4 @@
+{% set currentPath = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,6 +47,10 @@
         <li class="list-inline-item"><a href="{{ path('app_info_index') }}">{{ 'menu.home'|trans }}</a></li>
         <li class="list-inline-item"><a href="{{ path('app_info_about') }}">{{ 'menu.about'|trans }}</a></li>
         <li class="list-inline-item"><a href="{{ path('app_info_support') }}">{{ 'menu.support'|trans }}</a></li>
+    </ul>
+    <ul class="list-inline">
+        <li class="list-inline-item"><a href="{{ path('locale', {'lang': 'en', 'redirect': currentPath}) }}">English</a></li>
+        <li class="list-inline-item"><a href="{{ path('locale', {'lang': 'nl', 'redirect': currentPath }) }}">Nederlands</a></li>
     </ul>
 </footer>
 
