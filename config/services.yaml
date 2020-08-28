@@ -16,6 +16,7 @@ parameters:
     app.targeturl.forbiddendomains: ['u.nu', 'bit.ly', 'is.gd', 'tinyurl.com']
     app.health.minimumurls: 10
     app.default_locale: 'en'
+    app.locales: ["en","nl"]
 
 services:
     # default configuration for services in *this* file
@@ -27,6 +28,7 @@ services:
             string $modAuthMellonRoleAttribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
             string $modAuthMellonRoleValue: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
             string $defaultLocale: '%app.default_locale%'
+            array $locales: '%app.locales%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
