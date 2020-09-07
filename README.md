@@ -103,10 +103,12 @@ Protocols h2 h2c http/1.1
 		BrowserMatch "Outlook-iOS" MELLON_DISABLE_SAMESITE=1
 	</Location>
 
-	<Location /connect/mellon/check>
+	<Location /manage>
 		Header always set X-Frame-Options "DENY"
 		Header always set Referrer-Policy "origin"
+	</Loation>
 
+	<Location /connect/mellon/check>
 		AuthType "Mellon"
 		Require valid-user
 		MellonEnable "auth"
