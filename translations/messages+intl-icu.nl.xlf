@@ -79,7 +79,7 @@
                 <target>Bewerk de originele url</target>
             </trans-unit>
             <trans-unit id="tooltip.remove_url">
-                <source>tooltip.copy_url</source>
+                <source>tooltip.remove_url</source>
                 <target>Verwijder {shorturlshort}?</target>
             </trans-unit>
             <trans-unit id="title.all_links">
