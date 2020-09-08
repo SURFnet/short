@@ -148,6 +148,14 @@ use this for basic monitoring.
 
 Apache 2.0 license
 
+## Security issues
+
+We'd be extremely grateful if you could report any security issues via
+kort@surf.nl.
+
+You are also welcome to use our Responsible Disclosure process.
+https://www.surf.nl/responsible-disclosure-surf
+
 ## Contact
 
-kort@surfnet.nl
+kort@surf.nl
