@@ -36,38 +36,6 @@ class ManageController extends AbstractController
     }
 
     /**
-     * @Route("/manage/stats")
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function statsAction(Request $request) : Response
-    {
-        $repo = $this->getDoctrine()->getRepository(ShortUrl::class);
-
-        $q_total = $repo->createQueryBuilder('s')
-            ->select('count(s.id) as cnt, sum(s.clicks) as clk');
-        $q_unique = $repo->createQueryBuilder('s')
-            ->select('count(distinct s.owner) as uniqueusers');
-
-        $total = $q_total->getQuery()->getResult();
-        $unique = $q_unique->getQuery()->getResult();
-        $stats = ['total' => $total[0] + $unique[0]];
-
-        $van = $request->query->get('van');
-        $tot = $request->query->get('tot');
-
-        if ($van !== null && $tot !== null) {
-            $q_total->where("s.created >= :van")->setParameter('van', $van)->andWhere("s.created <= :tot")->setParameter('tot', $tot);
-            $total = $q_total->getQuery()->getResult();
-            $q_unique->where("s.created >= :van")->setParameter('van', $van)->andWhere("s.created <= :tot")->setParameter('tot', $tot);
-            $unique = $q_unique->getQuery()->getResult();
-            $stats['period'] = $total[0] + $unique[0];
-        }
-
-        return $this->render('manage/stats.html.twig',
-            ['stats' => $stats, 'van' => $van, 'tot' => $tot]);
-    }
-
-    /**
      * @Route("/manage/create")
      */
     public function createAction(Request $request) : Response
