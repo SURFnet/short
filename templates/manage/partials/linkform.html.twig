@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 mb-4">
         <h4 class="mb-3">{{ 'title.shorten_link'|trans }}</h4>
-        <form class="needs-validation" action="{{ path('app_manage_create') }}" method="post" novalidate>
+        {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
             <input type="hidden" name="_token" value="{{ csrf_token('create-form') }}">
 
             <div class="mb-3">
@@ -9,18 +9,16 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fa fa-map-signs SURForanje"></i></span>
                     </div>
-                    <input type="url" class="form-control" name="url" id="linkie" placeholder="{{ 'placeholder.enter_url'|trans }}" required autofocus autocomplete="off">
-                    <div class="invalid-feedback" style="width: 100%;margin-top:10px;">
-                        <i class="fa fa-exclamation-circle SURForanje"></i> {{ 'error.wrong_url'|trans }}
-                    </div>
+                    {{ form_widget(form.longUrl) }}
+                    {{ form_errors(form.longUrl) }}
                 </div>
-
-                {% if is_admin is defined %}
+                {% if form.shortUrl is defined %}
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text">https://{{ APP_URLDOMAIN }}/</span>
                         </div>
-                        <input type="text" class="form-control" name="shortcode" placeholder="{{ 'placeholder.enter_short_code'|trans }}" autocomplete="off">
+                        {{ form_widget(form.shortUrl) }}
+                        {{ form_errors(form.shortUrl) }}
                     </div>
                 {% endif %}
 
@@ -29,6 +27,6 @@
             <hr class="mb-3">
 
             <button class="btn btn-primary btn-lg btn-block SCknop" type="submit">{{ 'button.shorten_it'|trans }}</button>
-        </form>
+        {{ form_end(form) }}
     </div>
 </div>
