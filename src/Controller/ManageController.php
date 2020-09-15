@@ -36,30 +36,6 @@ class ManageController extends AbstractController
     }
 
     /**
-     * @Route("/manage/")
-     */
-    public function indexAction() : Response
-    {
-        $repository = $this->getDoctrine()->getRepository(ShortUrl::class);
-
-        $me = $this->getUser()->getUsername();
-        $myURLs = $repository->findBy(['owner' => $me], ['created' => 'DESC']);
-        return $this->render('manage/index.html.twig', ['short_urls' => $myURLs]);
-    }
-
-    /**
-     * @Route("/manage/admin")
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function adminAction() : Response
-    {
-        $repository = $this->getDoctrine()->getRepository(ShortUrl::class);
-
-        $myURLs = $repository->findBy([], ['created' => 'DESC']);
-        return $this->render('manage/admin.html.twig', ['short_urls' => $myURLs]);
-    }
-
-    /**
      * @Route("/manage/stats")
      * @IsGranted("ROLE_ADMIN")
      */
