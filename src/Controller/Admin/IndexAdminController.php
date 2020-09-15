@@ -52,8 +52,6 @@ final class IndexAdminController extends AbstractController
             $this->entityManager->persist($shortUrl);
             $this->entityManager->flush();
 
-            $this->addFlash('success', 'shorturl.created_successfully');
-
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
 
