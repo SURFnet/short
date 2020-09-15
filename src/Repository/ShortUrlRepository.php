@@ -21,4 +21,16 @@ final class ShortUrlRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, ShortUrl::class);
     }
+
+    public function findByOwner(UserInterface $user)
+    {
+        return $this->findBy(
+            [
+                'owner' => $user->getUsername(),
+            ],
+            [
+                'created' => 'DESC'
+            ]
+        );
+    }
 }
