@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="shorturl.forbidden_chars">
+                <source>shorturl.forbidden_chars</source>
+                <target>The value "{{ value }}" contains not valid characters.</target>
+            </trans-unit>
+            <trans-unit id="shorturl.banned_domain">
+                <source>shorturl.banned_domain</source>
+                <target>Target URL may not start with "{{ value }}".</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

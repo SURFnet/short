@@ -10,7 +10,7 @@
     <div class="row">
         <div class="col-md-12 mb-4">
             <h4 class="mb-3">{{ 'title.edit_link' | trans({'%shorturlshort%': shorturlshort}) }}</h4>
-            <form class="needs-validation" action="{{ path('app_manage_edit') }}" method="post" novalidate>
+            {{ form_start(form) }}
                 <input type="hidden" name="_token" value="{{ csrf_token('edit-form') }}">
                 <input type="hidden" name="url" value="{{ short_url.shortUrl }}">
                 <div class="mb-3">
@@ -18,15 +18,13 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"><i class="fa fa-map-signs SURForanje"></i></span>
                         </div>
-                        <input type="url" class="form-control" name="new_long_url" id="linkie" value="{{ short_url.longUrl }}" placeholder="{{ 'placeholder.enter_edited_link' | trans }}" required>
-                        <div class="invalid-feedback" style="width: 100%;margin-top:10px;">
-                            <i class="fa fa-exclamation-circle SURForanje"></i> {{ 'error.type_correct_url' | trans }}
-                        </div>
+                        {{ form_widget(form.longUrl) }}
+                        {{ form_errors(form.longUrl) }}
                     </div>
                 </div>
                 <hr class="mb-3">
                 <button class="btn btn-primary btn-lg btn-block SCknop" type="submit">{{ 'action.modify' | trans }}</button>
-            </form>
+            {{ form_end(form) }}
         </div>
     </div>
 
