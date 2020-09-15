@@ -27,29 +27,6 @@ class ManageController extends AbstractController
         return $code;
     }
 
-    private function validateUrl(string $url) : string
-    {
-        $url = filter_var($url, FILTER_SANITIZE_URL);
-        if ( filter_var($url, FILTER_VALIDATE_URL) === false ) {
-            throw new ShortUserException("Invalid URL '$url'");
-        }
-
-        $urlhost = parse_url($url, PHP_URL_HOST);
-        if ($urlhost === FALSE) {
-            throw new ShortUserException("Malformed URL '$url'");
-        }
-
-        $banned = $this->getParameter('app.targeturl.forbiddendomains');
-        // Also don't want people to create links pointing to ourselves.
-        $banned[] = $this->getParameter('app.urldomain');
-
-        if (in_array(strtolower($urlhost), $banned, TRUE)) {
-            throw new ShortUserException("Target URL may not start with " . $urlhost);
-        }
-
-        return $url;
-    }
-
     private function verifyCSRF(string $name, Request $request) : void
     {
         $submittedToken = $request->request->get('_token');
