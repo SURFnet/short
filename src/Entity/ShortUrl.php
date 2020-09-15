@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use App\Validator\NotBannedDomain;
+use App\Validator\NotForbiddenChars;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ShortUrl
@@ -31,7 +34,10 @@ class ShortUrl
     /**
      * @var string
      *
-     * @ORM\Column(name="long_url", type="text", length=65535, nullable=false)
+     * @ORM\Column(name="long_url", type="text", length=65535)
+     * @Assert\Url()
+     * @Assert\NotBlank()
+     * @NotBannedDomain()
      */
     private $longUrl;
 
