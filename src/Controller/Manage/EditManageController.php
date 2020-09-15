@@ -35,8 +35,6 @@ final class EditManageController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        $this->denyAccessUnlessGranted();
-
         $form = $this->createForm(ShortUrlType::class, $instance);
         $form->handleRequest($request);
 
