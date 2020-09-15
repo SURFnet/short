@@ -20,7 +20,7 @@ class ShortUrl
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
@@ -47,14 +47,14 @@ class ShortUrl
     /**
      * @var string
      *
-     * @ORM\Column(name="owner", type="string", length=64, nullable=false)
+     * @ORM\Column(name="owner", type="string", length=64)
      */
     private $owner;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime", nullable=false))
+     * @ORM\Column(name="created", type="datetime"))
      */
     private $created;
 
@@ -68,14 +68,14 @@ class ShortUrl
     /**
      * @var int
      *
-     * @ORM\Column(name="clicks", type="integer", nullable=false)
+     * @ORM\Column(name="clicks", type="integer")
      */
     private $clicks = 0;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="deleted", type="boolean", nullable=false)
+     * @ORM\Column(name="deleted", type="boolean")
      */
     private $deleted = 0;
 
@@ -89,7 +89,7 @@ class ShortUrl
         return $this->id;
     }
 
-    public function getShortUrl(): string
+    public function getShortUrl(): ?string
     {
         return $this->shortUrl;
     }
@@ -101,7 +101,7 @@ class ShortUrl
         return $this;
     }
 
-    public function getLongUrl(): string
+    public function getLongUrl(): ?string
     {
         return $this->longUrl;
     }
@@ -113,7 +113,7 @@ class ShortUrl
         return $this;
     }
 
-    public function getOwner(): string
+    public function getOwner(): ?string
     {
         return $this->owner;
     }
