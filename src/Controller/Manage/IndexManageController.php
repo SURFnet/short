@@ -47,8 +47,6 @@ final class IndexManageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $shortUrl = $this->generateShortUrlCode->generate($shortUrl->getLongUrl(), $shortUrl->getOwner());
 
-            $this->addFlash('success', 'shorturl.created_successfully');
-
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
 
