@@ -5,12 +5,14 @@ namespace App\Entity;
 use App\Validator\NotBannedDomain;
 use App\Validator\NotForbiddenChars;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * ShortUrl
  *
  * @ORM\Table(name="short_urls", uniqueConstraints={@ORM\UniqueConstraint(name="short_url", columns={"short_url"})})
+ * @UniqueEntity(fields={"shortUrl"})
  * @ORM\Entity
  */
 class ShortUrl
@@ -27,7 +29,8 @@ class ShortUrl
     /**
      * @var string
      *
-     * @ORM\Column(name="short_url", type="string", length=32, nullable=false)
+     * @ORM\Column(name="short_url", type="string", length=32, unique=true)
+     * @NotForbiddenChars()
      */
     private $shortUrl;
 
