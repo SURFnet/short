@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/stats", name="app_manage_stats")
+ * @Route("/manage/admin/stats", name="app_manage_stats")
  * @IsGranted("ROLE_ADMIN")
  */
 final class StatsAdminController extends AbstractController
