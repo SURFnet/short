@@ -20,7 +20,7 @@ security:
             switch_user: true
 
     access_control:
-        - { path: '^/admin', role: 'ROLE_ADMIN' }
+        - { path: '^/manage/admin', role: 'ROLE_ADMIN' }
         - { path: '^/manage', role: 'ROLE_USER' }
         - { path: '^/connect/(mellon)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
         - { path: '^/connect/(mellon)/check', role: 'ROLE_USER' }
