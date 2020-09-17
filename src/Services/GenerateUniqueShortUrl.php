@@ -75,8 +75,8 @@ final class GenerateUniqueShortUrl
 
         $code = "";
 
-        for($i=0; $i < $this->$shortcodeLength; ++$i) {
-            $code .= $this->$shortcodeChars[mt_rand(0, strlen($shortcodeChars) - 1)];
+        for($i=0; $i < $shortcodeLength; ++$i) {
+            $code .= $shortcodeChars[mt_rand(0, strlen($shortcodeChars) - 1)];
         }
         return $code;
     }
