@@ -1,0 +1,55 @@
+{% if num_pages > 1 %}
+<nav class="d-flex justify-content-center">
+    <ul class="pagination">
+        {% if page == 1 %}
+            <li class="page-item disabled">
+                <span class="page-link">&laquo;</span>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url(route, {'page': page - 1}) }}">&laquo;</a>
+            </li>
+        {% endif %}
+
+        {% for index in 1..num_pages %}
+            {% set difference = index > page ? index - page : page - index %}
+
+            {% if index == page %}
+                <li class="page-item active">
+                  <span class="page-link">
+                    {{ index }}
+                  </span>
+                </li>
+            {% elseif (index == 2 and page > 4)
+                or (index == num_pages - 1 and page < num_pages - 3)
+            %}
+                <li class="page-item disabled">
+                  <span class="page-link">
+                    …
+                  </span>
+                </li>
+            {% elseif (index == 1 or index == num_pages)
+                or (index <= 3 and page <= 4)
+                or (index >= num_pages - 2 and page >= num_pages - 3)
+                or difference == 1
+            %}
+                <li class="page-item">
+                    <a class="page-link" href="{{ url(route, {'page': index}) }}">
+                        {{ index }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if page == num_pages %}
+            <li class="page-item disabled">
+                <span class="page-link">&raquo;</span>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url(route, {'page': page + 1}) }}">&raquo;</a>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
