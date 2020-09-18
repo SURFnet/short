@@ -14,7 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @Route("/manage/", name="app_manage_index", methods={"GET", "POST"})
+ * @Route("/manage/", defaults={"page": "1"}, name="app_manage_index", methods={"GET", "POST"})
+ * @Route("/manage/page/{page<[1-9]\d*>}", name="app_manage_index_paginated", methods={"GET"})
  */
 final class IndexManageController extends AbstractController
 {
@@ -33,7 +34,7 @@ final class IndexManageController extends AbstractController
         $this->generateShortUrlCode = $generateShortUrlCode;
     }
 
-    public function __invoke(Request $request): Response
+    public function __invoke(Request $request, int $page): Response
     {
         /** @var UserInterface $user */
         $user = $this->getUser();
@@ -50,13 +51,19 @@ final class IndexManageController extends AbstractController
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
 
-        $shortUrls = $this->repository->findByOwner($user);
+        $shortUrls = $this->repository->findLatest($page, $user);
+
+        $itemsPerPage = $shortUrls->getQuery()->getMaxResults();
+        $numPages = ceil($shortUrls->count() / $itemsPerPage);
 
         return $this->render(
             'manage/index.html.twig',
             [
-                'short_urls' => $shortUrls,
-                'form' => $form->createView()
+                'form' => $form->createView(),
+                'num_pages' => $numPages,
+                'page' => $page,
+                'route' => 'app_manage_index_paginated',
+                'short_urls' => $shortUrls
             ]
         );
     }
