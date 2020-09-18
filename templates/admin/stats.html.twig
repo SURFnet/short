@@ -15,11 +15,11 @@
 
     <h4>{{ 'title.date_range' | trans }}</h4>
     <form>
-        {{ 'input.date_range' | trans({'%from%': van ?? '', '%to%': tot ?? ''}) | raw }}
+        {{ 'input.date_range' | trans({'%from%': from ?? '', '%to%': to ?? ''}) | raw }}
         <input type="submit">
     </form>
 
-    {% if van %}
+    {% if from %}
         <p>
             {{ 'stats.date_range_links_count' | trans({'%value%': stats.period.cnt}) }}<br/>
             {{ 'stats.date_range_clicks_count' | trans({'%value%': stats.period.clk}) }}<br/>
