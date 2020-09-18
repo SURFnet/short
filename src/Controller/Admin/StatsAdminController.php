@@ -28,18 +28,18 @@ final class StatsAdminController extends AbstractController
         $unique = $q_unique->getQuery()->getResult();
         $stats = ['total' => $total[0] + $unique[0]];
 
-        $van = $request->query->get('van');
-        $tot = $request->query->get('tot');
+        $from = $request->query->get('from');
+        $to = $request->query->get('to');
 
-        if ($van !== null && $tot !== null) {
-            $q_total->where("s.created >= :van")->setParameter('van', $van)->andWhere("s.created <= :tot")->setParameter('tot', $tot);
+        if ($from !== null && $to !== null) {
+            $q_total->where("s.created >= :from")->setParameter('from', $from)->andWhere("s.created <= :to")->setParameter('to', $to);
             $total = $q_total->getQuery()->getResult();
-            $q_unique->where("s.created >= :van")->setParameter('van', $van)->andWhere("s.created <= :tot")->setParameter('tot', $tot);
+            $q_unique->where("s.created >= :from")->setParameter('from', $from)->andWhere("s.created <= :to")->setParameter('to', $to);
             $unique = $q_unique->getQuery()->getResult();
             $stats['period'] = $total[0] + $unique[0];
         }
 
         return $this->render('admin/stats.html.twig',
-            ['stats' => $stats, 'van' => $van, 'tot' => $tot]);
+            ['stats' => $stats, 'from' => $from, 'to' => $to]);
     }
 }
