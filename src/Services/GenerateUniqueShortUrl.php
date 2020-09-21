@@ -26,18 +26,18 @@ final class GenerateUniqueShortUrl
         $this->parameterBag = $parameterBag;
     }
 
-    public function generate(string $longUrl, string $owner): ShortUrl
+    public function generate(string $longUrl, string $owner, string $shortUrl = null): ShortUrl
     {
         $this->entityManager->beginTransaction();
         try {
-            $shortUrl = new ShortUrl();
-            $shortUrl->setLongUrl($longUrl);
-            $shortUrl->setOwner($owner);
+            $entity = new ShortUrl();
+            $entity->setLongUrl($longUrl);
+            $entity->setOwner($owner);
 
-            $code = $this->findUniqueShortUrlCode();
-            $shortUrl->setShortUrl($code);
+            $shortUrl = $shortUrl ?? $this->findUniqueShortUrlCode();
+            $entity->setShortUrl($shortUrl);
 
-            $this->entityManager->persist($shortUrl);
+            $this->entityManager->persist($entity);
             $this->entityManager->flush();
             $this->entityManager->commit();
         } catch (\Exception $e) {
@@ -45,7 +45,7 @@ final class GenerateUniqueShortUrl
             throw $e;
         }
 
-        return $shortUrl;
+        return $entity;
     }
 
     private function findUniqueShortUrlCode(): string
