@@ -38,7 +38,7 @@ class ShortUrl
      * @var string
      *
      * @ORM\Column(name="long_url", type="text", length=65535)
-     * @Assert\Url()
+     * @Assert\Url(message="shorturl.invalid_url")
      * @Assert\NotBlank()
      * @NotBannedDomain()
      */

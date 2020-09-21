@@ -4,11 +4,15 @@
         <body>
             <trans-unit id="shorturl.forbidden_chars">
                 <source>shorturl.forbidden_chars</source>
-                <target>The value "{{ value }}" contains not valid characters.</target>
+                <target>The value "{{ value }}" contains characters that are not allowed.</target>
             </trans-unit>
             <trans-unit id="shorturl.banned_domain">
                 <source>shorturl.banned_domain</source>
                 <target>Target URL may not start with "{{ value }}".</target>
+            </trans-unit>
+            <trans-unit id="shorturl.invalid_url">
+                <source>shorturl.invalid_url</source>
+                <target>Oops, this is not quite a correct URL, possibly a typo or missing the http:// or https:// at the beginning of the URL!.</target>
             </trans-unit>
         </body>
     </file>
