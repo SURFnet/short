@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="shorturl.invalid_url">
+                <source>shorturl.invalid_url</source>
+                <target>Oepsie, dit is niet helemaal een correcte URL, mogelijk een tikfout of ontbreekt de http:// of https:// aan het begin van de URL!.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
