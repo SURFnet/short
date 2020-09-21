@@ -19,14 +19,12 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 final class ShortUrlRepository extends ServiceEntityRepository
 {
-    public const NUM_ITEMS_PER_PAGE = 10;
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ShortUrl::class);
     }
 
-    public function findLatest(int $page = 1, UserInterface $user = null): Paginator
+    public function findLatest(int $page, int $itemsPerPage, UserInterface $user = null): Paginator
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.created', 'DESC');
@@ -39,10 +37,10 @@ final class ShortUrlRepository extends ServiceEntityRepository
 
         $query = $qb->getQuery();
 
-        return $this->createPaginator($query, $page);
+        return $this->createPaginator($query, $page, $itemsPerPage);
     }
 
-    private function createPaginator(Query $query, int $page = 1, int $limit = self::NUM_ITEMS_PER_PAGE): Paginator
+    private function createPaginator(Query $query, int $page, int $limit): Paginator
     {
         $paginator = new Paginator($query);
 

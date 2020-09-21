@@ -51,7 +51,8 @@ final class IndexManageController extends AbstractController
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
 
-        $shortUrls = $this->repository->findLatest($page, $user);
+        $itemsPerPage = $this->getParameter('app.shortlink.pagination');
+        $shortUrls = $this->repository->findLatest($page, $itemsPerPage, $user);
 
         $itemsPerPage = $shortUrls->getQuery()->getMaxResults();
         $numPages = ceil($shortUrls->count() / $itemsPerPage);
