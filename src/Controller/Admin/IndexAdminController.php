@@ -7,6 +7,7 @@ namespace App\Controller\Admin;
 use App\Entity\ShortUrl;
 use App\Form\ShortUrlType;
 use App\Repository\ShortUrlRepository;
+use App\Services\GenerateUniqueShortUrl;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,14 +26,14 @@ final class IndexAdminController extends AbstractController
      */
     private $repository;
     /**
-     * @var EntityManagerInterface
+     * @var GenerateUniqueShortUrl
      */
-    private $entityManager;
+    private $generateUniqueShortUrl;
 
-    public function __construct(ShortUrlRepository $repository, EntityManagerInterface $entityManager)
+    public function __construct(ShortUrlRepository $repository, GenerateUniqueShortUrl $generateUniqueShortUrl)
     {
         $this->repository = $repository;
-        $this->entityManager = $entityManager;
+        $this->generateUniqueShortUrl = $generateUniqueShortUrl;
     }
 
     public function __invoke(Request $request): Response
@@ -49,8 +50,7 @@ final class IndexAdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->entityManager->persist($shortUrl);
-            $this->entityManager->flush();
+            $shortUrl = $this->generateUniqueShortUrl->generate($shortUrl->getLongUrl(), $shortUrl->getOwner(), $shortUrl->getShortUrl());
 
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
