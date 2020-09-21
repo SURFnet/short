@@ -23,13 +23,6 @@ final class ShowManageController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        /** @var UserInterface $user */
-        $user = $this->getUser();
-
-        if ($user->getUsername() !== $instance->getOwner()) {
-            throw $this->createNotFoundException();
-        }
-
         return $this->render('manage/show.html.twig', [
             'short_url' => $instance
         ]);
