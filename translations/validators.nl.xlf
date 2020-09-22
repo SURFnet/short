@@ -2,6 +2,14 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="shorturl.forbidden_chars">
+                <source>shorturl.forbidden_chars</source>
+                <target>De waarde "{{ value }}" bevat niet-toegestane tekens.</target>
+            </trans-unit>
+            <trans-unit id="shorturl.banned_domain">
+                <source>shorturl.banned_domain</source>
+                <target>De doel-URL mag niet beginnen met "{{ value }}".</target>
+            </trans-unit>
             <trans-unit id="shorturl.invalid_url">
                 <source>shorturl.invalid_url</source>
                 <target>Oepsie, dit is niet helemaal een correcte URL, mogelijk een tikfout of ontbreekt de http:// of https:// aan het begin van de URL!.</target>
