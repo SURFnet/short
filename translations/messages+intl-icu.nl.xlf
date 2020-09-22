@@ -170,8 +170,8 @@
                 <source>input.date_range</source>
                 <target>
                     <![CDATA[
-                        Periode van <input type="date" name="van" value="{from}">
-                        tot <input type="date" name="tot" value="{to}"> (inclusief).
+                        Periode van <input type="date" name="from" value="{from}">
+                        tot <input type="date" name="to" value="{to}"> (inclusief).
                     ]]>
                 </target>
             </trans-unit>
