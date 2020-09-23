@@ -82,15 +82,15 @@ Protocols h2 h2c http/1.1
 
 	<Location />
 		MellonSPentityId "https://example.org"
-        MellonSPCertFile /etc/apache2/mellon/saml.crt
+		MellonSPCertFile /etc/apache2/mellon/saml.crt
 		MellonSPPrivateKeyFile /etc/apache2/mellon/saml.key
 		
-        MellonIdPMetadataFile /etc/apache2/mellon/idp-metadata.xml
-        MellonIdPPublicKeyFile /etc/apache2/mellon/idp-cert.pem
+		MellonIdPMetadataFile /etc/apache2/mellon/idp-metadata.xml
+		MellonIdPPublicKeyFile /etc/apache2/mellon/idp-cert.pem
 		
 		MellonDefaultLoginPath "/manage/"
 		
-        MellonSecureCookie On
+		MellonSecureCookie On
 		MellonCookieSameSite None
 
 		BrowserMatch "\(iP.+; CPU .*OS 12[_\d]*.*\) AppleWebKit\/" MELLON_DISABLE_SAMESITE=1
@@ -121,7 +121,7 @@ Protocols h2 h2c http/1.1
 	Header always set X-Content-Type-Options "nosniff"
 	Header always set X-Xss-Protection "1; mode=block"
 
-        SSLEngine on
+	SSLEngine on
 	SSLCertificateFile         /etc/letsencrypt/live/example.org/cert.pem
 	SSLCertificateKeyFile      /etc/letsencrypt/live/example.org/privkey.pem
 	SSLCertificateChainFile    /etc/letsencrypt/live/example.org/chain.pem
