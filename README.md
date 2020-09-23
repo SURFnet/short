@@ -81,14 +81,16 @@ Protocols h2 h2c http/1.1
         </Directory>
 
 	<Location />
-		MellonIdPMetadataFile /etc/apache2/mellon/idp-metadata.xml
-		MellonIdPPublicKeyFile /etc/apache2/mellon/idp-cert.pem
-		MellonSPCertFile /etc/apache2/mellon/saml.crt
-		MellonSPPrivateKeyFile /etc/apache2/mellon/saml.key
-		MellonSecureCookie On
 		MellonSPentityId "https://example.org"
-		MellonOrganizationName "Example bv"
+        MellonSPCertFile /etc/apache2/mellon/saml.crt
+		MellonSPPrivateKeyFile /etc/apache2/mellon/saml.key
+		
+        MellonIdPMetadataFile /etc/apache2/mellon/idp-metadata.xml
+        MellonIdPPublicKeyFile /etc/apache2/mellon/idp-cert.pem
+		
 		MellonDefaultLoginPath "/manage/"
+		
+        MellonSecureCookie On
 		MellonCookieSameSite None
 
 		BrowserMatch "\(iP.+; CPU .*OS 12[_\d]*.*\) AppleWebKit\/" MELLON_DISABLE_SAMESITE=1
