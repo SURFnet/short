@@ -146,7 +146,9 @@ use this for basic monitoring.
 
 ## License
 
-Apache 2.0 license
+The code is under the Apache 2.0 license.
+
+The shipped font Nunito is under the SIL Open Fonts License 1.1.
 
 ## Security issues
 

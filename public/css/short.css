@@ -1,9 +1,10 @@
 @charset "UTF-8";
 
 @font-face {
-	font-family: "ProximaNovaSoftBold"; src: url("/fonts/proxima_nova_soft_bold-webfont-two.eot"); src: url("/fonts/proxima_nova_soft_bold-webfont-two.eot?#iefix") format("embedded-opentype"), url("/fonts/proxima_nova_soft_bold-webfont-two.svg#proxima_nova_softbold") format("svg"), url("/fonts/proxima_nova_soft_bold-webfont-two.woff") format("woff"), url("/fonts/proxima_nova_soft_bold-webfont-two.ttf") format("truetype");
+	font-family: 'Nunito';
 	font-weight: normal;
 	font-style: normal;
+	src: url('/fonts/nunito-bold.woff2') format('woff2'), url('/fonts/nunito-bold.woff') format('woff'),url('/fonts/Nunito-Bold.ttf') format('truetype');
 }
 
 
@@ -18,7 +19,7 @@
 }
 
 .container h1,h2{
-	font-family: ProximaNovaSoftBold, sans-serif;
+	font-family: Nunito, sans-serif;
 }
 
 .SCknop{
