@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @Route("/manage/{shortUrl}/show", name="app_manage_show", methods={"GET"})
+ * @Route("/manage/url/{shortUrl}/show", name="app_manage_show", methods={"GET"})
  * @IsGranted("SHOW", subject="instance")
  */
 final class ShowManageController extends AbstractController

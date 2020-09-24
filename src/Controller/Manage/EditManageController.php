@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/manage/{shortUrl}/edit", name="app_manage_edit", methods={"GET", "POST"})
+ * @Route("/manage/url/{shortUrl}/edit", name="app_manage_edit", methods={"GET", "POST"})
  * @Security("is_granted('EDIT', instance) or is_granted('ROLE_ADMIN')")
  */
 final class EditManageController extends AbstractController

@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
- * @Route("/manage/admin/", name="app_manage_admin")
+ * @Route("/manage/admin/", name="app_manage_admin", methods={"GET", "POST"})
  */
 final class IndexAdminController extends AbstractController
 {
