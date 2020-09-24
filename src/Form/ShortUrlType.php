@@ -31,7 +31,7 @@ final class ShortUrlType extends AbstractType
                 'class' => 'form-control',
                 'autocomplete' => 'off',
                 'autofocus' => 'autofocus',
-                'placeholder' => $this->translator->trans('placeholder.enter_url'),
+                'placeholder' => 'placeholder.enter_url',
             ],
         ]);
 
@@ -41,7 +41,7 @@ final class ShortUrlType extends AbstractType
                     'required' => false,
                     'class' => 'form-control',
                     'autocomplete' => 'off',
-                    'placeholder' => $this->translator->trans('placeholder.enter_short_code'),
+                    'placeholder' => 'placeholder.enter_short_code',
                 ],
             ]);
         }
