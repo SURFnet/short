@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/manage/{shortUrl}/delete", name="app_manage_delete", methods={"POST"})
+ * @Route("/manage/url/{shortUrl}/delete", name="app_manage_delete", methods={"POST"})
  * @Security("is_granted('DELETE', instance) or is_granted('ROLE_ADMIN')")
  */
 final class DeleteManageController extends AbstractController
