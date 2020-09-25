@@ -191,7 +191,14 @@
                 <source>action.admin</source>
                 <target>admin</target>
             </trans-unit>
-
+            <trans-unit id="short_url.deleted_successfully">
+                <source>short_url.deleted_successfully</source>
+                <target>De URL is verwijderd.</target>
+            </trans-unit>
+            <trans-unit id="short_url.updated_successfully">
+                <source>short_url.updated_successfully</source>
+                <target>De URL is aangepast.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
