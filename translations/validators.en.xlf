@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="shorturl.invalid_url">
                 <source>shorturl.invalid_url</source>
-                <target>Oops, this is not quite a correct URL, possibly a typo or missing the http:// or https:// at the beginning of the URL!.</target>
+                <target>Oops, this is not quite a correct URL, possibly a typo or missing the http:// or https:// at the beginning of the URL!</target>
             </trans-unit>
         </body>
     </file>
