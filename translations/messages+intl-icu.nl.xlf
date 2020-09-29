@@ -199,6 +199,18 @@
                 <source>short_url.updated_successfully</source>
                 <target>De URL is aangepast.</target>
             </trans-unit>
+            <trans-unit id="short_url.refers_to">
+                <source>short_url.refers_to</source>
+                <target>
+                    <![CDATA[
+                        De korte link <code>{ shorturlshort }</code> verwijst naar:
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="short_url.continue_to">
+                <source>short_url.continue_to</source>
+                <target>Doorgaan naar { shorturlshort }</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

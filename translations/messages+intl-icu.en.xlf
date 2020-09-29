@@ -199,6 +199,18 @@
                 <source>short_url.updated_successfully</source>
                 <target>The URL was updated.</target>
             </trans-unit>
+            <trans-unit id="short_url.refers_to">
+                <source>short_url.refers_to</source>
+                <target>
+                    <![CDATA[
+                        The short link <code>{ shorturlshort }</code> refers to:
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="short_url.continue_to">
+                <source>short_url.continue_to</source>
+                <target>Continue to { shorturlshort }</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
