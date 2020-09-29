@@ -211,6 +211,10 @@
                 <source>short_url.continue_to</source>
                 <target>Doorgaan naar { shorturlshort }</target>
             </trans-unit>
+            <trans-unit id="qr_code.alt_message">
+                <source>qr_code.alt_message</source>
+                <target>qr-code voor { shorturlshort }</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

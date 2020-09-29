@@ -5,6 +5,8 @@
 {% block body %}
 
     {% set shorturlfull = 'https://' ~ APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+
     <div class="row">
         <div class="col-md-12 mb-3">
             <h4 class="mb-3 rotating-css">{{ 'title.new_link_created' | trans }}</h4>
@@ -24,7 +26,7 @@
                     <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a>
                 </div>
                 <div class="col-md-6 ">
-                    <img class="mx-auto d-block" src="/{{ short_url.shortUrl }}~" alt="qr-code for {{ shorturlfull }}">
+                    <img class="mx-auto d-block" src="/{{ short_url.shortUrl }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
                 </div>
             </div>
             <hr class="mb-3">
