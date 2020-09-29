@@ -13,15 +13,18 @@
        <div class="col-sm-6 mb-4">
            <h2 class="mb-1">{{ shorturlshort }}</h2>
 
-           <div class="mt-4">De korte link <code>{{ shorturlshort }}</code> verwijst naar:</div>
+           <div class="mt-4">{{ 'short_url.refers_to' | trans({'shorturlshort': shorturlshort}) | raw }}</div>
 
            <div class="m-2"><code>{{ long }}</code></div>
 
-           <div><a href="{{ shorturlfull }}" class="btn btn-primary btn-lg mt-4 SCknop"><i class="fas fa-external-link-alt"></i>
-               Doorgaan naar {{ shorturlshort }}</a></div>
+           <div>
+               <a href="{{ shorturlfull }}" class="btn btn-primary btn-lg mt-4 SCknop"><i class="fas fa-external-link-alt"></i>
+                   {{ 'short_url.continue_to' | trans({'shorturlshort': shorturlshort}) }}
+               </a>
+           </div>
       </div>
       <div class="col-sm">
-       <img src="/{{ short }}~" alt="qr-code for {{ shorturlshort }}">
+          <img src="/{{ short }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
       </div>
   </div>
 

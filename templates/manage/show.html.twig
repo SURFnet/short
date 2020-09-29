@@ -5,21 +5,30 @@
 {% block body %}
 
     {% set shorturlfull = 'https://' ~ APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+
     <div class="row">
         <div class="col-md-12 mb-3">
             <h4 class="mb-3 rotating-css">{{ 'title.new_link_created' | trans }}</h4>
             <hr class="mb-3">
-            {{ 'title.new_link_is' | trans }}<br/>
-            <b>{{ shorturlfull }}</b><br/><br/>
+            <div class="row">
+                <div class="col-md-6">
+                    {{ 'title.new_link_is' | trans }}<br/>
+                    <b>{{ shorturlfull }}</b><br/><br/>
 
-            {{ 'title.link_refers_to' | trans }}<br/>
-            <b>{{ short_url.longUrl }}</b><br/><br/>
+                    {{ 'title.link_refers_to' | trans }}<br/>
+                    <b>{{ short_url.longUrl }}</b><br/><br/>
 
-            {{ 'title.test_link' | trans }}<br/>
-            <a href="{{ shorturlfull }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i> {{ shorturlfull }}</a><br/><br/>
+                    {{ 'title.test_link' | trans }}<br/>
+                    <a href="{{ shorturlfull }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i> {{ shorturlfull }}</a><br/><br/>
 
-            {{ 'title.copy_link' | trans }}<br/>
-            <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a>
+                    {{ 'title.copy_link' | trans }}<br/>
+                    <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a>
+                </div>
+                <div class="col-md-6 ">
+                    <img class="mx-auto d-block" src="/{{ short_url.shortUrl }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
+                </div>
+            </div>
             <hr class="mb-3">
             <a class="btn btn-primary btn-lg btn-block SCknop" href="{{ path('app_manage_index') }}">{{ 'action.back_to_overview' | trans }}</a>
         </div>
