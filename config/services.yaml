@@ -9,6 +9,8 @@ parameters:
     app.payoff: "Dé URL-shortener voor onderwijs en onderzoek met respect voor privacy."
     app.security: '%env(APP_MOD_SECURITY)%'
     app.security.logouturl: "/mellon/logout?ReturnTo=/"
+    app.security.mellon.role_attribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
+    app.security.mellon.role_value: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
     app.shortcode.length: 5
     app.shortcode.maxtries: 50
     app.shortcode.chars: 'abcdefghjkmnpqrtuvwxy346789'
@@ -26,8 +28,6 @@ services:
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
             string $modAuthMellonLogout: '%app.security.logouturl%'
-            string $modAuthMellonRoleAttribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
-            string $modAuthMellonRoleValue: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
             string $defaultLocale: '%app.default_locale%'
             array $locales: '%app.locales%'
 

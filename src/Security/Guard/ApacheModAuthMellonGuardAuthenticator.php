@@ -5,6 +5,7 @@ namespace App\Security\Guard;
 
 
 use App\Security\User;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,12 +36,11 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
 
     public function __construct(
         RouterInterface $router,
-        string $modAuthMellonRoleAttribute,
-        string $modAuthMellonRoleValue
+        ParameterBagInterface $parameterBag
     ) {
         $this->router = $router;
-        $this->modAuthMellonRoleAttribute = $modAuthMellonRoleAttribute;
-        $this->modAuthMellonRoleValue = $modAuthMellonRoleValue;
+        $this->modAuthMellonRoleAttribute = $parameterBag->get('app.security.mellon.role_attribute');
+        $this->modAuthMellonRoleValue = $parameterBag->get('app.security.mellon.role_value');
     }
 
     public function supports(Request $request)
