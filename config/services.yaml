@@ -7,6 +7,7 @@ parameters:
     app.name: "edu.nl"
     app.urldomain: "newest.edu.nl"
     app.payoff: "Dé URL-shortener voor onderwijs en onderzoek met respect voor privacy."
+    app.security: '%env(APP_MOD_SECURITY)%'
     app.security.logouturl: "/mellon/logout?ReturnTo=/"
     app.shortcode.length: 5
     app.shortcode.maxtries: 50
