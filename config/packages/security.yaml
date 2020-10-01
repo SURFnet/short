@@ -11,7 +11,7 @@ security:
             pattern: '^/'
             guard:
                 authenticators:
-                    - App\Security\Guard\ApacheModAuthMellonGuardAuthenticator
+                    - app_guard_authenticator
             logout:
                 path: '/logout'
                 target: '/'
