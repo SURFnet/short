@@ -7,9 +7,13 @@ namespace App\Controller\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class ApacheModAuthMellonCheckStart extends AbstractController
+/**
+ * @Route("/connect/mellon", name="connect_mellon_start")
+ */
+class ApacheModAuthMellonCheckStartController extends AbstractController
 {
     use TargetPathTrait;
 

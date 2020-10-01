@@ -5,7 +5,11 @@ namespace App\Controller\Security;
 
 use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * @Route("/connect/mellon/check", name="connect_mellon_check")
+ */
 class ApacheModAuthMellonCheckController extends AbstractController
 {
     public function __invoke(): void
