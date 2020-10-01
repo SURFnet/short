@@ -19,6 +19,10 @@ class ApacheModAuthMellonCheckStartController extends AbstractController
 
     public function __invoke(Request $request)
     {
+        if ($this->getParameter('app.security') !== 'mellon') {
+            throw $this->createNotFoundException('Authentication method not available');
+        }
+
         $this->storeTargetPath($request);
 
         return $this->redirectToRoute('connect_mellon_check');
