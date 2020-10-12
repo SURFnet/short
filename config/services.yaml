@@ -4,8 +4,8 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    app.name: "edu.nl"
-    app.urldomain: "newest.edu.nl"
+    app.name: "%env(APP_NAME)%"
+    app.urldomain: "%env(APP_FQDN)%"
     app.payoff: "Dé URL-shortener voor onderwijs en onderzoek met respect voor privacy."
     app.security: '%env(APP_MOD_SECURITY)%'
     app.security.logouturl: "/mellon/logout?ReturnTo=/"
