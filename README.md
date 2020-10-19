@@ -50,7 +50,7 @@ parameters:
 
 ### With SAML authentication
 
-SAML authentication use Apache [mellon authentication module](https://github.com/latchset/mod_auth_mellon).
+SAML authentication uses the Apache [mellon authentication module](https://github.com/latchset/mod_auth_mellon).
 Install and configure mod_mellon according to its instructions.
 
 ```apacheconfig
@@ -135,7 +135,7 @@ Protocols h2 h2c http/1.1
 
 ### With OpenID Connect Authentication
 
-OpenID Connect authentication use Apache [openidc authentication module](https://github.com/zmartzone/mod_auth_openidc).
+OpenID Connect authentication uses the Apache [openidc authentication module](https://github.com/zmartzone/mod_auth_openidc).
 Install and configure mod_openidc according to its instructions. For example:
 
 ```apacheconfig
