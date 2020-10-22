@@ -11,7 +11,15 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * ShortUrl
  *
- * @ORM\Table(name="short_urls", uniqueConstraints={@ORM\UniqueConstraint(name="short_url", columns={"short_url"})})
+ * @ORM\Table(
+ *     name="short_urls",
+ *     uniqueConstraints={
+ *          @ORM\UniqueConstraint(name="short_url", columns={"short_url"})
+ *     },
+ *     indexes={
+ *          @ORM\Index(columns={"owner", "created"}),
+ *     }
+ * )
  * @UniqueEntity(fields={"shortUrl"})
  * @ORM\Entity
  */
