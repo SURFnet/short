@@ -1,7 +1,7 @@
 <table class="table table-hover table-striped table-sm tableverstop">
     <thead>
     <tr>
-        <th style="width: 90px;" scope="col">{{ 'title.actions'|trans }}</th>
+        <th style="width: 125px;" scope="col">{{ 'title.actions'|trans }}</th>
         <th style="width: 65px;" scope="col">{{ 'title.clicks'|trans }}</th>
         <th style="width: 110px;" scope="col">{{ 'title.shortened'|trans }}</th>
         <th style="width: 105px;" scope="col">{{ 'title.date'|trans }}</th>
@@ -22,6 +22,9 @@
                     </button>
                     <a href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}">
                         <i class="fa fa-edit SCblauw"></i>
+                    </a>
+                    <a href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}">
+                        <i class="fa fa-qrcode SCblauw"></i>
                     </a>
                     <form style="display: inline-block" action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}" method="post">
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />

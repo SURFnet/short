@@ -215,6 +215,10 @@
                 <source>qr_code.alt_message</source>
                 <target>qr-code for { shorturlshort }</target>
             </trans-unit>
+            <trans-unit id="tooltip.show_qr">
+                <source>tooltip.show_qr</source>
+                <target>Show QR code</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
