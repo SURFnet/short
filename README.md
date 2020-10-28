@@ -144,19 +144,18 @@ Install and configure mod_openidc according to its instructions. For example:
     OIDCClientID <client_id>
     OIDCClientSecret <client_secret>
     # Configure your site hostname
-    OIDCRedirectURI https://<hostname>/connect/inacademia/check
+    OIDCRedirectURI https://<hostname>/connect/oidc/check
     OIDCResponseType id_token
     OIDCScope "openid member persistent"
     OIDCCryptoPassphrase <password>
     #OIDCAuthRequestParams <request_params>
 
     # Don't change this
-    <LocationMatch /connect/inacademia/(check|validate)>
+    <LocationMatch /connect/oidc/(check|return)>
         AuthType openid-connect
         Require valid-user
     </LocationMatch>
 </IfModule>
-
 ```
 
 ## Configure parameters

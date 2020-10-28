@@ -11,7 +11,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 /**
- * @Route("/connect/inacademia", name="connect_openidc_start")
+ * @Route("/connect/oidc", name="connect_openidc_start")
  */
 class ApacheModAuthOpenidcCheckStartController extends AbstractController
 {

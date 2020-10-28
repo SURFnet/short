@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/connect/inacademia/validate", name="connect_openidc_check")
+ * @Route("/connect/oidc/check", name="connect_openidc_check")
  */
 class ApacheModAuthOpenidcCheckController extends AbstractController
 {

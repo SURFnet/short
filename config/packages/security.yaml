@@ -21,8 +21,8 @@ security:
     access_control:
         - { path: '^/manage/admin', role: 'ROLE_ADMIN' }
         - { path: '^/manage', role: 'ROLE_USER' }
-        - { path: '^/connect/(mellon|inacademia)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
-        - { path: '^/connect/(mellon|inacademia)/', role: 'ROLE_USER' }
+        - { path: '^/connect/(mellon|oidc)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+        - { path: '^/connect/(mellon|oidc)/', role: 'ROLE_USER' }
         - { path: '^/', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
 
     role_hierarchy:
