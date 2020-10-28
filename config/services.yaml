@@ -8,7 +8,7 @@ parameters:
     app.urldomain: "%env(APP_FQDN)%"
     app.payoff: "Dé URL-shortener voor onderwijs en onderzoek met respect voor privacy."
     app.security: '%env(APP_MOD_SECURITY)%'
-    app.security.logouturl: "/mellon/logout?ReturnTo=/"
+    app.security.logout: '%env(APP_MOD_LOGOUT)%'
     app.security.mellon.role_attribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
     app.security.mellon.role_value: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
     app.shortcode.length: 5
@@ -27,7 +27,6 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
-            string $modAuthMellonLogout: '%app.security.logouturl%'
             string $defaultLocale: '%app.default_locale%'
             array $locales: '%app.locales%'
 

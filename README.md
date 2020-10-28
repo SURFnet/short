@@ -163,8 +163,20 @@ Install and configure mod_openidc according to its instructions. For example:
 
 Some parameters can be configured with environment variables.
 
-* APP_MOD_SECURITY. Configure between SAML or OpenId Connect authentication method.
-Valid values: `mellon` or `oidc`. SAML is enabled by default.
+### Authentication method
+
+If you want to enable SAML authentication method set these parameters (enabled by default):
+
+    APP_MOD_SECURITY=mellon
+    APP_MOD_LOGOUT="/mellon/logout?ReturnTo=/"
+
+If you want to enable OpenID Connect authentication method set these parameters:
+
+    APP_MOD_SECURITY=openidc
+    APP_MOD_LOGOUT="/connect/oidc/return?logout=/"
+
+### Site personalization
+
 * APP_NAME. Configure the name of the site.
 * APP_FQDN. Configure the FQDN used to create the shorted urls.
 
