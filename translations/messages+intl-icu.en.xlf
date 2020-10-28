@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="button.login">
                 <source>button.login</source>
-                <target>Login with SURFconext</target>
+                <target>Login with {value}</target>
             </trans-unit>
             <trans-unit id="menu.about">
                 <source>menu.about</source>

@@ -178,6 +178,7 @@ If you want to enable OpenID Connect authentication method set these parameters:
 
 * APP_NAME. Configure the name of the site.
 * APP_FQDN. Configure the FQDN used to create the shorted urls.
+* APP_IDP_NAME. Configure the name of your identity provider.
 
 ## Administrator users
 

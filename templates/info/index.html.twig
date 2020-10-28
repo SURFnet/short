@@ -6,7 +6,7 @@
       <div class="row justify-content-center">
 	   <div class="col-sm-4 mb-4 text-center">
             {{ 'text.to_create_link'|trans }}<br>
-		<a href="{{ path('app_manage_index') }}" class="btn btn-primary btn-lg btn-block mt-2 SCknop"><i class="fas fa-sign-in-alt"></i> {{ 'button.login'|trans }}</a>
+		<a href="{{ path('app_manage_index') }}" class="btn btn-primary btn-lg btn-block mt-2 SCknop"><i class="fas fa-sign-in-alt"></i> {{ 'button.login'|trans({'%value%': APP_IDP_NAME}) }}</a>
         </div>
       </div>
 
