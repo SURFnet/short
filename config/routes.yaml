@@ -18,12 +18,3 @@ redirect:
 
 logout:
     path: /logout
-
-connect_mellon_start:
-    path: /connect/mellon
-    controller: App\Controller\Security\ApacheModAuthMellonCheckStart
-
-connect_mellon_check:
-    path: /connect/mellon/check
-    controller: App\Controller\Security\ApacheModAuthMellonCheckController
-

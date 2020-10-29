@@ -17,7 +17,7 @@ use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthenticator
+final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenticator
 {
     use TargetPathTrait;
 
@@ -25,44 +25,29 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
      * @var RouterInterface
      */
     private $router;
-    /**
-     * @var string
-     */
-    private $modAuthMellonRoleAttribute;
-    /**
-     * @var string
-     */
-    private $modAuthMellonRoleValue;
 
-    public function __construct(
-        RouterInterface $router,
-        ParameterBagInterface $parameterBag
-    ) {
+    public function __construct(RouterInterface $router)
+    {
         $this->router = $router;
-        $this->modAuthMellonRoleAttribute = $parameterBag->get('app.security.mellon.role_attribute');
-        $this->modAuthMellonRoleValue = $parameterBag->get('app.security.mellon.role_value');
     }
 
     public function supports(Request $request)
     {
-        return 'connect_mellon_check' === $request->attributes->get('_route');
+        return 'connect_openidc_check' === $request->attributes->get('_route');
     }
 
     public function getCredentials(Request $request)
     {
-        return [
-            'username' => $request->server->get('REDIRECT_REMOTE_USER'),
-            'admin' => $this->checkIsAdmin($request),
-        ];
+        return $request->server->get('REDIRECT_REMOTE_USER');
     }
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        if (null === $credentials['username']) {
+        if (null === $credentials) {
             return null;
         }
 
-        return new User($credentials['username'], $credentials['admin']);
+        return new User($credentials, false);
     }
 
     public function checkCredentials($credentials, UserInterface $user)
@@ -85,40 +70,19 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
             $targetPath = $this->router->generate('app_manage_index');
         }
 
-        $request->getSession()->set('mod_auth_mellon', true);
-
         return new RedirectResponse($targetPath);
     }
 
     public function start(Request $request, AuthenticationException $authException = null)
     {
         return new RedirectResponse(
-            $this->router->generate('connect_mellon_start'),
+            $this->router->generate('connect_openidc_start'),
             Response::HTTP_TEMPORARY_REDIRECT
         );
-
     }
 
     public function supportsRememberMe()
     {
         return false;
-    }
-
-    private function checkIsAdmin(Request $request): bool
-    {
-        $idx = 0;
-        while(1) {
-            $attribute = sprintf('REDIRECT_MELLON_%s_%d', $this->modAuthMellonRoleAttribute, $idx);
-
-            if (!$request->server->has($attribute)) {
-                return false;
-            }
-
-            if ($request->server->get($attribute) === $this->modAuthMellonRoleValue) {
-                return true;
-            }
-
-            $idx++;
-        }
     }
 }

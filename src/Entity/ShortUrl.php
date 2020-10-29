@@ -55,7 +55,7 @@ class ShortUrl
     /**
      * @var string
      *
-     * @ORM\Column(name="owner", type="string", length=64)
+     * @ORM\Column(name="owner", type="string", length=256)
      */
     private $owner;
 

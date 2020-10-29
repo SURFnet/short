@@ -4,10 +4,14 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    app.name: "edu.nl"
-    app.urldomain: "newest.edu.nl"
+    app.name: "%env(APP_NAME)%"
+    app.urldomain: "%env(APP_FQDN)%"
+    app.idp_name: "%env(APP_IDP_NAME)%"
     app.payoff: "Dé URL-shortener voor onderwijs en onderzoek met respect voor privacy."
-    app.security.logouturl: "/mellon/logout?ReturnTo=/"
+    app.security: '%env(APP_MOD_SECURITY)%'
+    app.security.logout: '%env(APP_MOD_LOGOUT)%'
+    app.security.mellon.role_attribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
+    app.security.mellon.role_value: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
     app.shortcode.length: 5
     app.shortcode.maxtries: 50
     app.shortcode.chars: 'abcdefghjkmnpqrtuvwxy346789'
@@ -24,9 +28,6 @@ services:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         bind:
-            string $modAuthMellonLogout: '%app.security.logouturl%'
-            string $modAuthMellonRoleAttribute: '%env(APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE)%'
-            string $modAuthMellonRoleValue: '%env(APP_MOD_AUTH_MELLON_ROLE_VALUE)%'
             string $defaultLocale: '%app.default_locale%'
             array $locales: '%app.locales%'
 

@@ -7,4 +7,4 @@ twig:
         APP_NAME: '%app.name%'
         APP_URLDOMAIN: '%app.urldomain%'
         APP_PAYOFF: '%app.payoff%'
-        APP_LOGOUTURL: '%app.security.logouturl%'
+        APP_IDP_NAME: '%app.idp_name%'

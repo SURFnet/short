@@ -7,14 +7,22 @@ namespace App\Controller\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-class ApacheModAuthMellonCheckStart extends AbstractController
+/**
+ * @Route("/connect/mellon", name="connect_mellon_start")
+ */
+class ApacheModAuthMellonCheckStartController extends AbstractController
 {
     use TargetPathTrait;
 
     public function __invoke(Request $request)
     {
+        if ($this->getParameter('app.security') !== 'mellon') {
+            throw $this->createNotFoundException('Authentication method not available');
+        }
+
         $this->storeTargetPath($request);
 
         return $this->redirectToRoute('connect_mellon_check');

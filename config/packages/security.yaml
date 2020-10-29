@@ -11,19 +11,18 @@ security:
             pattern: '^/'
             guard:
                 authenticators:
-                    - App\Security\Guard\ApacheModAuthMellonGuardAuthenticator
+                    - app_guard_authenticator
             logout:
                 path: '/logout'
                 target: '/'
-                success_handler: App\Security\Guard\GuardLogoutSuccesHandler
             anonymous: true
             switch_user: true
 
     access_control:
         - { path: '^/manage/admin', role: 'ROLE_ADMIN' }
         - { path: '^/manage', role: 'ROLE_USER' }
-        - { path: '^/connect/(mellon)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
-        - { path: '^/connect/(mellon)/check', role: 'ROLE_USER' }
+        - { path: '^/connect/(mellon|oidc)$', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+        - { path: '^/connect/(mellon|oidc)/', role: 'ROLE_USER' }
         - { path: '^/', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
 
     role_hierarchy:

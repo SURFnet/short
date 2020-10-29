@@ -8,9 +8,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/connect/mellon/check", name="connect_mellon_check")
+ * @Route("/connect/oidc/check", name="connect_openidc_check")
  */
-class ApacheModAuthMellonCheckController extends AbstractController
+class ApacheModAuthOpenidcCheckController extends AbstractController
 {
     public function __invoke(): void
     {
