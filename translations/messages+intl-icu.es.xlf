@@ -1,7 +1,215 @@
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
-        <body>
-        </body>
-    </file>
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="error.wrong_url">
+        <source>error.wrong_url</source>
+        <target>¡Ups! La URL no es correcta, posiblemente contenga una errata o falta el http:// o https:// al principio de la URL.</target>
+      </trans-unit>
+      <trans-unit id="placeholder.enter_edited_link">
+        <source>placeholder.enter_edited_link</source>
+        <target>Introduzca el nuevo enlace (URL) aquí</target>
+      </trans-unit>
+      <trans-unit id="tooltip.show_qr">
+        <source>tooltip.show_qr</source>
+        <target>Mostrar código QR</target>
+      </trans-unit>
+      <trans-unit id="title.created">
+        <source>title.created</source>
+        <target>{parent} - creado</target>
+      </trans-unit>
+      <trans-unit id="stats.users_count">
+        <source>stats.users_count</source>
+        <target>Número de usuarios únicos: {value}</target>
+      </trans-unit>
+      <trans-unit id="title.previous_links">
+        <source>title.previous_links</source>
+        <target>Enlaces creados anteriormente:</target>
+      </trans-unit>
+      <trans-unit id="title.shorten_link">
+        <source>title.shorten_link</source>
+        <target>Acortar un enlace:</target>
+      </trans-unit>
+      <trans-unit id="placeholder.enter_url">
+        <source>placeholder.enter_url</source>
+        <target>Introduzca el enlace original (URL) aquí</target>
+      </trans-unit>
+      <trans-unit id="placeholder.enter_short_code">
+        <source>placeholder.enter_short_code</source>
+        <target>El código acortado deseado (vacío para autogenerar)</target>
+      </trans-unit>
+      <trans-unit id="button.shorten_it">
+        <source>button.shorten_it</source>
+        <target>¡Acórtalo!</target>
+      </trans-unit>
+      <trans-unit id="menu.home">
+        <source>menu.home</source>
+        <target>Inicio</target>
+      </trans-unit>
+      <trans-unit id="menu.support">
+        <source>menu.support</source>
+        <target>Soporte</target>
+      </trans-unit>
+      <trans-unit id="text.to_create_link">
+        <source>text.to_create_link</source>
+        <target>Para acortar su propio enlace:</target>
+      </trans-unit>
+      <trans-unit id="title.actions">
+        <source>title.actions</source>
+        <target>Acciones</target>
+      </trans-unit>
+      <trans-unit id="title.clicks">
+        <source>title.clicks</source>
+        <target>Clics</target>
+      </trans-unit>
+      <trans-unit id="title.shortened">
+        <source>title.shortened</source>
+        <target>Acortado</target>
+      </trans-unit>
+      <trans-unit id="title.date">
+        <source>title.date</source>
+        <target>Fecha</target>
+      </trans-unit>
+      <trans-unit id="title.owner">
+        <source>title.owner</source>
+        <target>Propietario</target>
+      </trans-unit>
+      <trans-unit id="title.original_link">
+        <source>title.original_link</source>
+        <target>Enlace original</target>
+      </trans-unit>
+      <trans-unit id="tooltip.copy_url">
+        <source>tooltip.copy_url</source>
+        <target>Copiar la URL corta al portapapeles</target>
+      </trans-unit>
+      <trans-unit id="tooltip.edit_url">
+        <source>tooltip.edit_url</source>
+        <target>Editar la URL original</target>
+      </trans-unit>
+      <trans-unit id="tooltip.remove_url">
+        <source>tooltip.remove_url</source>
+        <target>¿Borrar {shorturlshort}?</target>
+      </trans-unit>
+      <trans-unit id="title.all_links">
+        <source>title.all_links</source>
+        <target>Todos los enlaces:</target>
+      </trans-unit>
+      <trans-unit id="title.new_link_is">
+        <source>title.new_link_is</source>
+        <target>Su nuevo enlace es:</target>
+      </trans-unit>
+      <trans-unit id="title.link_refers_to">
+        <source>title.link_refers_to</source>
+        <target>Referido a:</target>
+      </trans-unit>
+      <trans-unit id="title.test_link">
+        <source>title.test_link</source>
+        <target>¿Quiere probarlo?</target>
+      </trans-unit>
+      <trans-unit id="title.copy_link">
+        <source>title.copy_link</source>
+        <target>Copia el enlace al portapapeles:</target>
+      </trans-unit>
+      <trans-unit id="action.copy">
+        <source>action.copy</source>
+        <target>Copiar</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_overview">
+        <source>action.back_to_overview</source>
+        <target>Volver a la vista general</target>
+      </trans-unit>
+      <trans-unit id="title.edit">
+        <source>title.edit</source>
+        <target>{parent} - editar</target>
+      </trans-unit>
+      <trans-unit id="title.edit_link">
+        <source>title.edit_link</source>
+        <target>Ajustar el enlace para {shorturlshort}:</target>
+      </trans-unit>
+      <trans-unit id="error.type_correct_url">
+        <source>error.type_correct_url</source>
+        <target>Escriba o pegue una URL válida arriba.</target>
+      </trans-unit>
+      <trans-unit id="action.modify">
+        <source>action.modify</source>
+        <target>Modificar</target>
+      </trans-unit>
+      <trans-unit id="title.manage">
+        <source>title.manage</source>
+        <target>{parent} - administrar</target>
+      </trans-unit>
+      <trans-unit id="title.stats">
+        <source>title.stats</source>
+        <target>{parent} - estadísticas</target>
+      </trans-unit>
+      <trans-unit id="title.all_time">
+        <source>title.all_time</source>
+        <target>Desde la creación</target>
+      </trans-unit>
+      <trans-unit id="stats.links_count">
+        <source>stats.links_count</source>
+        <target>Número total de enlaces: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.clicks_count">
+        <source>stats.clicks_count</source>
+        <target>Número total de clics: {value}</target>
+      </trans-unit>
+      <trans-unit id="title.date_range">
+        <source>title.date_range</source>
+        <target>Periodo</target>
+      </trans-unit>
+      <trans-unit id="stats.date_range_links_count">
+        <source>stats.date_range_links_count</source>
+        <target>Enlaces creados durante este periodo: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.date_range_clicks_count">
+        <source>stats.date_range_clicks_count</source>
+        <target>Clics en los enlaces creados en este período: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.date_range_users_count">
+        <source>stats.date_range_users_count</source>
+        <target>Número de usuarios únicos que crearon un enlace en este período: {value}</target>
+      </trans-unit>
+      <trans-unit id="action.admin">
+        <source>action.admin</source>
+        <target>administrar</target>
+      </trans-unit>
+      <trans-unit id="short_url.deleted_successfully">
+        <source>short_url.deleted_successfully</source>
+        <target>La URL fue borrada.</target>
+      </trans-unit>
+      <trans-unit id="short_url.updated_successfully">
+        <source>short_url.updated_successfully</source>
+        <target>La URL fue actualizada.</target>
+      </trans-unit>
+      <trans-unit id="short_url.refers_to">
+        <source>short_url.refers_to</source>
+        <target>El enlace corto &lt;code&gt;{ shorturlshort }&lt;/code&gt; se refiere a:</target>
+      </trans-unit>
+      <trans-unit id="short_url.continue_to">
+        <source>short_url.continue_to</source>
+        <target>Continuar a { shorturlshort }</target>
+      </trans-unit>
+      <trans-unit id="qr_code.alt_message">
+        <source>qr_code.alt_message</source>
+        <target>Código QR para { shorturlshort }</target>
+      </trans-unit>
+      <trans-unit id="title.new_link_created">
+        <source>title.new_link_created</source>
+        <target>Su nuevo enlace está listo para ser usado</target>
+      </trans-unit>
+      <trans-unit id="input.date_range">
+        <source>input.date_range</source>
+        <target>Periodo desde &lt;input type="date" name="from" value="{from}"&gt; a &lt;input type="date" name="to" value="{to}"&gt; (inclusive).</target>
+      </trans-unit>
+      <trans-unit id="button.login">
+        <source>button.login</source>
+        <target>Iniciar sesión con {value}</target>
+      </trans-unit>
+      <trans-unit id="menu.about">
+        <source>menu.about</source>
+        <target>Privacidad (por diseño)</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
