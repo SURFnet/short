@@ -1,7 +1,19 @@
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
-        <body>
-        </body>
-    </file>
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="shorturl.forbidden_chars">
+        <source>shorturl.forbidden_chars</source>
+        <target>Der Wert "{{ value }}" enthält Zeichen, die nicht erlaubt sind.</target>
+      </trans-unit>
+      <trans-unit id="shorturl.banned_domain">
+        <source>shorturl.banned_domain</source>
+        <target>Die Ziel-URL darf nicht mit "{{ value }}" beginnen.</target>
+      </trans-unit>
+      <trans-unit id="shorturl.invalid_url">
+        <source>shorturl.invalid_url</source>
+        <target>Hoppla, das ist eine nicht ganz korrekte URL, möglicherweise ein Tippfehler oder das Fehlen von http:// oder https:// am Anfang der URL!</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
