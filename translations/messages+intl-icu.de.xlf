@@ -1,7 +1,215 @@
-<?xml version="1.0"?>
-<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
-        <body>
-        </body>
-    </file>
+<?xml version='1.0' encoding='UTF-8'?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="menu.about">
+        <source>menu.about</source>
+        <target>Datenschutz (by design)</target>
+      </trans-unit>
+      <trans-unit id="title.previous_links">
+        <source>title.previous_links</source>
+        <target>Zuvor erstellte Links:</target>
+      </trans-unit>
+      <trans-unit id="menu.home">
+        <source>menu.home</source>
+        <target>Startseite</target>
+      </trans-unit>
+      <trans-unit id="menu.support">
+        <source>menu.support</source>
+        <target>Unterstützung</target>
+      </trans-unit>
+      <trans-unit id="text.to_create_link">
+        <source>text.to_create_link</source>
+        <target>Um Ihren eigenen Link zu kürzen:</target>
+      </trans-unit>
+      <trans-unit id="title.shorten_link">
+        <source>title.shorten_link</source>
+        <target>Einen Link kürzen:</target>
+      </trans-unit>
+      <trans-unit id="placeholder.enter_url">
+        <source>placeholder.enter_url</source>
+        <target>Geben Sie hier den ursprünglichen Link (URL) ein</target>
+      </trans-unit>
+      <trans-unit id="placeholder.enter_short_code">
+        <source>placeholder.enter_short_code</source>
+        <target>Die gewünschte Kurznummer (leer für Autogenerate)</target>
+      </trans-unit>
+      <trans-unit id="button.shorten_it">
+        <source>button.shorten_it</source>
+        <target>Kürzen Sie es!</target>
+      </trans-unit>
+      <trans-unit id="title.actions">
+        <source>title.actions</source>
+        <target>Aktionen</target>
+      </trans-unit>
+      <trans-unit id="title.clicks">
+        <source>title.clicks</source>
+        <target>Klicks</target>
+      </trans-unit>
+      <trans-unit id="title.shortened">
+        <source>title.shortened</source>
+        <target>Verkürzt</target>
+      </trans-unit>
+      <trans-unit id="title.date">
+        <source>title.date</source>
+        <target>Datum</target>
+      </trans-unit>
+      <trans-unit id="title.owner">
+        <source>title.owner</source>
+        <target>Eigentümer</target>
+      </trans-unit>
+      <trans-unit id="title.original_link">
+        <source>title.original_link</source>
+        <target>Ursprünglicher Link</target>
+      </trans-unit>
+      <trans-unit id="tooltip.copy_url">
+        <source>tooltip.copy_url</source>
+        <target>Kurze URL in die Zwischenablage kopieren</target>
+      </trans-unit>
+      <trans-unit id="tooltip.edit_url">
+        <source>tooltip.edit_url</source>
+        <target>Bearbeiten der Original-Url</target>
+      </trans-unit>
+      <trans-unit id="tooltip.remove_url">
+        <source>tooltip.remove_url</source>
+        <target>Entfernen {shorturlshort}?</target>
+      </trans-unit>
+      <trans-unit id="title.all_links">
+        <source>title.all_links</source>
+        <target>Alle Links:</target>
+      </trans-unit>
+      <trans-unit id="title.created">
+        <source>title.created</source>
+        <target>{parent} - erstellt</target>
+      </trans-unit>
+      <trans-unit id="title.link_refers_to">
+        <source>title.link_refers_to</source>
+        <target>Dieser bezieht sich auf:</target>
+      </trans-unit>
+      <trans-unit id="title.test_link">
+        <source>title.test_link</source>
+        <target>Wollen Sie es testen?</target>
+      </trans-unit>
+      <trans-unit id="title.copy_link">
+        <source>title.copy_link</source>
+        <target>Link in die Zwischenablage kopieren:</target>
+      </trans-unit>
+      <trans-unit id="action.copy">
+        <source>action.copy</source>
+        <target>Kopie</target>
+      </trans-unit>
+      <trans-unit id="action.back_to_overview">
+        <source>action.back_to_overview</source>
+        <target>Zurück zu Ihrer Übersicht</target>
+      </trans-unit>
+      <trans-unit id="error.wrong_url">
+        <source>error.wrong_url</source>
+        <target>Hoppla, das ist eine nicht ganz korrekte URL, möglicherweise ein Tippfehler oder das Fehlen von http:// oder https:// am Anfang der URL!</target>
+      </trans-unit>
+      <trans-unit id="title.edit">
+        <source>title.edit</source>
+        <target>{parent} - bearbeiten</target>
+      </trans-unit>
+      <trans-unit id="title.edit_link">
+        <source>title.edit_link</source>
+        <target>Link einstellen für {shorturlshort}:</target>
+      </trans-unit>
+      <trans-unit id="placeholder.enter_edited_link">
+        <source>placeholder.enter_edited_link</source>
+        <target>Geben Sie den neuen Link (URL) hier ein</target>
+      </trans-unit>
+      <trans-unit id="error.type_correct_url">
+        <source>error.type_correct_url</source>
+        <target>Geben Sie oben eine (korrekte) URL ein oder fügen Sie sie ein.</target>
+      </trans-unit>
+      <trans-unit id="action.modify">
+        <source>action.modify</source>
+        <target>Ändern</target>
+      </trans-unit>
+      <trans-unit id="title.manage">
+        <source>title.manage</source>
+        <target>{parent} - verwalten</target>
+      </trans-unit>
+      <trans-unit id="title.stats">
+        <source>title.stats</source>
+        <target>{parent} - Statistik</target>
+      </trans-unit>
+      <trans-unit id="title.all_time">
+        <source>title.all_time</source>
+        <target>Alle Zeiten</target>
+      </trans-unit>
+      <trans-unit id="stats.links_count">
+        <source>stats.links_count</source>
+        <target>Gesamtzahl der Links: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.clicks_count">
+        <source>stats.clicks_count</source>
+        <target>Gesamtzahl der Klicks: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.users_count">
+        <source>stats.users_count</source>
+        <target>Anzahl der eindeutigen Benutzer: {value}</target>
+      </trans-unit>
+      <trans-unit id="title.date_range">
+        <source>title.date_range</source>
+        <target>Zeitraum</target>
+      </trans-unit>
+      <trans-unit id="input.date_range">
+        <source>input.date_range</source>
+        <target>Zeitraum von &lt;input type="date" name="from" value="{from}"&gt; bis &lt;input type="date" name="to" value="{to}"&gt; (einschließlich).</target>
+      </trans-unit>
+      <trans-unit id="stats.date_range_links_count">
+        <source>stats.date_range_links_count</source>
+        <target>Links schufen diese Periode: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.date_range_clicks_count">
+        <source>stats.date_range_clicks_count</source>
+        <target>Klickt auf Links, die in diesem Zeitraum erstellt wurden: {value}</target>
+      </trans-unit>
+      <trans-unit id="stats.date_range_users_count">
+        <source>stats.date_range_users_count</source>
+        <target>Anzahl der eindeutigen Benutzer, die in diesem Zeitraum einen Link erstellt haben: {value}</target>
+      </trans-unit>
+      <trans-unit id="action.admin">
+        <source>action.admin</source>
+        <target>Verwaltung</target>
+      </trans-unit>
+      <trans-unit id="short_url.deleted_successfully">
+        <source>short_url.deleted_successfully</source>
+        <target>Die URL wurde gelöscht.</target>
+      </trans-unit>
+      <trans-unit id="short_url.updated_successfully">
+        <source>short_url.updated_successfully</source>
+        <target>Die URL wurde aktualisiert.</target>
+      </trans-unit>
+      <trans-unit id="short_url.continue_to">
+        <source>short_url.continue_to</source>
+        <target>Weiter zu { shorturlshort }</target>
+      </trans-unit>
+      <trans-unit id="qr_code.alt_message">
+        <source>qr_code.alt_message</source>
+        <target>qr-code für { shorturlshort }</target>
+      </trans-unit>
+      <trans-unit id="tooltip.show_qr">
+        <source>tooltip.show_qr</source>
+        <target>QR-Code anzeigen</target>
+      </trans-unit>
+      <trans-unit id="short_url.refers_to">
+        <source>short_url.refers_to</source>
+        <target>Der kurze Link &lt;code&gt;{ shorturlshort }&lt;/code&gt; verweist auf:</target>
+      </trans-unit>
+      <trans-unit id="title.new_link_is">
+        <source>title.new_link_is</source>
+        <target>Ihr neuer Link ist:</target>
+      </trans-unit>
+      <trans-unit id="button.login">
+        <source>button.login</source>
+        <target>Anmeldung mit {value}</target>
+      </trans-unit>
+      <trans-unit id="title.new_link_created">
+        <source>title.new_link_created</source>
+        <target>Ihr neuer Link ist einsatzbereit</target>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
