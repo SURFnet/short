@@ -6,12 +6,23 @@
 
     {% include 'manage/partials/linkform.html.twig' %}
 
-    {% if short_urls|length > 0 %}
-
+    {% if pagination|length > 0 or pagination.params()['filterValue'] is defined %}
         <h4 class="mb-3">{{ 'title.all_links'|trans }}</h4>
+
+        <div class="mb-4">
+            {{
+            knp_pagination_filter(pagination, {
+                'o.longUrl': 'title.original_link'
+            },{
+                'button': 'button.filter'
+            })
+            }}
+        </div>
 
         {% include 'manage/partials/linklist.html.twig' with {'is_admin': true } %}
 
-        {% include 'manage/partials/_pagination.html.twig' %}
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
     {% endif %}
 {% endblock %}
