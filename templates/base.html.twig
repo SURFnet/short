@@ -65,7 +65,9 @@
         <li class="list-inline-item"><a href="{{ path('app_info_support') }}">{{ 'menu.support'|trans }}</a></li>
     </ul>
     <ul class="list-inline">
+        <li class="list-inline-item"><a href="{{ path('locale', {'lang': 'de', 'redirect': currentPath}) }}">Deutsch</a></li>
         <li class="list-inline-item"><a href="{{ path('locale', {'lang': 'en', 'redirect': currentPath}) }}">English</a></li>
+        <li class="list-inline-item"><a href="{{ path('locale', {'lang': 'es', 'redirect': currentPath }) }}">Español</a></li>
         <li class="list-inline-item"><a href="{{ path('locale', {'lang': 'nl', 'redirect': currentPath }) }}">Nederlands</a></li>
     </ul>
 </footer>
