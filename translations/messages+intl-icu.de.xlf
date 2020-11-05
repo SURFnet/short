@@ -16,11 +16,11 @@
       </trans-unit>
       <trans-unit id="menu.support">
         <source>menu.support</source>
-        <target>Unterstützung</target>
+        <target>Support</target>
       </trans-unit>
       <trans-unit id="text.to_create_link">
         <source>text.to_create_link</source>
-        <target>Um Ihren eigenen Link zu kürzen:</target>
+        <target>Um Ihren Link zu kürzen:</target>
       </trans-unit>
       <trans-unit id="title.shorten_link">
         <source>title.shorten_link</source>
@@ -32,11 +32,11 @@
       </trans-unit>
       <trans-unit id="placeholder.enter_short_code">
         <source>placeholder.enter_short_code</source>
-        <target>Die gewünschte Kurznummer (leer für Autogenerate)</target>
+        <target>Das gewünschte Kürzel des resultierenden Links (zur Autogenerierung leer lassen)</target>
       </trans-unit>
       <trans-unit id="button.shorten_it">
         <source>button.shorten_it</source>
-        <target>Kürzen Sie es!</target>
+        <target>Link kürzen!</target>
       </trans-unit>
       <trans-unit id="title.actions">
         <source>title.actions</source>
@@ -48,7 +48,7 @@
       </trans-unit>
       <trans-unit id="title.shortened">
         <source>title.shortened</source>
-        <target>Verkürzt</target>
+        <target>Gekürzt</target>
       </trans-unit>
       <trans-unit id="title.date">
         <source>title.date</source>
@@ -64,11 +64,11 @@
       </trans-unit>
       <trans-unit id="tooltip.copy_url">
         <source>tooltip.copy_url</source>
-        <target>Kurze URL in die Zwischenablage kopieren</target>
+        <target>Gekürzte URL in die Zwischenablage kopieren</target>
       </trans-unit>
       <trans-unit id="tooltip.edit_url">
         <source>tooltip.edit_url</source>
-        <target>Bearbeiten der Original-Url</target>
+        <target>Bearbeiten der ursprünglichen URL</target>
       </trans-unit>
       <trans-unit id="tooltip.remove_url">
         <source>tooltip.remove_url</source>
@@ -100,11 +100,11 @@
       </trans-unit>
       <trans-unit id="action.back_to_overview">
         <source>action.back_to_overview</source>
-        <target>Zurück zu Ihrer Übersicht</target>
+        <target>Zurück zur Übersicht</target>
       </trans-unit>
       <trans-unit id="error.wrong_url">
         <source>error.wrong_url</source>
-        <target>Hoppla, das ist eine nicht ganz korrekte URL, möglicherweise ein Tippfehler oder das Fehlen von http:// oder https:// am Anfang der URL!</target>
+        <target>Hoppla, die URL ist nicht korrekt, möglicherweise ein Tippfehler oder es fehlt das http:// oder https:// am Anfang der URL!</target>
       </trans-unit>
       <trans-unit id="title.edit">
         <source>title.edit</source>
@@ -112,7 +112,7 @@
       </trans-unit>
       <trans-unit id="title.edit_link">
         <source>title.edit_link</source>
-        <target>Link einstellen für {shorturlshort}:</target>
+        <target>Anpassen des Links {shorturlshort}:</target>
       </trans-unit>
       <trans-unit id="placeholder.enter_edited_link">
         <source>placeholder.enter_edited_link</source>
@@ -120,7 +120,7 @@
       </trans-unit>
       <trans-unit id="error.type_correct_url">
         <source>error.type_correct_url</source>
-        <target>Geben Sie oben eine (korrekte) URL ein oder fügen Sie sie ein.</target>
+        <target>Tippen Sie oder Fügen Sie oben eine (korrekte) URL ein.</target>
       </trans-unit>
       <trans-unit id="action.modify">
         <source>action.modify</source>
@@ -132,7 +132,7 @@
       </trans-unit>
       <trans-unit id="title.stats">
         <source>title.stats</source>
-        <target>{parent} - Statistik</target>
+        <target>{parent} - Statistiken</target>
       </trans-unit>
       <trans-unit id="title.all_time">
         <source>title.all_time</source>
@@ -140,7 +140,7 @@
       </trans-unit>
       <trans-unit id="stats.links_count">
         <source>stats.links_count</source>
-        <target>Gesamtzahl der Links: {value}</target>
+        <target>Gesamtzahl aller Links: {value}</target>
       </trans-unit>
       <trans-unit id="stats.clicks_count">
         <source>stats.clicks_count</source>
@@ -160,11 +160,11 @@
       </trans-unit>
       <trans-unit id="stats.date_range_links_count">
         <source>stats.date_range_links_count</source>
-        <target>Links schufen diese Periode: {value}</target>
+        <target>In diesem Zeitraum entstandene Links: {value}</target>
       </trans-unit>
       <trans-unit id="stats.date_range_clicks_count">
         <source>stats.date_range_clicks_count</source>
-        <target>Klickt auf Links, die in diesem Zeitraum erstellt wurden: {value}</target>
+        <target>Aufrufe der Links, die in diesem Zeitraum erstellt wurden: {value}</target>
       </trans-unit>
       <trans-unit id="stats.date_range_users_count">
         <source>stats.date_range_users_count</source>
@@ -172,7 +172,7 @@
       </trans-unit>
       <trans-unit id="action.admin">
         <source>action.admin</source>
-        <target>Verwaltung</target>
+        <target>Admin</target>
       </trans-unit>
       <trans-unit id="short_url.deleted_successfully">
         <source>short_url.deleted_successfully</source>
@@ -188,7 +188,7 @@
       </trans-unit>
       <trans-unit id="qr_code.alt_message">
         <source>qr_code.alt_message</source>
-        <target>qr-code für { shorturlshort }</target>
+        <target>QR Code für { shorturlshort }</target>
       </trans-unit>
       <trans-unit id="tooltip.show_qr">
         <source>tooltip.show_qr</source>
@@ -196,11 +196,11 @@
       </trans-unit>
       <trans-unit id="short_url.refers_to">
         <source>short_url.refers_to</source>
-        <target>Der kurze Link &lt;code&gt;{ shorturlshort }&lt;/code&gt; verweist auf:</target>
+        <target>Der gekürzte Link &lt;code&gt;{ shorturlshort }&lt;/code&gt; verweist auf:</target>
       </trans-unit>
       <trans-unit id="title.new_link_is">
         <source>title.new_link_is</source>
-        <target>Ihr neuer Link ist:</target>
+        <target>Der neue Link ist:</target>
       </trans-unit>
       <trans-unit id="button.login">
         <source>button.login</source>
@@ -208,7 +208,7 @@
       </trans-unit>
       <trans-unit id="title.new_link_created">
         <source>title.new_link_created</source>
-        <target>Ihr neuer Link ist einsatzbereit</target>
+        <target>Ihr neuer Link steht zur Verwendung bereit</target>
       </trans-unit>
     </body>
   </file>
