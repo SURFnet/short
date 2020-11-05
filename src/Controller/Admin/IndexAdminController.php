@@ -9,6 +9,7 @@ use App\Form\ShortUrlType;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,18 +57,29 @@ final class IndexAdminController extends AbstractController
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
 
-        $itemsPerPage = $this->getParameter('app.shortlink.pagination');
-        $shortUrls = $this->repository->findLatest($page, $itemsPerPage);
-
-        $itemsPerPage = $shortUrls->getQuery()->getMaxResults();
-        $numPages = ceil($shortUrls->count() / $itemsPerPage);
+        $pagination = $this->getPaginationWithSearchFilter($request, $page);
 
         return $this->render('admin/index.html.twig', [
             'form' => $form->createView(),
-            'num_pages' => $numPages,
-            'page' => $page,
+            'pagination' => $pagination,
             'route' => 'app_manage_admin_paginated',
-            'short_urls' => $shortUrls
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @param int $page
+     * @return PaginationInterface
+     */
+    protected function getPaginationWithSearchFilter(Request $request, int $page): PaginationInterface
+    {
+        $filterField = $request->query->get('filterValue');
+        if (!empty($filterField)) {
+            $request->query->set('filterValue', '%' . $filterField . '%*');
+        }
+
+        $itemsPerPage = $this->getParameter('app.shortlink.pagination');
+
+        return $this->repository->findLatest($page, $itemsPerPage);
     }
 }
