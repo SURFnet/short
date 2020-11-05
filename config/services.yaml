@@ -22,7 +22,7 @@ parameters:
     app.health.minimumurls: 10
     app.default_locale: 'en'
     app.locales: ["de","en","es","nl"]
-    app.shortlink.pagination: 100
+    app.shortlink.pagination: '%env(int:APP_SHORTLINK_PAGINATION)%'
 
 services:
     # default configuration for services in *this* file
