@@ -219,6 +219,18 @@
                 <source>tooltip.show_qr</source>
                 <target>Show QR code</target>
             </trans-unit>
+            <trans-unit id="input.help_filter">
+                <source>input.help_filter</source>
+                <target>Search by original link</target>
+            </trans-unit>
+            <trans-unit id="button.filter">
+                <source>button.filter</source>
+                <target>Filter</target>
+            </trans-unit>
+            <trans-unit id="button.reset">
+                <source>button.reset</source>
+                <target>Reset</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
