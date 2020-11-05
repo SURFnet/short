@@ -9,6 +9,8 @@ use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -19,12 +21,19 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 final class ShortUrlRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    /**
+     * @var PaginatorInterface
+     */
+    private $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, ShortUrl::class);
+
+        $this->paginator = $paginator;
     }
 
-    public function findLatest(int $page, int $itemsPerPage, UserInterface $user = null): Paginator
+    public function findLatest(int $page, int $itemsPerPage, UserInterface $user = null): PaginationInterface
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.created', 'DESC');
@@ -35,20 +44,10 @@ final class ShortUrlRepository extends ServiceEntityRepository
             ;
         }
 
-        $query = $qb->getQuery();
-
-        return $this->createPaginator($query, $page, $itemsPerPage);
-    }
-
-    private function createPaginator(Query $query, int $page, int $limit): Paginator
-    {
-        $paginator = new Paginator($query);
-
-        $paginator->getQuery()
-            ->setFirstResult($limit * ($page - 1))
-            ->setMaxResults($limit)
-        ;
-
-        return $paginator;
+        return $this->paginator->paginate(
+            $qb,
+            $page,
+            $itemsPerPage
+        );
     }
 }

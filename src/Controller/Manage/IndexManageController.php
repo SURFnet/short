@@ -7,6 +7,7 @@ use App\Entity\ShortUrl;
 use App\Form\ShortUrlType;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/manage/", defaults={"page": "1"}, name="app_manage_index", methods={"GET", "POST"})
- * @Route("/manage/page/{page<[1-9]\d*>}", name="app_manage_index_paginated", methods={"GET"})
+ * @Route("/manage/page/{page<[1-9]\d*>}", name="app_manage_index_paginated", methods={"GET", "POST"})
  */
 final class IndexManageController extends AbstractController
 {
@@ -51,21 +52,33 @@ final class IndexManageController extends AbstractController
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
 
-        $itemsPerPage = $this->getParameter('app.shortlink.pagination');
-        $shortUrls = $this->repository->findLatest($page, $itemsPerPage, $user);
-
-        $itemsPerPage = $shortUrls->getQuery()->getMaxResults();
-        $numPages = ceil($shortUrls->count() / $itemsPerPage);
+        $pagination = $this->getPaginationWithSearchFilter($request, $page);
 
         return $this->render(
             'manage/index.html.twig',
             [
                 'form' => $form->createView(),
-                'num_pages' => $numPages,
-                'page' => $page,
+                'pagination' => $pagination,
                 'route' => 'app_manage_index_paginated',
-                'short_urls' => $shortUrls
             ]
         );
+    }
+
+    /**
+     * @param Request $request
+     * @param int $page
+     * @return PaginationInterface
+     */
+    protected function getPaginationWithSearchFilter(Request $request, int $page): PaginationInterface
+    {
+        $filterField = $request->query->get('filterValue');
+        if (!empty($filterField)) {
+            $request->query->set('filterValue', '%' . $filterField . '%*');
+        }
+
+        $itemsPerPage = $this->getParameter('app.shortlink.pagination');
+        $user = $this->getUser();
+
+        return $this->repository->findLatest($page, $itemsPerPage, $user);
     }
 }
