@@ -1,3 +1,4 @@
+
 <table class="table table-hover table-striped table-sm tableverstop">
     <thead>
     <tr>
@@ -10,7 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    {% for url in short_urls %}
+    {% for url in pagination %}
         {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
         {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ url.shortUrl %}
         {% set disablebutton = url.deleted and not is_admin is defined ? 'disabled':'' %}
@@ -37,7 +38,11 @@
             <th scope="row">{{ url.clicks }}</th>
             <td>{% if not url.deleted %}<a target="_blank" href="{{ shorturlfull }}">{{ shorturlshort }}</a>{% else %}{{ shorturlshort }}{% endif %}</td>
             <td>{{ url.created|date("Y-m-d") }}</td>
-            {% if is_admin is defined %}<td class="small">{{ url.owner }}</td>{% endif %}
+            {% if is_admin is defined %}
+                <td class="small">
+                    {{ url.owner }}
+                </td>
+            {% endif %}
             <td class="text-truncate telang"><a href="{{ url.longUrl }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i></a> {{url.longUrl }}</td>
         </tr>
     {% endfor %}
