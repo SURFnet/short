@@ -20,7 +20,7 @@ parameters:
     app.targeturl.forbiddendomains: ['u.nu', 'bit.ly', 'is.gd', 'tinyurl.com']
     app.health.minimumurls: 10
     app.default_locale: 'en'
-    app.locales: ["en","nl"]
+    app.locales: ["de","en","es","nl"]
 
 services:
     # default configuration for services in *this* file
