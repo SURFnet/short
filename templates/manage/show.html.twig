@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    {% set shorturlfull = 'https://' ~ APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlfull = APP_PROTOCOL ~ '://' ~ APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
     {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
 
     <div class="row">

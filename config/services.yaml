@@ -6,6 +6,7 @@
 parameters:
     app.name: "%env(APP_NAME)%"
     app.urldomain: "%env(APP_FQDN)%"
+    app.protocol: "%env(APP_PROTOCOL)%"
     app.idp_name: "%env(APP_IDP_NAME)%"
     app.payoff: "Dé URL-shortener voor onderwijs en onderzoek met respect voor privacy."
     app.security: '%env(APP_MOD_SECURITY)%'
