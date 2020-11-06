@@ -28,6 +28,11 @@ In .env.local:
 DATABASE_URL=mysql://short:longpassword@127.0.0.1:3306/short?serverVersion=5.7
 ```
 
+On the commandline:
+```
+$ php bin/console doctrine:schema:create
+```
+
 ## Configuration
 
 In config/services.yaml you can find the basic parameters:
