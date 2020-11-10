@@ -54,7 +54,8 @@ class RedirectController extends AbstractController
         $shortUrl = $this->lookup(rtrim($req,'~'));
 
         $url = $this->getParameter('app.urldomain') . '/' . $shortUrl->getShortUrl();
-        $fullurl = 'https://' . $url;
+        $protocol = $this->getParameter('app.protocol');
+        $fullurl = $protocol . '://' . $url;
 
         $qrCode = new QrCode($fullurl);
         $qrCode->setValidateResult(false);

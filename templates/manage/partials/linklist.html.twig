@@ -12,7 +12,7 @@
     <tbody>
     {% for url in short_urls %}
         {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
-        {% set shorturlfull = 'https://' ~ shorturlshort %}
+        {% set shorturlfull = APP_PROTOCOL ~ '://' ~ shorturlshort %}
         {% set disablebutton = url.deleted and not is_admin is defined ? 'disabled':'' %}
         <tr {% if url.deleted %}class="deleted"{% endif %}>
             <td>
