@@ -7,6 +7,10 @@ use App\Validator\NotForbiddenChars;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
 
 /**
  * ShortUrl
@@ -22,17 +26,30 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @UniqueEntity(fields={"shortUrl"})
  * @ORM\Entity
+ * @ApiResource(
+ *      normalizationContext={AbstractNormalizer::IGNORED_ATTRIBUTES={"id"}},
+ *      denormalizationContext={}
+ * )
  */
 class ShortUrl
 {
     /**
      * @var int
      *
+     * @ApiProperty(identifier=false)
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
+
+    /**
+     * @var string
+     *
+     * @ApiProperty(identifier=true)
+     * @ORM\Column(name="code", type="guid")
+     */
+    public $code;
 
     /**
      * @var string
@@ -90,6 +107,7 @@ class ShortUrl
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->code = (string) Uuid::v4();
     }
 
     public function getId(): int
