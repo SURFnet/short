@@ -47,9 +47,9 @@ class ShortUrl
      * @var string
      *
      * @ApiProperty(identifier=true)
-     * @ORM\Column(name="code", type="guid")
+     * @ORM\Column(name="uuid", type="guid")
      */
-    public $code;
+    public $uuid;
 
     /**
      * @var string
@@ -107,7 +107,7 @@ class ShortUrl
     public function __construct()
     {
         $this->created = new \DateTime();
-        $this->code = (string) Uuid::v4();
+        $this->uuid = (string) Uuid::v4();
     }
 
     public function getId(): int

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\ORM\EntityManagerInterface;
 
 /**
  * @Route("/manage/", name="app_manage_index", methods={"GET", "POST"})
@@ -25,12 +26,12 @@ final class IndexManageController extends AbstractController
     /**
      * @var GenerateUniqueShortUrl
      */
-    private $generateShortUrlCode;
+    private $entityManager;
 
-    public function __construct(ShortUrlRepository $repository, GenerateUniqueShortUrl $generateShortUrlCode)
+    public function __construct(ShortUrlRepository $repository, EntityManagerInterface $entityManager)
     {
         $this->repository = $repository;
-        $this->generateShortUrlCode = $generateShortUrlCode;
+        $this->entityManager = $entityManager;
     }
 
     public function __invoke(Request $request): Response
@@ -45,7 +46,8 @@ final class IndexManageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $shortUrl = $this->generateShortUrlCode->generate($shortUrl->getLongUrl(), $shortUrl->getOwner());
+            //$shortUrl = $this->generateShortUrlCode->generate($shortUrl->getLongUrl(), $shortUrl->getOwner());
+            $shortUrl = $this->entityManager->persist($shortUrl);
 
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
