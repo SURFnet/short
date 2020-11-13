@@ -1,0 +1,64 @@
+{% extends 'new-ui/base.html.twig' %}
+
+{% block hero %}
+    About
+{% endblock %}
+
+{% block content %}
+    <h3>
+        Wat is {{ APP_NAME }}?
+    </h3>
+
+    <p>
+        Met {{ APP_NAME }} kun je een willekeurige lange URL korter maken. Je kunt een link aanmaken die begint
+        met {{ APP_URLDOMAIN }}. Gebruik deze korte link waar lange URL's onhandig zijn, zoals in presentatie-slides of
+        drukwerk en op sociale media.
+    </p>
+
+    <p>
+        De korte links hebben de vorm {{ APP_URLDOMAIN }}/<i>code</i> en verlopen niet.
+    </p>
+
+    <p>
+        {{ APP_NAME }} is kosteloos te gebruiken door alle studenten, medewerkers en onderzoekers van instellingen die
+        bij SURF zijn aangesloten.
+    </p>
+
+    <h3>
+        {{ APP_NAME }}: respect voor privacy
+    </h3>
+
+    <p>
+        {{ APP_NAME }}:
+    </p>
+
+    <ul class="list-disc">
+        <li>
+            is veiliger en privacy-vriendelijker dan commerciële alternatieven.
+            Dankzij SURFconext kunnen alleen geautoriseerde
+            personen uit het mbo, hbo en wo links aanmaken. Zo voorkomen we misbruik.
+        </li>
+        <li>
+            slaat geen persooonlijke gegevens op. Via SURFconext ontvangt {{ APP_NAME }}
+            alleen een <a href="https://support.surfconext.nl/help-nameid">persistent pseudoniem</a>.
+        </li>
+        <li>
+            houdt alleen het totale aantal kliks bij en trackt bezoekers niet.
+        </li>
+        <li>
+            gebruikt <a href="https://internet.nl/site/edu.nl/377653/">moderne webstandaarden</a>.
+        </li>
+    </ul>
+
+    <p>
+        Alle details en informatie over je rechten vind je in onze <a href="{{ path('app_info_privacy') }}">privacy-verklaring</a>.
+    </p>
+
+    <h3>
+        Support en contact
+    </h3>
+
+    <p>
+        Wil je weten hoe je een link aanmaakt of heb je een vraag? Kijk dan op de <a href="{{ path('app_info_support') }}">support-pagina</a>.
+    </p>
+{% endblock %}

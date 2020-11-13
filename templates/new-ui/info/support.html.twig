@@ -1,0 +1,47 @@
+{% extends 'new-ui/base.html.twig' %}
+
+{% block title %}{{ parent() }} - Support{% endblock %}
+
+{% block hero %}
+    Support
+{% endblock %}
+
+{% block content %}
+
+    <h3>Links aanmaken en bewerken</h3>
+    <ul>
+        <li>Om een verkorte link aan te maken, heb je een SURFconext-account nodig.
+            Selecteer je instelling uit de lijst. Staat je instelling er nog niet bij, zie dan
+            verderop bij het kopje 'Inloggen'.
+        </li>
+        <li>Plak de URL die je wilt verkorten in het tekstveld. Je krijgt
+            vervolgens jouw unieke {{ APP_URLDOMAIN }}-URL, die je meteen kunt gebruiken.
+            De code is willekeurig, niet hoofdlettergevoelig en zonder potentieel verwarrende karakters
+            (zoals het cijfer nul en de letter o).
+        </li>
+        <li>Als je bent ingelogd, zie je een overzicht van alle links die je hebt aangemaakt. Per link zie je het totaal
+            aantal bezoeken sinds de aanmaakdatum. Je kunt deze links bewerken (de doellink aanpassen) of verwijderen.
+        </li>
+        <li>Als een korte link is verwijderd, wordt deze niet opnieuw uitgegeven: alle links zijn uniek. Een andere
+            gebruiker krijgt dus nooit een verkorte link die jij hebt verwijderd.
+        </li>
+    </ul>
+
+    <h3>Iedereen kan {{ APP_URLDOMAIN }}-links openen</h3>
+    <p>Iedereen kan een {{ APP_URLDOMAIN }}-link openen, door deze in een browser te typen of erop te klikken.
+        De links zijn niet hoofdlettergevoelig.</p>
+
+    <h3>Inloggen</h3>
+    <p>Staat de instelling waar je werkt of studeert nog niet in de lijst bij
+        het inloggen via SURFconext? Dan is de dienst nog niet voor je ontsloten.</p>
+
+    <p>Iedere bij <a href="https://support.surfconext.nl/stats/idplist.html">SURF aangesloten instelling</a>
+        kan deze dienst kosteloos koppelen. Is je instelling aangesloten bij SURF maar kun
+        je nog niet inloggen? Vraag dan bij je eigen servicedesk of ze dit voor je kunnen
+        regelen.</p>
+
+    <h3>Contact</h3>
+
+    <p>Heb je vragen over het gebruik van {{ APP_NAME }}, dan kun je ons bereiken op:</p>
+    <p><a href="mailto:kort@surf.nl">kort@surf.nl <i class="fa fa-envelope"></i></a></p>
+{% endblock %}

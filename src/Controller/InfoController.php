@@ -13,6 +13,10 @@ class InfoController extends AbstractController
      */
     public function indexAction() : Response
     {
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/info/index.html.twig');
+        }
+
         return $this->render('info/index.html.twig');
     }
 
@@ -21,6 +25,10 @@ class InfoController extends AbstractController
      */
     public function aboutAction() : Response
     {
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/info/about.html.twig');
+        }
+
         return $this->render('info/about.html.twig');
     }
 
@@ -29,6 +37,10 @@ class InfoController extends AbstractController
      */
     public function supportAction() : Response
     {
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/info/support.html.twig');
+        }
+
         return $this->render('info/support.html.twig');
     }
 
@@ -37,6 +49,10 @@ class InfoController extends AbstractController
      */
     public function privacyAction() : Response
     {
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/info/privacy.html.twig');
+        }
+
         return $this->render('info/privacy.html.twig');
     }
 
