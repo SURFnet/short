@@ -1,0 +1,51 @@
+{% extends "new-ui/base.html.twig" %}
+
+{% block hero %}
+        The URL-shortener for education and research
+        <span
+            class="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500"
+        >
+            with respect for privacy
+        </span>
+{% endblock %}
+
+{% block content %}
+    <ul
+        class="md:grid md:grid-cols-3 md:gap-x-8 md:gap-y-10 space-y-16 sm:space-y-0"
+    >
+        <li>
+            <div class="ml-4">
+                <h4 class="text-lg tleading-6 font-bold text-gray-900">
+                    What it is?
+                </h4>
+                <p class="mt-2 text-base leading-6 text-gray-500">
+                    With edulnk you can create a safe and privacy friendly short
+                    link for long URLs.
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="ml-4">
+                <h4 class="text-lg leading-6 font-bold text-gray-900">
+                    How does it work?
+                </h4>
+                <p class="mt-2 text-base leading-6 text-gray-500">
+                    Shorten a link yourself by clicking on Login with inAcademia
+                    above and selecting your own setting.
+                </p>
+            </div>
+        </li>
+        <li>
+            <div class="ml-4">
+                <h4 class="text-lg leading-6 font-bold text-gray-900">
+                    Security by default
+                </h4>
+                <p class="mt-2 text-base leading-6 text-gray-500">
+                    The links can only be created by verified persons from
+                    education and research. Visitors of the links are not traced
+                    or followed.
+                </p>
+            </div>
+        </li>
+    </ul>
+{% endblock %}
