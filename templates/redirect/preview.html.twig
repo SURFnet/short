@@ -5,7 +5,7 @@
 {% block body %}
 
   {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short %}
-  {% set shorturlfull = APP_PROTOCOL ~ '://' ~ shorturlshort %}
+  {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ short %}
 
   <div class="row justify-content-center">
       <div class="col-sm">
