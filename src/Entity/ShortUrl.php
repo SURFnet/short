@@ -11,6 +11,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use App\Services\GenerateUniqueShortUrl;
 
 /**
  * ShortUrl
@@ -108,6 +109,20 @@ class ShortUrl
     {
         $this->created = new \DateTime();
         $this->uuid = (string) Uuid::v4();
+        $this->shortUrl = $this->generateCode();
+    }
+
+    private function generateCode() : string
+    {
+        $shortcodeChars = 'abcdefghjkmnpqrtuvwxy346789';
+        $shortcodeLength = 5;
+
+        $code = "";
+
+        for($i=0; $i < $shortcodeLength; ++$i) {
+            $code .= $shortcodeChars[mt_rand(0, strlen($shortcodeChars) - 1)];
+        }
+        return $code;
     }
 
     public function getId(): int

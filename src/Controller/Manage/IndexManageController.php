@@ -47,7 +47,10 @@ final class IndexManageController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             //$shortUrl = $this->generateShortUrlCode->generate($shortUrl->getLongUrl(), $shortUrl->getOwner());
-            $shortUrl = $this->entityManager->persist($shortUrl);
+            $this->entityManager->beginTransaction();
+            $this->entityManager->persist($shortUrl);
+            $this->entityManager->flush();
+            $this->entityManager->commit();
 
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }
