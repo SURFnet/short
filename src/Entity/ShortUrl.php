@@ -11,7 +11,8 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use Symfony\Component\Uid\Uuid;
 use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
-use App\Services\GenerateUniqueShortUrl;
+use Symfony\Component\Serializer\Annotation\Groups;
+// use App\Services\GenerateUniqueShortUrl;
 
 /**
  * ShortUrl
@@ -27,9 +28,10 @@ use App\Services\GenerateUniqueShortUrl;
  * )
  * @UniqueEntity(fields={"shortUrl"})
  * @ORM\Entity
+ * @ORM\HasLifecycleCallbacks()
  * @ApiResource(
- *      normalizationContext={AbstractNormalizer::IGNORED_ATTRIBUTES={"id"}},
- *      denormalizationContext={}
+ *      normalizationContext={"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
  * )
  */
 class ShortUrl
@@ -49,6 +51,7 @@ class ShortUrl
      *
      * @ApiProperty(identifier=true)
      * @ORM\Column(name="uuid", type="guid")
+     * @Groups({"read"})
      */
     public $uuid;
 
@@ -57,6 +60,7 @@ class ShortUrl
      *
      * @ORM\Column(name="short_url", type="string", length=32, unique=true)
      * @NotForbiddenChars()
+     * @Groups({"read"})
      */
     private $shortUrl;
 
@@ -67,6 +71,7 @@ class ShortUrl
      * @Assert\Url(message="shorturl.invalid_url")
      * @Assert\NotBlank()
      * @NotBannedDomain()
+     * @Groups({"read", "write"})
      */
     private $longUrl;
 
@@ -74,6 +79,7 @@ class ShortUrl
      * @var string
      *
      * @ORM\Column(name="owner", type="string", length=256)
+     * @Groups({"read"})
      */
     private $owner;
 
@@ -81,6 +87,7 @@ class ShortUrl
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime"))
+     * @Groups({"read"})
      */
     private $created;
 
@@ -88,6 +95,7 @@ class ShortUrl
      * @var \DateTime|null
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
+     * @Groups({"read"})
      */
     private $updated;
 
@@ -95,6 +103,7 @@ class ShortUrl
      * @var int
      *
      * @ORM\Column(name="clicks", type="integer")
+     * @Groups({"read"})
      */
     private $clicks = 0;
 
@@ -102,6 +111,7 @@ class ShortUrl
      * @var bool
      *
      * @ORM\Column(name="deleted", type="boolean")
+     * @Groups({"read", "write"})
      */
     private $deleted = 0;
 
@@ -109,20 +119,25 @@ class ShortUrl
     {
         $this->created = new \DateTime();
         $this->uuid = (string) Uuid::v4();
-        $this->shortUrl = $this->generateCode();
     }
 
-    private function generateCode() : string
+    /**
+     * @ORM\PrePersist
+     */
+    public function generateCode()
     {
-        $shortcodeChars = 'abcdefghjkmnpqrtuvwxy346789';
-        $shortcodeLength = 5;
+        if (!$this->shortUrl)
+        {
+            $shortcodeChars = 'abcdefghjkmnpqrtuvwxy346789';
+            $shortcodeLength = 5;
 
-        $code = "";
+            $code = "";
 
-        for($i=0; $i < $shortcodeLength; ++$i) {
-            $code .= $shortcodeChars[mt_rand(0, strlen($shortcodeChars) - 1)];
+            for($i=0; $i < $shortcodeLength; ++$i) {
+                $code .= $shortcodeChars[mt_rand(0, strlen($shortcodeChars) - 1)];
+            }
+            $this->shortUrl = $code;
         }
-        return $code;
     }
 
     public function getId(): int
