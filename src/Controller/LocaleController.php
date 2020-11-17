@@ -33,7 +33,7 @@ final class LocaleController extends AbstractController
 
     public function __invoke(Request $request, string $lang)
     {
-        if (!in_array($lang, $this->locales)) {
+        if (!array_key_exists($lang, $this->locales)) {
             $lang = $this->defaultLocale;
         }
 
