@@ -4,8 +4,13 @@ twig:
     default_path: '%kernel.project_dir%/templates'
 
     globals:
-        APP_NAME: '%app.name%'
-        APP_URLDOMAIN: '%app.urldomain%'
+        APP_NAME: '%env(APP_NAME)%'
+        APP_URLDOMAIN: '%env(APP_FQDN)%'
         APP_BASEDOMAIN: '%app.protocol%://%app.urldomain%'
         APP_PAYOFF: '%app.payoff%'
-        APP_IDP_NAME: '%app.idp_name%'
+        APP_IDP_NAME: '%env(APP_IDP_NAME)%'
+        APP_LOGO: '%env(APP_LOGO)%'
+        APP_LOGO_BOTTOM: '%env(APP_LOGO_BOTTOM)%'
+        APP_CUSTOM_TRANSLATION: 'info-%env(APP_CUSTOM_TRANSLATION)%'
+        APP_SUPPORT_EMAIL: '%env(APP_SUPPORT_EMAIL)%'
+        APP_LOCALES: '%env(json:APP_LOCALES)%'
