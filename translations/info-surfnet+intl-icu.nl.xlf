@@ -1,0 +1,239 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="app.payoff">
+                <source>app.payoff</source>
+                <target>
+                    <![CDATA[
+                    Dé URL-shortener voor onderwijs en onderzoek <span>met respect voor privacy</span>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.about">
+                <source>info.about</source>
+                <target>
+                    <![CDATA[
+                    <h3>Wat is { app_name }?</h3>
+                    <p>
+                        Met { app_name } kun je een willekeurige lange URL korter maken. Je kunt een link aanmaken die begint
+                        met { app_urldomain }. Gebruik deze korte link waar lange URL's onhandig zijn, zoals in presentatie-slides of
+                        drukwerk en op sociale media.
+                    </p>
+                    <p>
+                        De korte links hebben de vorm { app_urldomain }/<i>code</i> en verlopen niet.
+                    </p>
+                    <p>
+                        { app_name } is kosteloos te gebruiken door alle studenten, medewerkers en onderzoekers van instellingen die
+                        bij { app_idp_name } zijn aangesloten.
+                    </p>
+
+                    <h3>{ app_name }: respect voor privacy</h3>
+                    <ul class="list-disc">
+                        <li>
+                            is veiliger en privacy-vriendelijker dan commerciële alternatieven.
+                            Dankzij { app_idp_name } kunnen alleen geautoriseerde
+                            personen uit het mbo, hbo en wo links aanmaken. Zo voorkomen we misbruik.
+                        </li>
+                        <li>
+                            slaat geen persooonlijke gegevens op. Via SURFconext ontvangt { app_name }
+                            alleen een <a href="https://support.surfconext.nl/help-nameid">persistent pseudoniem</a>.</li>
+                        </li>
+                        <li>
+                            houdt alleen het totale aantal kliks bij en trackt bezoekers niet.
+                        </li>
+                        <li>
+                            gebruikt <a href="https://internet.nl/site/edu.nl/377653/">moderne webstandaarden</a>.
+                        </li>
+                    </ul>
+                    <p>
+                        Alle details en informatie over je rechten vind je in onze <a href="{ app_info_privacy }">privacy-verklaring</a>.
+                    </p>
+
+                    <h3>Support en contact</h3>
+                    <p>
+                        Wil je weten hoe je een link aanmaakt of heb je een vraag? Kijk dan op de <a href="{ app_info_support }">support-pagina</a>.
+                    </p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.support">
+                <source>info.support</source>
+                <target>
+                    <![CDATA[
+                    <h3>Links aanmaken en bewerken</h3>
+                    <ul>
+                        <li>Om een verkorte link aan te maken, heb je een { app_idp_name }-account nodig.
+                            Selecteer je instelling uit de lijst. Staat je instelling er nog niet bij, zie dan
+                            verderop bij het kopje 'Inloggen'.
+                        </li>
+                        <li>Plak de URL die je wilt verkorten in het tekstveld. Je krijgt
+                            vervolgens jouw unieke { app_urldomain }-URL, die je meteen kunt gebruiken.
+                            De code is willekeurig, niet hoofdlettergevoelig en zonder potentieel verwarrende karakters
+                            (zoals het cijfer nul en de letter o).
+                        </li>
+                        <li>Als je bent ingelogd, zie je een overzicht van alle links die je hebt aangemaakt. Per link zie je het totaal
+                            aantal bezoeken sinds de aanmaakdatum. Je kunt deze links bewerken (de doellink aanpassen) of verwijderen.
+                        </li>
+                        <li>Als een korte link is verwijderd, wordt deze niet opnieuw uitgegeven: alle links zijn uniek. Een andere
+                            gebruiker krijgt dus nooit een verkorte link die jij hebt verwijderd.
+                        </li>
+                    </ul>
+
+                    <h3>Iedereen kan { app_urldomain }-links openen</h3>
+                    <p>
+                        Iedereen kan een { app_urldomain }-link openen, door deze in een browser te typen of erop te klikken.
+                        De links zijn niet hoofdlettergevoelig.
+                    </p>
+
+                    <h3>Inloggen</h3>
+                    <p>
+                        Staat de instelling waar je werkt of studeert nog niet in de lijst bij
+                        het inloggen via { app_idp_name }? Dan is de dienst nog niet voor je ontsloten.
+                    </p>
+
+                    <p>
+                        Iedere bij <a href="https://support.surfconext.nl/stats/idplist.html">{ app_idp_name } aangesloten
+                        instelling</a> kan deze dienst kosteloos koppelen. Is je instelling aangesloten bij { app_idp_name }
+                        maar kun je nog niet inloggen? Vraag dan bij je eigen servicedesk of ze dit voor je kunnen regelen.
+                    </p>
+
+                    <h3>Contact</h3>
+                    <p>Heb je vragen over het gebruik van { app_name }, dan kun je ons bereiken op:</p>
+                    <p><a href="mailto:{ app_support_email }">{ app_support_email } <i class="fa fa-envelope"></i></a></p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.privacy">
+                <source>info.privacy</source>
+                <target>
+                    <![CDATA[
+                    <h3>Privacyverklaring { app_name }</h3>
+                    <p>In deze privacyverklaring lees je hoe SURFnet omgaat met je persoonsgegevens
+                        in het kader van het gebruik van de website <code>https://{ app_urldomain }/</code> en de
+                        url-verkorter ‘{ app_name }’.</p>
+
+                    <p><em>Deze privacyverklaring is voor het laatst bijgewerkt op 5 maart 2019.</em></p>
+
+                    <h3>Over SURFnet</h3>
+                    <p>Wij zijn SURFnet B.V. (“SURFnet”), gevestigd aan het Moreelsepark 48, 3511 EP
+                        Utrecht. We zijn te bereiken via +31-887873000. SURFnet is onderdeel van de
+                        coöperatie SURF, de ICT-samenwerkingsorganisatie van het onderwijs en onderzoek
+                        in Nederland. In de coöperatie SURF werken de Nederlandse universiteiten,
+                        hogescholen, universitaire medische centra, onderzoeksinstellingen en
+                        mbo-instellingen samen aan ICT-innovatie.
+                        <a href="https://www.surf.nl/over-surf/organisatie-en-bestuur/cooperatie-surf/index.html">
+                            Meer over de coöperatie.</a></p>
+
+                    <h3>Welke gegevens verwerken we?</h3>
+                    <p>Als een gebruiker { app_name } wil gebruiken, moet de gebruiker inloggen via
+                        zijn/haar instellingsaccount door middel van SURFconext. Na inlog wordt er
+                        enkel een pseudonieme identifier (<a href="https://wiki.surfnet.nl/x/soFkBQ">persisent ID</a>) verwerkt, om de
+                        gebruiker een volgende keer weer te kunnen herkennen. { app_name } kan deze
+                        identifier zelf niet herleiden naar een persoon. Als een gebruiker een link
+                        aanmaakt, wordt enkel bijgehouden hoeveel keer er op een link wordt
+                        geklikt.</p>
+                    <p>Bezoek website <code>https://{ app_urldomain }/</code>: van bezoekers van de website
+                        wordt het IP-adres in de webserver-logging verwerkt.</p>
+
+                    <h3>Waarvoor gebruiken we je gegevens?</h3>
+                    <p>{ app_name } biedt gebruikers binnen de community van onderwijs en onderzoek
+                        de mogelijkheid om url's te verkorten op een veilige en privacyvriendelijke
+                        manier. Om een dergelijke url-verkorter aan te kunnen bieden, is het nodig dat
+                        de aanmaker van de link te herleiden is naar een persoon binnen de community.
+                        Voor dit doel is het nodig een zeer beperkte set aan pseudonieme
+                        persoonsgegevens te verwerken.</p>
+
+                    <h4>Rechtsgrond</h4>
+                    <p>Persoonsgegevens worden verwerkt op grond van gerechtvaardigd belang.
+                        Gebruikers, instellingen en SURFnet hebben een gerechtvaardigd belang bij het
+                        kunnen gebruiken van een veilige en privacyvriendelijke url verkorter. Dit
+                        belang weegt zwaarder dan de zeer beperkte inbreuk op de privacy. Van een
+                        aanmaker van een link wordt namelijk enkel een pseudonieme identifier verwerkt.</p>
+
+                    <h4>Bewaartermijn</h4>
+                    <ul class="list-disc">
+                        <li>IP-adres via webserver-logging: 1 week
+                        </li>
+                        <li>Pseudonieme identifier: zo lang een link bestaat. Een link verdwijnt niet
+                            automatisch, pas als gebruiker deze verwijdert.
+                        </li>
+                    </ul>
+
+                    <h4>Aan wie verstrekken we de gegevens?</h4>
+                    <p>Gegevens worden niet verstrekt aan derde partijen.</p>
+
+                    <h3>Beveiliging</h3>
+                    <p>We hebben onder andere de volgende veiligheidsmaatregelen getroffen
+                        om de persoonsgegevens te beschermen:
+                    </p>
+                    <ul class="list-disc">
+                        <li>Dataminimalisatie</li>
+                        <li>Enkel verwerken van een pseudonieme identifier</li>
+                        <li>Federatieve inlog (via SURFconext)</li>
+                        <li>Domeinnaam is DNSSEC gesignd</li>
+                        <li>Versleutelde verbindingen middels TLS (https)</li>
+                        <li>Security http-headers</li>
+                        <li>Beheerinterface afgeschermd conform SURFnet-normen</li>
+                    </ul>
+
+                    <h3>Je rechten met betrekking tot je gegevens</h3>
+                    <p>Je hebt de volgende rechten met betrekking tot je persoonsgegevens:</p>
+                    <ul class="list-disc">
+                        <li>Je kunt een verzoek indienen tot wijziging, aanvulling of verwijdering
+                            van je gegevens wanneer deze onjuist of niet (meer) relevant zijn.
+                        </li>
+                        <li>Je kunt een verzoek indienen om inzage te verkrijgen in de gegevens
+                            die we van jou verwerken.
+                        </li>
+                        <li>Je kunt bezwaar maken tegen verwerking van je gegevens, als we je
+                            gegevens verwerken op basis van een eigen gerechtvaardigd belang of
+                            op basis van de uitvoering van een taak van algemeen belang.
+                        </li>
+                        <li>Je kunt een verzoek indienen tot beperking van de verwerking van je
+                            gegevens ten aanzien van de verwerking van gegevens waartegen je bezwaar
+                            hebt gemaakt, die je onrechtmatig acht, waarvan je de juistheid van de
+                            persoonsgegevens hebt betwist of wanneer we de persoonsgegevens niet
+                            meer nodig hebben, maar je ze nodig hebt in het kader van een rechtsvordering.
+                        </li>
+                        <li>Je kunt een overzicht, in een gestructureerde en gangbare vorm opvragen
+                            van de gegevens die we van jou verwerken en je hebt het recht op
+                            overdraagbaarheid van deze gegevens naar een andere dienstverlener.
+                        </li>
+                        <li>Je kunt de door jou gegeven toestemming voor het verwerken van je
+                            persoonsgegevens intrekken. Het intrekken van je toestemming doet echter
+                            geen afbreuk aan de rechtmatigheid van de verwerking op basis van je
+                            toestemming vóór de intrekking daarvan.
+                        </li>
+                        <li>Als je van mening bent dat SURFnet niet goed omgaat met je
+                            persoonsgegevens kun je een klacht indienen bij SURFnet. Als jij en SURFnet
+                            er echter niet samen uitkomen en het antwoord van SURFnet op je klacht niet
+                            leidt tot een acceptabel resultaat, heb je het recht om een klacht over
+                            SURFnet in te dienen bij de Autoriteit Persoonsgegevens. Meer informatie
+                            over de Autoriteit Persoonsgegevens en het indienen van klachten vind je op
+                            <a href="https://www.autoriteitpersoonsgegevens.nl/">www.autoriteitpersoonsgegevens.nl</a>.
+                        </li>
+                    </ul>
+                    <p>Om deze rechten uit te kunnen oefenen, kun je contact opnemen met SURFnet
+                        via de contactgegevens onderaan deze privacyverklaring.
+                    </p>
+
+                    <h3>Wijziging privacyverklaring</h3>
+                    <p>SURFnet kan wijzigingen aanbrengen in deze privacyverklaring. We raden je
+                        daarom aan om deze privacyverklaring geregeld te raadplegen.
+                    </p>
+
+                    <h3>Contactgegevens</h3>
+                    <address>
+                        <strong>SURFnet B.V.</strong><br>
+                        Moreelsepark 48<br>
+                        3511 EP Utrecht<br>
+                        +31-887873000<br>
+                        <a href="mailto:kort@surf.nl">kort@surf.nl</a>
+                    </address>
+                    ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

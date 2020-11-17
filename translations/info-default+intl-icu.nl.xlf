@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="app.payoff">
+                <source>app.payoff</source>
+                <target>
+                    <![CDATA[
+                    Dé URL-shortener voor onderwijs en onderzoek <span>met respect voor privacy</span>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.about">
+                <source>info.about</source>
+                <target>
+                    <![CDATA[
+                    <h3>Wat is { app_name }?</h3>
+                    <p>
+                        Met { app_name } kun je een willekeurige lange URL korter maken. Je kunt een link aanmaken die begint
+                        met { app_urldomain }. Gebruik deze korte link waar lange URL's onhandig zijn, zoals in presentatie-slides of
+                        drukwerk en op sociale media.
+                    </p>
+                    <p>
+                        De korte links hebben de vorm { app_urldomain }/<i>code</i> en verlopen niet.
+                    </p>
+                    <p>
+                        { app_name } is kosteloos te gebruiken door alle studenten, medewerkers en onderzoekers van instellingen die
+                        bij { app_idp_name } zijn aangesloten.
+                    </p>
+
+                    <h3>{ app_name }: respect voor privacy</h3>
+                    <ul class="list-disc">
+                        <li>
+                            is veiliger en privacy-vriendelijker dan commerciële alternatieven.
+                            Dankzij { app_idp_name } kunnen alleen geautoriseerde
+                            personen uit het mbo, hbo en wo links aanmaken. Zo voorkomen we misbruik.
+                        </li>
+                        <li>
+                            slaat geen persooonlijke gegevens op. Via { app_idp_name } ontvangt { app_name }
+                            alleen een persistent pseudoniem.
+                        </li>
+                        <li>
+                            houdt alleen het totale aantal kliks bij en trackt bezoekers niet.
+                        </li>
+                        <li>
+                            gebruikt moderne webstandaarden.
+                        </li>
+                    </ul>
+                    <p>
+                        Alle details en informatie over je rechten vind je in onze <a href="{ app_info_privacy }">privacy-verklaring</a>.
+                    </p>
+
+                    <h3>Support en contact</h3>
+                    <p>
+                        Wil je weten hoe je een link aanmaakt of heb je een vraag? Kijk dan op de <a href="{ app_info_support }">support-pagina</a>.
+                    </p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.support">
+                <source>info.support</source>
+                <target>
+                    <![CDATA[
+                    <h3>Links aanmaken en bewerken</h3>
+                    <ul>
+                        <li>Om een verkorte link aan te maken, heb je een { app_idp_name }-account nodig.
+                            Selecteer je instelling uit de lijst. Staat je instelling er nog niet bij, zie dan
+                            verderop bij het kopje 'Inloggen'.
+                        </li>
+                        <li>Plak de URL die je wilt verkorten in het tekstveld. Je krijgt
+                            vervolgens jouw unieke { app_urldomain }-URL, die je meteen kunt gebruiken.
+                            De code is willekeurig, niet hoofdlettergevoelig en zonder potentieel verwarrende karakters
+                            (zoals het cijfer nul en de letter o).
+                        </li>
+                        <li>Als je bent ingelogd, zie je een overzicht van alle links die je hebt aangemaakt. Per link zie je het totaal
+                            aantal bezoeken sinds de aanmaakdatum. Je kunt deze links bewerken (de doellink aanpassen) of verwijderen.
+                        </li>
+                        <li>Als een korte link is verwijderd, wordt deze niet opnieuw uitgegeven: alle links zijn uniek. Een andere
+                            gebruiker krijgt dus nooit een verkorte link die jij hebt verwijderd.
+                        </li>
+                    </ul>
+
+                    <h3>Iedereen kan { app_urldomain }-links openen</h3>
+                    <p>
+                        Iedereen kan een { app_urldomain }-link openen, door deze in een browser te typen of erop te klikken.
+                        De links zijn niet hoofdlettergevoelig.
+                    </p>
+
+                    <h3>Inloggen</h3>
+                    <p>
+                        Staat de instelling waar je werkt of studeert nog niet in de lijst bij
+                        het inloggen via { app_idp_name }? Dan is de dienst nog niet voor je ontsloten.
+                    </p>
+
+                    <p>
+                        Iedere bij { app_idp_name } aangesloten instelling kan deze dienst kosteloos koppelen. Is je instelling
+                        aangesloten bij { app_idp_name } maar kun je nog niet inloggen? Vraag dan bij je eigen servicedesk of ze dit
+                        voor je kunnen regelen.
+                    </p>
+
+                    <h3>Contact</h3>
+                    <p>Heb je vragen over het gebruik van { app_name }, dan kun je ons bereiken op:</p>
+                    <p><a href="mailto:{ app_support_email }">{ app_support_email } <i class="fa fa-envelope"></i></a></p>
+                    ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

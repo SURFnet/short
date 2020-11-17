@@ -18,6 +18,10 @@
                 <source>menu.support</source>
                 <target>Support</target>
             </trans-unit>
+            <trans-unit id="menu.privacy">
+                <source>menu.privacy</source>
+                <target>Privacy</target>
+            </trans-unit>
             <trans-unit id="text.to_create_link">
                 <source>text.to_create_link</source>
                 <target>To shorten your own link:</target>
@@ -250,6 +254,30 @@
             <trans-unit id="button.reset">
                 <source>button.reset</source>
                 <target>Reset</target>
+            </trans-unit>
+            <trans-unit id="info.what_is">
+                <source>info.what_is</source>
+                <target>What it is?</target>
+            </trans-unit>
+            <trans-unit id="description.what_is">
+                <source>description.what_is</source>
+                <target>With { value } you can create a safe and privacy friendly short link for long URLs.</target>
+            </trans-unit>
+            <trans-unit id="info.how_works">
+                <source>info.how_works</source>
+                <target>How does it work?</target>
+            </trans-unit>
+            <trans-unit id="description.how_works">
+                <source>description.how_works</source>
+                <target>Shorten a link yourself by clicking on Login with { value } above and selecting your own setting.</target>
+            </trans-unit>
+            <trans-unit id="info.security">
+                <source>info.security</source>
+                <target>Security by default</target>
+            </trans-unit>
+            <trans-unit id="description.security">
+                <source>description.security</source>
+                <target>The links can only be created by verified persons from education and research. Visitors of the links are not traced or followed.</target>
             </trans-unit>
         </body>
     </file>

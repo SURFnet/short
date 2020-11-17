@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="app.payoff">
+                <source>app.payoff</source>
+                <target>
+                    <![CDATA[
+                    The URL-shortener for education and research <span>with respect for privacy</span>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.about">
+                <source>info.about</source>
+                <target>
+                    <![CDATA[
+                    <h3>What is { app_name }?</h3>
+                    <p>
+                        With { app_name } you can shorten any long URL. You can create a link starting with { app_urldomain }. Use this
+                        short link where long URLs are inconvenient, such as in presentation slides or print and on social media.
+                    </p>
+                    <p>
+                        The short links have the form { app_urldomain }/<i>code</i> and do not expire.
+                    </p>
+                    <p>
+                        { app_name } can be used free of charge by all students, staff, and researchers of institutions affiliated with
+                        { app_idp_name }.
+                    </p>
+
+                    <h3>{ app_name }: respect for privacy</h3>
+                    <ul class="list-disc">
+                        <li>
+                            is safer and more privacy-friendly than commercial alternatives. Thanks to { app_idp_name } only members
+                            can create links. In this way we prevent abuse.
+                        </li>
+                        <li>
+                            does not store any personal data. Through { app_idp_name }, { app_name }
+                            only receives a <a href="https://support.surfconext.nl/help-nameid">persistent pseudonym</a>.
+                        </li>
+                        <li>
+                            only keeps track of the total number of clicks and does not track visitors.
+                        </li>
+                        <li>
+                            uses <a href="https://internet.nl/site/edu.nl/377653/">modern web standards</a>.
+                        </li>
+                    </ul>
+                    <p>
+                        All details and information about your rights can be found in our privacy statement
+                        <a href="{ app_info_privacy }">privacy statement</a>.
+                    </p>
+
+                    <h3>Support and contact</h3>
+                    <p>
+                        Do you want to know how to create a link or do you have a question? Then take a look at the
+                        <a href="{ app_info_support }">support page</a>.
+                    </p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.support">
+                <source>info.support</source>
+                <target>
+                    <![CDATA[
+                    <h3>Creating and editing links</h3>
+                    <ul>
+                        <li>
+                            To create a shortened link you need a { app_idp_name } account. Select your setting from the list. If your
+                            setting is not there yet, see below under the heading 'Login'.
+                        </li>
+                        <li>
+                            Paste the URL you want to shorten into the text field. You will get your unique { app_urldomain }-URL, which
+                            you can
+                            use immediately. The code is random, not case sensitive and without potentially confusing characters (such as
+                            the number zero and the letter o).
+                        </li>
+                        <li>
+                            When you are logged in, you will see an overview of all the links you have created. For each link you will see
+                            the total number of visits since the creation date. You can edit (change the target link) or delete these links.
+                        </li>
+                        <li>
+                            If a short link is removed, it will not be reissued: all links are unique. So another user will never get a
+                            shortened link that you have removed.
+                        </li>
+                    </ul>
+
+                    <h3>Anyone can open { app_urldomain } links</h3>
+                    <p>
+                        Anyone can open a { app_urldomain } link by typing it into a browser or clicking on it. The links are not case
+                        sensitive.
+                    </p>
+
+                    <h3>Login</h3>
+                    <p>
+                        Is the institution where you work or study not yet listed when logging in via { app_idp_name }? Then the service
+                        is not yet available to you.
+                    </p>
+                    <p>
+                        Every <a href="https://support.surfconext.nl/stats/idplist.html">institution affiliated with
+                        { app_idp_name }</a> can link this service free of charge. Is your institution
+                        affiliated with { app_idp_name } but you cannot log in yet? Ask your own service desk if they
+                        can arrange this for you.
+                    </p>
+
+                    <h3>Contact</h3>
+                    <p>If you have questions about the use of { app_name }, you can reach us at:</p>
+                    <p><a href="mailto:{ app_support_email }">{ app_support_email } <i class="fa fa-envelope"></i></a></p>
+                    ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
