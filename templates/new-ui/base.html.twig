@@ -22,10 +22,10 @@
                 class="flex justify-between items-center py-6 md:justify-start md:space-x-10"
             >
                 <div class="w-0 flex-1">
-                    <a href="{{ path('app_info_index') }}" class="text-4xl font-black align-middle">{{ APP_NAME }}</a>
+                    <a href="{{ path('app_info_index') }}" class="text-3xl sm:text-4xl font-black align-middle">{{ APP_NAME }}</a>
                     <img
-                        class="h-8 w-auto sm:h-10 ml-5 inline-block"
-                        src="https://www.surf.nl/themes/surf/logo.svg"
+                        class="h-11 sm:h-13 w-auto ml-5 inline-block"
+                        src="{{ asset(APP_LOGO) }}"
                         alt="Logo"
                     />
                 </div>
@@ -35,6 +35,7 @@
                         type="button"
                         class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                     >
+                        <!-- Heroicon name: lang -->
                         <svg
                             class="h-6 w-6"
                             xmlns="http://www.w3.org/2000/svg"
@@ -80,7 +81,7 @@
                             type="button"
                             class="text-gray-500 mr-6 group inline-flex items-center space-x-2 text-base leading-6 font-medium hover:text-gray-900 focus:outline-none focus:text-gray-900 transition ease-in-out duration-150"
                         >
-                            <span>Language</span>
+                            <span>{{ APP_LOCALES[app.request.locale] }}</span>
                             <!--
                                   Heroicon name: chevron-down
 
@@ -114,39 +115,16 @@
                             <div class="rounded-lg shadow-lg">
                                 <div class="rounded-lg shadow-xs overflow-hidden">
                                     <div class="relative bg-white">
+                                        {% for code, locale in APP_LOCALES %}
                                         <a
-                                            href="{{ path('locale', {'lang': 'de', 'redirect': currentPath}) }}"
+                                            href="{{ path('locale', {'lang': code, 'redirect': currentPath}) }}"
                                             class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
                                         >
                                             <p class="text-base font-medium text-gray-900">
-                                                Deutch
+                                                {{ locale }}
                                             </p>
                                         </a>
-                                        <a
-                                            href="{{ path('locale', {'lang': 'en', 'redirect': currentPath}) }}"
-                                            class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                                        >
-                                            <p class="text-base font-medium text-gray-900">
-                                                English
-                                            </p>
-                                        </a>
-                                        <a
-                                            href="{{ path('locale', {'lang': 'es', 'redirect': currentPath}) }}"
-                                            class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                                        >
-                                            <p class="text-base font-medium text-gray-900">
-                                                Español
-                                            </p>
-                                        </a>
-                                        <a
-                                            href="{{ path('locale', {'lang': 'nl', 'redirect': currentPath}) }}"
-                                            class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                                        >
-                                            <p class="text-base font-medium text-gray-900">
-                                                Nederlands
-                                            </p>
-                                        </a>
-
+                                        {% endfor %}
                                     </div>
                                 </div>
                             </div>
@@ -177,18 +155,16 @@
             <div class="rounded-lg shadow-lg">
                 <div class="rounded-lg shadow-xs overflow-hidden">
                     <div class="relative bg-white">
-                        <a
-                            href="#"
-                            class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                        >
-                            <p class="text-base font-medium text-gray-900">English</p>
-                        </a>
-                        <a
-                            href="#"
-                            class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
-                        >
-                            <p class="text-base font-medium text-gray-900">Español</p>
-                        </a>
+                        {% for code, locale in APP_LOCALES %}
+                            <a
+                                href="{{ path('locale', {'lang': code, 'redirect': currentPath}) }}"
+                                class="px-6 py-4 flex items-start rounded-lg hover:bg-gray-50 transition ease-in-out duration-150"
+                            >
+                                <p class="text-base font-medium text-gray-900">
+                                    {{ locale }}
+                                </p>
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -218,8 +194,8 @@
                                 >edulnk</a
                                 >
                                 <img
-                                    class="h-8 w-auto sm:h-10 ml-5 inline-block"
-                                    src="https://www.surf.nl/themes/surf/logo.svg"
+                                    class="h-11 sm:h-13 w-auto ml-5 inline-block"
+                                    src="{{ asset(APP_LOGO) }}"
                                     alt="Logo"
                                 />
                             </div>
@@ -301,7 +277,7 @@
         >
             <div class="max-w-md w-full">
                 <h1
-                    class="mt-6 text-center text-4xl leading-snug font-extrabold text-gray-900"
+                    class="hero mt-6 text-center text-4xl leading-snug font-extrabold text-gray-900"
                 >
                 {% block hero %}{% endblock %}
                 </h1>
@@ -324,12 +300,12 @@
             <div
                 class="flex flex-col sm:flex-row space-y-10 sm:space-y-0 justify-between items-center py-6 md:justify-start"
             >
-                <div class="sm:w-1/3 sm:mt-0 sm:pr-4">
+                <div class="sm:w-1/5 sm:mt-0 sm:pr-4">
                     <a href="{{ path('app_info_index') }}" class="text-4xl text-white font-black align-middle">
                        {{ APP_NAME }}
                     </a>
                 </div>
-                <div class="sm:w-1/3">
+                <div class="sm:w-3/5">
                     <div class="text-sm text-white">
                         <div
                             class="flex flex-col sm:flex-row space-y-5 sm:space-y-0 text-center justify-center"
@@ -340,10 +316,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="sm:w-1/3">
+                <div class="sm:w-1/5">
                     <img
-                        class="h-8 sm:h-10 w-auto float-right"
-                        src="https://www.surf.nl/themes/surf/logo.svg"
+                        class="h-11 sm:h-13 w-auto float-right"
+                        src="{{ asset(APP_LOGO_BOTTOM) }}"
                         alt="Logo"
                     />
                 </div>
