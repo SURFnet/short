@@ -18,6 +18,10 @@
                 <source>menu.support</source>
                 <target>Support</target>
             </trans-unit>
+            <trans-unit id="menu.privacy">
+                <source>menu.privacy</source>
+                <target>Privacy</target>
+            </trans-unit>
             <trans-unit id="text.to_create_link">
                 <source>text.to_create_link</source>
                 <target>Om zelf een link te verkorten:</target>
@@ -246,6 +250,30 @@
             <trans-unit id="button.reset">
                 <source>button.reset</source>
                 <target>Reset</target>
+            </trans-unit>
+            <trans-unit id="info.what_is">
+                <source>info.what_is</source>
+                <target>Wat is het?</target>
+            </trans-unit>
+            <trans-unit id="description.what_is">
+                <source>description.what_is</source>
+                <target>Met { value } kun je voor lange URLs een korte link aanmaken.</target>
+            </trans-unit>
+            <trans-unit id="info.how_works">
+                <source>info.how_works</source>
+                <target>Hoe werkt het?</target>
+            </trans-unit>
+            <trans-unit id="description.how_works">
+                <source>description.how_works</source>
+                <target>Verkort zelf een link door hierboven op Login met { value } te klikken en je eigen instelling te selecteren.</target>
+            </trans-unit>
+            <trans-unit id="info.security">
+                <source>info.security</source>
+                <target>Security by default</target>
+            </trans-unit>
+            <trans-unit id="description.security">
+                <source>description.security</source>
+                <target>De links kunnen alleen aangemaakt worden door geverifieerde personen uit het Nederlandse onderwijs en onderzoek. Bezoekers van de links worden niet getrackt of gevolgd.</target>
             </trans-unit>
         </body>
     </file>
