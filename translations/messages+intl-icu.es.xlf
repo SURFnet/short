@@ -210,6 +210,34 @@
         <source>menu.about</source>
         <target>Privacidad (por diseño)</target>
       </trans-unit>
+      <trans-unit id="menu.privacy">
+        <source>menu.privacy</source>
+        <target>Privacidad</target>
+      </trans-unit>
+      <trans-unit id="info.what_is">
+        <source>info.what_is</source>
+        <target>¿Para qué sirve?</target>
+      </trans-unit>
+      <trans-unit id="description.what_is">
+        <source>description.what_is</source>
+        <target>Gracias a { value } puede crear enlaces cortos para URLs largas. Estos enlaces son seguros y privados.</target>
+      </trans-unit>
+      <trans-unit id="info.how_works">
+        <source>info.how_works</source>
+        <target>¿Cómo funciona?</target>
+      </trans-unit>
+      <trans-unit id="description.how_works">
+        <source>description.how_works</source>
+        <target>Inicie sesión con { value } y a continuación podrá acortar cualquier enlace que desee.</target>
+      </trans-unit>
+      <trans-unit id="info.security">
+        <source>info.security</source>
+        <target>Seguridad por defecto</target>
+      </trans-unit>
+      <trans-unit id="description.security">
+        <source>description.security</source>
+        <target>Los enlaces sólo pueden ser creados por personas pertenecientes al campo de la educación y la investigación. Los visitantes de los enlaces no son rastreados.</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
