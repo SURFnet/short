@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="app.payoff">
+                <source>app.payoff</source>
+                <target>
+                    <![CDATA[
+                    El acortador de URL para la educación y la investigación <span>con respeto por la privacidad</span>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.about">
+                <source>info.about</source>
+                <target>
+                    <![CDATA[
+                    <h3>¿Qué es { app_name }?</h3>
+                    <p>
+                        Con { app_name } puede acortar cualquier URL larga. Puede crear un enlace que comience con { app_urldomain }. Puede usar estos
+                        enlaces corto allá donde los URL largos resultan un inconveniente, como en las diapositivas de presentación, en documentos o en las redes sociales.
+                    </p>
+                    <p>
+                        Los enlaces cortos tienen la forma { app_urldomain }/<i>código</i> y no caducan.
+                    </p>
+                    <p>
+                        { app_name } puede ser utilizado de forma gratuita por todos los estudiantes, personal e investigadores de las instituciones afiliadas a { app_idp_name }.
+                    </p>
+
+                    <h3>{ app_name }: respeto por la privacidad</h3>
+                    <ul class="list-disc">
+                        <li>
+                            es más seguro y más respetuoso de la privacidad que las alternativas comerciales. Gracias a { app_idp_name } sólo sus miembros
+                            pueden crear vínculos. De esta manera prevenimos el abuso.
+                        </li>
+                        <li>
+                            no almacena ningún dato personal. A través de { app_idp_name }, { app_name }
+                            sólo recibe un seudónimo persistente.
+                        </li>
+                        <li>
+                            sólo lleva un registro del número total de clics y no hace un seguimiento de los visitantes.
+                        </li>
+                        <li>
+                            utiliza los más modernos estándares de la web.
+                        </li>
+                    </ul>
+                    <p>
+                        Todos los detalles e información sobre sus derechos se pueden encontrar en nuestra
+                        <a href="{ app_info_privacy }">declaración de privacidad</a>.
+                    </p>
+
+                    <h3>Soporte y contacto</h3>
+                    <p>
+                        ¿Quiere saber cómo crear un enlace o tienes alguna pregunta? Entonces eche un vistazo a la
+                        <a href="{ app_info_support }">página de soporte</a>.
+                    </p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.support">
+                <source>info.support</source>
+                <target>
+                    <![CDATA[
+                    <h3>Creando y editando enlaces</h3>
+                    <ul>
+                        <li>
+                            Para crear un enlace abreviado necesita una cuenta en { app_idp_name }. Seleccione su configuración en la lista.
+                        </li>
+                        <li>
+                            Escriba la URL que quiere acortar en el campo de texto. Obtendrá una dirección única bajo el dominio { app_urldomain }, que puede usar inmediatamente. El código es aleatorio, no distingue entre mayúsculas y minúsculas y no contiene caracteres potencialmente confusos (como
+                            el número cero y la letra o).
+                        </li>
+                        <li>
+                            Cuando inicie sesión, verá un resumen de todos los enlaces que ha creado. Para cada enlace verá el número total de visitas desde la fecha de creación. Podrá editar (cambiar el enlace de destino) o eliminarlos.
+                        </li>
+                        <li>
+                            Si se elimina un enlace corto, no se volverá a emitir. Todos los enlaces son únicos, por tanto, ningún usuario obtendrá nunca un enlace acortado que haya sido eliminado.
+                        </li>
+                    </ul>
+
+                    <h3>Todos los enlaces a { app_urldomain } son públicos</h3>
+                    <p>
+                        Cualquier persona puede abrir un enlace a { app_urldomain } escribiéndolo en un navegador o haciendo clic en él. Los enlaces no distinguen entre mayúsculas y minúsculas.
+                    </p>
+
+                    <h3>Login</h3>
+                    <p>
+                        ¿La institución en la que trabaja o estudia aún no aparece en la lista cuando se conecta a través de { app_idp_name }? Entonces, lamentablemente, no podrá utilizar esta web.
+                    </p>
+                    <p>
+                        Cada institución afiliada a { app_idp_name } puede enlazar este servicio de forma gratuita. ¿Su institución está afiliada a { app_idp_name } pero aún no puede entrar? Pregunte a su servicio de atención al usuario para solicitarle si pueden solucionar la incidencia.
+                    </p>
+
+                    <h3>Contacto</h3>
+                    <p>Si tiene alguna pregunta sobre el uso de { app_name }, puede enviarnos un correo a:</p>
+                    <p><a href="mailto:{ app_support_email }">{ app_support_email } <i class="fa fa-envelope"></i></a></p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="info.privacy">
+                <source>info.privacy</source>
+                <target>
+                    <![CDATA[
+                    <h3>Crear una página de información de privacidad personalizada</h3>
+                    <p>
+                        Pendiente
+                    </p>
+                    ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
