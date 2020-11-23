@@ -16,6 +16,7 @@
 @layer components {
     h1.hero > span {
         @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500;
+        -webkit-background-clip: text;
     }
     .content h3 {
         @apply mt-8 text-2xl leading-8 font-extrabold tracking-tight text-gray-900;
