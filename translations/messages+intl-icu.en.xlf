@@ -70,6 +70,10 @@
                 <source>title.original_link</source>
                 <target>Original link</target>
             </trans-unit>
+            <trans-unit id="title.short_link">
+                <source>title.short_link</source>
+                <target>Short link</target>
+            </trans-unit>
             <trans-unit id="tooltip.copy_url">
                 <source>tooltip.copy_url</source>
                 <target>Copy short url to clipboard</target>
@@ -221,7 +225,7 @@
             </trans-unit>
             <trans-unit id="input.help_filter">
                 <source>input.help_filter</source>
-                <target>Search by original link</target>
+                <target>Search by...</target>
             </trans-unit>
             <trans-unit id="button.filter">
                 <source>button.filter</source>
