@@ -75,7 +75,7 @@ final class IndexAdminController extends AbstractController
     {
         $filterField = $request->query->get('filterValue');
         if (!empty($filterField)) {
-            $request->query->set('filterValue', '%' . $filterField . '%*');
+            $request->query->set('filterValue', '%' . $filterField . '%');
         }
 
         $itemsPerPage = $this->getParameter('app.shortlink.pagination');
