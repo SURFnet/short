@@ -12,7 +12,8 @@
         <div class="mb-4">
         {{
             knp_pagination_filter(pagination, {
-                'o.longUrl': 'title.original_link'
+                'o.longUrl': 'title.original_link',
+                'o.shortUrl': 'title.short_link',
             },{
                 'button': 'button.filter'
             })
