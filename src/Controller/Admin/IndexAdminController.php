@@ -73,13 +73,10 @@ final class IndexAdminController extends AbstractController
      */
     protected function getPaginationWithSearchFilter(Request $request, int $page): PaginationInterface
     {
-        $filterField = $request->query->get('filterValue');
-        if (!empty($filterField)) {
-            $request->query->set('filterValue', '%' . $filterField . '%');
-        }
+        $filterValue = $request->query->get('filterValue');
 
         $itemsPerPage = $this->getParameter('app.shortlink.pagination');
 
-        return $this->repository->findLatest($page, $itemsPerPage);
+        return $this->repository->findLatest($page, $itemsPerPage, $filterValue);
     }
 }

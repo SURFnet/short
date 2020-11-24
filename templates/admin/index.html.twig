@@ -11,13 +11,10 @@
 
         <div class="mb-4">
             {{
-            knp_pagination_filter(pagination, {
-                'o.longUrl': 'title.original_link',
-                'o.shortUrl': 'title.short_link',
-                'o.owner': 'title.owner'
-            },{
-                'button': 'button.filter'
-            })
+                knp_pagination_filter(pagination, {
+                },{
+                    'button': 'button.filter'
+                })
             }}
         </div>
 
