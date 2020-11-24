@@ -6,8 +6,6 @@ namespace App\Repository;
 
 use App\Entity\ShortUrl;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
-use Doctrine\ORM\Tools\Pagination\Paginator;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -33,13 +31,23 @@ final class ShortUrlRepository extends ServiceEntityRepository
         $this->paginator = $paginator;
     }
 
-    public function findLatest(int $page, int $itemsPerPage, UserInterface $user = null): PaginationInterface
+    public function findLatest(int $page, int $itemsPerPage, string $filter = null, UserInterface $user = null): PaginationInterface
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.created', 'DESC');
 
+        if ($filter) {
+            $qb
+                ->where('o.longUrl LIKE :pattern')
+                ->orWhere('o.shortUrl = :filter')
+                ->orWhere('o.owner = :filter')
+                ->setParameter('pattern', '%'.$filter.'%')
+                ->setParameter('filter', $filter)
+            ;
+        }
+
         if ($user) {
-            $qb->where('o.owner = :owner')
+            $qb->andWhere('o.owner = :owner')
                 ->setParameter('owner', $user->getUsername())
             ;
         }
