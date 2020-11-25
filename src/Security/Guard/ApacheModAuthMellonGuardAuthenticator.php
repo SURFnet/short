@@ -4,11 +4,16 @@
 namespace App\Security\Guard;
 
 
-use App\Security\User;
+use App\Entity\User;
+use App\Message\User\DemoteUserMessage;
+use App\Message\User\PromoteUserMessage;
+use App\Message\User\ProvideUserMessage;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\HandleTrait;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -20,6 +25,7 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthenticator
 {
     use TargetPathTrait;
+    use HandleTrait;
 
     /**
      * @var RouterInterface
@@ -36,11 +42,13 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
 
     public function __construct(
         RouterInterface $router,
-        ParameterBagInterface $parameterBag
+        ParameterBagInterface $parameterBag,
+        MessageBusInterface $messageBus
     ) {
         $this->router = $router;
         $this->modAuthMellonRoleAttribute = $parameterBag->get('app.security.mellon.role_attribute');
         $this->modAuthMellonRoleValue = $parameterBag->get('app.security.mellon.role_value');
+        $this->messageBus = $messageBus;
     }
 
     public function supports(Request $request)
@@ -58,11 +66,30 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
 
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
-        if (null === $credentials['username']) {
+        $username = $credentials['username'];
+        $hasAdminCredentials = $credentials['admin'];
+
+        if (null === $username) {
             return null;
         }
 
-        return new User($credentials['username'], $credentials['admin']);
+        /** @var User $user */
+        $user = $this->handle(
+            new ProvideUserMessage($username)
+        );
+        $isAdmin = in_array('ROLE_ADMIN', $user->getRoles(), true);
+
+        if ($hasAdminCredentials && !$isAdmin) {
+            $this->handle(
+                new PromoteUserMessage($username, 'ROLE_ADMIN')
+            );
+        } elseif (!$hasAdminCredentials && $isAdmin) {
+            $this->handle(
+                new DemoteUserMessage($username, 'ROLE_ADMIN')
+            );
+        }
+
+        return $user;
     }
 
     public function checkCredentials($credentials, UserInterface $user)

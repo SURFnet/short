@@ -27,7 +27,7 @@ class ApacheModAuthGuardPass implements CompilerPassInterface
             throw new RuntimeException(sprintf('Invalid security type: "%s". Configure APP_MOD_SECURITY environment variable as "mellon" or "openidc"', $guardServiceType));
         }
 
-        $guardService = new Definition($guardServiceClass, [new Reference('router'), new Reference('parameter_bag')]);
+        $guardService = new Definition($guardServiceClass);
         $guardService->setAutowired(true);
         $guardService->setAutoconfigured(true);
 
