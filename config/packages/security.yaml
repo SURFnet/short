@@ -12,6 +12,7 @@ security:
             security: false
         main:
             pattern: '^/'
+            user_checker: App\Security\UserChecker
             guard:
                 authenticators:
                     - app_guard_authenticator

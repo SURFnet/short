@@ -22,7 +22,19 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="json")
      */
-    private $roles = [];
+    private $roles;
+
+    /**
+     * @var bool
+     * @ORM\Column(type="boolean")
+     */
+    private $enabled;
+
+    public function __construct()
+    {
+        $this->enabled = true;
+        $this->roles = [];
+    }
 
     public static function create(string $id): self
     {
@@ -68,6 +80,18 @@ class User implements UserInterface
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
+
+        return $this;
+    }
+
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
+
+    public function setEnabled(bool $enabled): User
+    {
+        $this->enabled = $enabled;
 
         return $this;
     }
