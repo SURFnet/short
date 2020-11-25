@@ -30,6 +30,6 @@ class ShortUrlVoter extends Voter
             return false;
         }
 
-        return $subject->getOwner() === $user->getUsername();
+        return $subject->getOwner()->getUsername() === $user->getUsername();
     }
 }

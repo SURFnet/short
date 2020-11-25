@@ -5,6 +5,7 @@ namespace App\Services;
 
 
 use App\Entity\ShortUrl;
+use App\Entity\User;
 use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -26,7 +27,7 @@ final class GenerateUniqueShortUrl
         $this->parameterBag = $parameterBag;
     }
 
-    public function generate(string $longUrl, string $owner, string $shortUrl = null): ShortUrl
+    public function generate(string $longUrl, User $owner, string $shortUrl = null): ShortUrl
     {
         $this->entityManager->beginTransaction();
         try {
