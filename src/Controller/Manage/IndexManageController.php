@@ -4,6 +4,7 @@
 namespace App\Controller\Manage;
 
 use App\Entity\ShortUrl;
+use App\Entity\User;
 use App\Form\ShortUrlType;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
@@ -37,11 +38,11 @@ final class IndexManageController extends AbstractController
 
     public function __invoke(Request $request, int $page): Response
     {
-        /** @var UserInterface $user */
+        /** @var User $user */
         $user = $this->getUser();
 
         $shortUrl = new ShortUrl();
-        $shortUrl->setOwner($user->getUsername());
+        $shortUrl->setOwner($user);
 
         $form = $this->createForm(ShortUrlType::class, $shortUrl);
         $form->handleRequest($request);
