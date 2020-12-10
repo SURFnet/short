@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Entity\ShortUrl;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\LockMode;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -29,6 +30,11 @@ final class ShortUrlRepository extends ServiceEntityRepository
         parent::__construct($registry, ShortUrl::class);
 
         $this->paginator = $paginator;
+    }
+
+    public function save(ShortUrl $shortUrl): void
+    {
+        $this->_em->persist($shortUrl);
     }
 
     public function findLatest(int $page, int $itemsPerPage, string $filter = null, UserInterface $user = null): PaginationInterface
