@@ -25,12 +25,15 @@ GRANT ALL PRIVILEGES ON short.* TO 'short'@'localhost';
 
 In .env.local:
 ```
+# If you are using mysql
 DATABASE_URL=mysql://short:longpassword@127.0.0.1:3306/short?serverVersion=5.7
+# If you are using mariadb (recommended)
+DATABASE_URL=mysql://short:longpassword@127.0.0.1:3306/short?serverVersion=serverVersion=10.3.0-mariadb
 ```
 
 On the commandline:
 ```
-$ php bin/console doctrine:schema:create
+$ php bin/console doctrine:migrations:migrate --allow-no-migration -n
 ```
 
 ## Configuration

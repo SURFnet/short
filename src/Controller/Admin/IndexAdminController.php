@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 
 
 use App\Entity\ShortUrl;
+use App\Entity\User;
 use App\Form\ShortUrlType;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
@@ -40,11 +41,11 @@ final class IndexAdminController extends AbstractController
 
     public function __invoke(Request $request, int $page): Response
     {
-        /** @var UserInterface $user */
+        /** @var User $user */
         $user = $this->getUser();
 
         $shortUrl = new ShortUrl();
-        $shortUrl->setOwner($user->getUsername());
+        $shortUrl->setOwner($user);
 
         $form = $this->createForm(ShortUrlType::class, $shortUrl, [
             'is_admin' => true,
