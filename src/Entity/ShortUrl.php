@@ -53,9 +53,10 @@ class ShortUrl
     private $longUrl;
 
     /**
-     * @var string
+     * @var User
      *
-     * @ORM\Column(name="owner", type="string", length=256)
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", fetch="LAZY")
+     * @ORM\JoinColumn(nullable=false, name="owner")
      */
     private $owner;
 
@@ -121,12 +122,12 @@ class ShortUrl
         return $this;
     }
 
-    public function getOwner(): ?string
+    public function getOwner(): ?User
     {
         return $this->owner;
     }
 
-    public function setOwner(string $owner): self
+    public function setOwner(User $owner): self
     {
         $this->owner = $owner;
 

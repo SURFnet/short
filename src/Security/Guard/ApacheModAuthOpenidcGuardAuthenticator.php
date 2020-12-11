@@ -4,11 +4,12 @@
 namespace App\Security\Guard;
 
 
-use App\Security\User;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Message\User\ProvideUserMessage;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\HandleTrait;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
@@ -20,15 +21,17 @@ use Symfony\Component\Security\Http\Util\TargetPathTrait;
 final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenticator
 {
     use TargetPathTrait;
+    use HandleTrait;
 
     /**
      * @var RouterInterface
      */
     private $router;
 
-    public function __construct(RouterInterface $router)
+    public function __construct(RouterInterface $router, MessageBusInterface $messageBus)
     {
         $this->router = $router;
+        $this->messageBus = $messageBus;
     }
 
     public function supports(Request $request)
@@ -47,7 +50,9 @@ final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenti
             return null;
         }
 
-        return new User($credentials, false);
+        return $this->handle(
+            new ProvideUserMessage($credentials)
+        );
     }
 
     public function checkCredentials($credentials, UserInterface $user)
