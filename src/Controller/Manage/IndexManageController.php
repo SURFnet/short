@@ -3,20 +3,19 @@
 
 namespace App\Controller\Manage;
 
-use App\Entity\ShortUrl;
+use App\Component\Messenger\HandleTrait;
 use App\Entity\User;
+use App\Form\Model\ShortUrlModel;
 use App\Form\ShortUrlType;
-use App\Message\ShortUrl\CreateRandomShortUrlMessage;
+use App\Message\ShortUrl\CreateShortUrlMessage;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Messenger\HandleTrait;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/manage/", defaults={"page": "1"}, name="app_manage_index", methods={"GET", "POST"})
@@ -46,17 +45,17 @@ final class IndexManageController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-        $shortUrl = new ShortUrl();
-        $shortUrl->setOwner($user);
+        $shortUrl = new ShortUrlModel();
 
         $form = $this->createForm(ShortUrlType::class, $shortUrl);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $shortUrl = $this->handle(
-                new CreateRandomShortUrlMessage(
+                new CreateShortUrlMessage(
                     $user->getId(),
-                    $shortUrl->getLongUrl()
+                    $shortUrl->longUrl,
+                    null
                 )
             );
 
