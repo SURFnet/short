@@ -3,14 +3,15 @@
 namespace App\MessageHandler\ShortUrl;
 
 use App\Entity\ShortUrl;
+use App\Entity\User;
 use App\Exception\ShortCodeNotAvailableException;
-use App\Message\ShortUrl\CreateCustomShortUrlMessage;
+use App\Message\ShortUrl\CreateShortUrlMessage;
 use App\Repository\ShortUrlRepository;
 use App\Repository\UserRepository;
 use App\Services\GenerateUniqueShortUrl;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
 
-final class CreateCustomShortUrlMessageHandler implements MessageHandlerInterface
+final class CreateShortUrlMessageHandler implements MessageHandlerInterface
 {
     /**
      * @var UserRepository
@@ -32,21 +33,39 @@ final class CreateCustomShortUrlMessageHandler implements MessageHandlerInterfac
         $this->generateUniqueShortUrl = $generateUniqueShortUrl;
     }
 
-    public function __invoke(CreateCustomShortUrlMessage $message)
+    public function __invoke(CreateShortUrlMessage $message)
     {
-        if (!$this->generateUniqueShortUrl->checkShortUrlCodeIsAvailable($message->getShorUrl())) {
-            throw ShortCodeNotAvailableException::with($message->getShorUrl());
-        }
+        $uniqueCode = $this->getUniqueCode($message);
 
+        /** @var User $owner */
         $owner = $this->userRepository->find($message->getOwnerId());
 
         $shortUrl = new ShortUrl();
         $shortUrl->setOwner($owner);
         $shortUrl->setLongUrl($message->getLongUrl());
-        $shortUrl->setShortUrl($message->getShorUrl());
+        $shortUrl->setShortUrl($uniqueCode);
 
         $this->shortUrlRepository->save($shortUrl);
 
         return $shortUrl;
+    }
+
+    /**
+     * @param CreateShortUrlMessage $message
+     * @return string
+     */
+    private function getUniqueCode(CreateShortUrlMessage $message): string
+    {
+        $code = $message->getShorUrl();
+
+        if (!$code) {
+            return $this->generateUniqueShortUrl->getUniqueShortUrlCode();
+        }
+
+        if (!$this->generateUniqueShortUrl->checkShortUrlCodeIsAvailable($code)) {
+            throw ShortCodeNotAvailableException::becauseAlreadyUsed();
+        }
+
+        return $code;
     }
 }

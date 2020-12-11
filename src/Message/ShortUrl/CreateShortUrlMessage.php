@@ -2,7 +2,7 @@
 
 namespace App\Message\ShortUrl;
 
-final class CreateCustomShortUrlMessage
+final class CreateShortUrlMessage
 {
     /**
      * @var string
@@ -13,28 +13,37 @@ final class CreateCustomShortUrlMessage
      */
     private $longUrl;
     /**
-     * @var string
+     * @var string|null
      */
     private $shorUrl;
 
-    public function __construct(string $ownerId, string $longUrl, string $shorUrl)
+    public function __construct(string $ownerId, string $longUrl, ?string $shorUrl)
     {
         $this->ownerId = $ownerId;
         $this->longUrl = $longUrl;
         $this->shorUrl = $shorUrl;
     }
 
+    /**
+     * @return string
+     */
     public function getOwnerId(): string
     {
         return $this->ownerId;
     }
 
+    /**
+     * @return string
+     */
     public function getLongUrl(): string
     {
         return $this->longUrl;
     }
 
-    public function getShorUrl(): string
+    /**
+     * @return string|null
+     */
+    public function getShorUrl(): ?string
     {
         return $this->shorUrl;
     }

@@ -6,9 +6,9 @@ namespace App\Exception;
 
 final class ShortCodeNotAvailableException extends \RuntimeException
 {
-    public static function with(string $code): self
+    public static function becauseAlreadyUsed(): self
     {
-        return new self(sprintf('Code "%s" is not available', $code));
+        return new self('This value is already used.');
     }
 
     public static function becauseTooManyTries(): self
