@@ -61,6 +61,15 @@ class RedirectController extends AbstractController
         $qrCode->setValidateResult(false);
         $qrCode->setRoundBlockSize(true);
         $qrCode->setLabel($url);
+
+        $format = $request->query->get('format');
+        if($format === 'pdf') {
+            $qrCode->setWriterByName('fpdf');
+            $qrCode->setLabelFontSize(72);
+        } elseif(in_array($format, ['png','eps','svg'])) {
+            $qrCode->setWriterByName($format);
+        }
+
         $image = $qrCode->writeString();
 
         $response = new Response();
