@@ -1,3 +1,4 @@
+
 # SURFshort
 
 Code running SURFshort.
@@ -9,7 +10,7 @@ It requires:
 
 ## Installation
 
-```bash
+```shell
 apt install git composer php-fpm apache2 libapache2-mod-auth-mellon \
     php-xml php-intl  php-mysql mariadb-server
 a2enmod proxy_fcgi rewrite header ssl
@@ -24,7 +25,7 @@ GRANT ALL PRIVILEGES ON short.* TO 'short'@'localhost';
 ```
 
 In .env.local:
-```
+```dotenv
 # If you are using mysql
 DATABASE_URL=mysql://short:longpassword@127.0.0.1:3306/short?serverVersion=5.7
 # If you are using mariadb (recommended)
@@ -32,8 +33,25 @@ DATABASE_URL=mysql://short:longpassword@127.0.0.1:3306/short?serverVersion=serve
 ```
 
 On the commandline:
+```shell
+php bin/console doctrine:migrations:migrate --allow-no-migration -n
 ```
-$ php bin/console doctrine:migrations:migrate --allow-no-migration -n
+
+### Updating assets
+
+The project uses [Webpack Encore](https://symfony.com/doc/current/frontend.html) to manage assets (CSS, images
+and Javascript scripts). The assets are compiled with webpack in public directory, so you don't need to install
+node to install the application.
+
+Only if you want to develop or update assets, you need to install [node](http://www.nodejs.org/) and
+ [yarn](https://yarnpkg.com/) to install dependencies .
+
+In case you update the assets you need to build them again:
+
+```shell
+yarn install
+yarn build
+git add -f public/build
 ```
 
 ## Configuration
@@ -154,8 +172,10 @@ Some parameters can be configured with environment variables.
 
 If you want to enable SAML authentication method set these parameters (enabled by default):
 
-    APP_MOD_SECURITY=mellon
-    APP_MOD_LOGOUT="/mellon/logout?ReturnTo=/"
+```dotenv
+APP_MOD_SECURITY=mellon
+APP_MOD_LOGOUT="/mellon/logout?ReturnTo=/"
+```
 
 If you want to enable OpenID Connect authentication method set these parameters:
 
@@ -167,9 +187,9 @@ If you want to enable OpenID Connect authentication method set these parameters:
 
 ### Site personalization
 
-* APP_NAME. Configure the name of the site.
-* APP_FQDN. Configure the FQDN used to create the shorted urls.
-* APP_IDP_NAME. Configure the name of your identity provider.
+* `APP_NAME`: Configure the name of the site.
+* `APP_FQDN`: Configure the FQDN used to create the shorted urls.
+* `APP_IDP_NAME`: Configure the name of your identity provider.
 
 ## Administrator users
 
@@ -182,8 +202,10 @@ assigned as administrators.
 Assign the environment variables `APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE` and
 `APP_MOD_AUTH_MELLON_ROLE_VALUE` you will find in the .env file. For example:
 
-    APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE=eduPersonEntitlement
-    APP_MOD_AUTH_MELLON_ROLE_VALUE=urn:mace:domain:service:admin
+```dotenv
+APP_MOD_AUTH_MELLON_ROLE_ATTRIBUTE=eduPersonEntitlement
+APP_MOD_AUTH_MELLON_ROLE_VALUE=urn:mace:domain:service:admin
+```
 
 ### With OpenID Connect Authentication
 
