@@ -275,6 +275,26 @@
                 <source>description.security</source>
                 <target>De links kunnen alleen aangemaakt worden door geverifieerde personen uit het Nederlandse onderwijs en onderzoek. Bezoekers van de links worden niet getrackt of gevolgd.</target>
             </trans-unit>
+            <trans-unit id="info.read_more">
+                <source>info.read_more</source>
+                <target>Lees meer...</target>
+            </trans-unit>
+            <trans-unit id="info.support">
+                <source>info.support</source>
+                <target>Support</target>
+            </trans-unit>
+            <trans-unit id="description.support">
+                <source>description.support</source>
+                <target>Staat je instelling er nog niet bij, of heb je andere vragen over het gebruik van { value }?</target>
+            </trans-unit>
+            <trans-unit id="info.go_to_support">
+                <source>info.go_to_support</source>
+                <target>Naar support...</target>
+            </trans-unit>
+            <trans-unit id="button.back_to">
+                <source>button.back_to</source>
+                <target>Terug naar { value }</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

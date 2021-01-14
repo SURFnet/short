@@ -279,6 +279,26 @@
                 <source>description.security</source>
                 <target>The links can only be created by verified persons from education and research. Visitors of the links are not traced or followed.</target>
             </trans-unit>
+            <trans-unit id="info.read_more">
+                <source>info.read_more</source>
+                <target>Read more...</target>
+            </trans-unit>
+            <trans-unit id="info.support">
+                <source>info.support</source>
+                <target>Support</target>
+            </trans-unit>
+            <trans-unit id="description.support">
+                <source>description.support</source>
+                <target>Is your setting not yet listed, or do you have other questions about using { value }?</target>
+            </trans-unit>
+            <trans-unit id="info.go_to_support">
+                <source>info.go_to_support</source>
+                <target>Go to support...</target>
+            </trans-unit>
+            <trans-unit id="button.back_to">
+                <source>button.back_to</source>
+                <target>Back to { value }</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

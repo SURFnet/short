@@ -1,6 +1,6 @@
 {% set currentPath = app.request.requestUri %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ app.request.locale }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -29,11 +29,15 @@
     <div class="py-3 text-center">
 
         {% if app.request.attributes.get('_route') == 'app_info_index' %}
-            <h1 class="SCblauw display-4" id="homebrand">{{ APP_NAME }}</h1>
-            <p class="lead">{{ APP_PAYOFF }}</p>
+            <h1 class="SCblauw display-4">{{ APP_NAME }}</h1>
+            <p class="lead">
+                {{ 'app.payoff' | trans({}, APP_CUSTOM_TRANSLATION) | raw }}
+            </p>
         {% else %}
-            <h1 class="SCblauw">{{ APP_NAME }}{% if app.request.get('_route') == 'app_manage_admin' or app.request.get('_route') == 'app_manage_stats'  %} <span class="SURForanje">{{ 'action.admin' | trans }}</span>{% endif %}</h1>
-            <p class="">{{ APP_PAYOFF }}</p>
+            <h2 class="SCblauw">{{ APP_NAME }}{% if app.request.get('_route') == 'app_manage_admin' or app.request.get('_route') == 'app_manage_stats'  %} <span class="SURForanje">{{ 'action.admin' | trans }}</span>{% endif %}</h2>
+            <p class="">
+                {{ 'app.payoff' | trans({}, APP_CUSTOM_TRANSLATION) | raw }}
+            </p>
         {% endif %}
     </div>
 
