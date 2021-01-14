@@ -238,6 +238,22 @@
         <source>description.security</source>
         <target>Los enlaces sólo pueden ser creados por personas pertenecientes al campo de la educación y la investigación. Los visitantes de los enlaces no son rastreados.</target>
       </trans-unit>
+      <trans-unit id="info.read_more">
+        <source>info.read_more</source>
+        <target>Leer más...</target>
+      </trans-unit>
+      <trans-unit id="info.support">
+        <source>info.support</source>
+        <target>Soporte</target>
+      </trans-unit>
+      <trans-unit id="description.support">
+        <source>description.support</source>
+        <target>¿No encuentra la funcionalidad que necesita o tiene otras preguntas sobre el uso de { value }?</target>
+      </trans-unit>
+      <trans-unit id="info.go_to_support">
+        <source>info.go_to_support</source>
+        <target>Ir a soporte...</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

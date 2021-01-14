@@ -1,126 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ parent() }} - Privacy statement{% endblock %}
+{%
+    set parameters = {
+    'app_name': APP_NAME,
+    'app_urldomain': APP_URLDOMAIN,
+}
+%}
+
+{% block title %}{{ parent() }} - {{ 'menu.privacy' | trans }}{% endblock %}
 
 {% block body %}
-<h2 class="mb-3">Privacyverklaring {{ APP_NAME }}</h2>
+    {{ 'info.privacy' | trans(parameters, APP_CUSTOM_TRANSLATION ) | raw }}
 
-<p>In deze privacyverklaring lees je hoe SURF omgaat met je persoonsgegevens
-in het kader van het gebruik van de website <code>{{ APP_BASEDOMAIN }}/</code> en de
-url-verkorter ‘{{ APP_NAME }}’.
-
-<p><em>Deze privacyverklaring is voor het laatst bijgewerkt op 13 jaunari 2021.</em></p>
-
-<h2>Over SURF</h2>
-<p>Wij zijn SURF B.V. (“SURF”), gevestigd aan het Moreelsepark 48, 3511 EP
-Utrecht. We zijn te bereiken via +31-887873000. SURF is 
-de ICT-samenwerkingsorganisatie van het onderwijs en onderzoek
-in Nederland. In de coöperatie SURF werken de Nederlandse universiteiten,
-hogescholen, universitaire medische centra, onderzoeksinstellingen en
-mbo-instellingen samen aan ICT-innovatie.
-<a href="https://www.surf.nl/over-surf/organisatie-en-bestuur/cooperatie-surf/index.html">Meer over de coöperatie.</a></p>
-
-<h2>Welke gegevens verwerken we?</h2>
-<p>Als een gebruiker {{ APP_NAME }} wil gebruiken, moet de gebruiker inloggen via
-zijn/haar instellingsaccount door middel van SURFconext. Na inlog wordt er
-enkel een pseudonieme identifier (<a
-href="https://support.surfconext.nl/help-nameid">persisent ID</a>) verwerkt, om de
-gebruiker een volgende keer weer te kunnen herkennen. {{ APP_NAME }} kan deze
-identifier zelf niet herleiden naar een persoon. Als een gebruiker een link
-aanmaakt, wordt enkel bijgehouden hoeveel keer er op een link wordt
-geklikt.</p>
-
-<p>Bezoek website <code>{{ APP_BASEDOMAIN }}/</code>: van bezoekers van de website
-wordt het IP-adres in de webserver-logging verwerkt.</p>
-
-<h2>Waarvoor gebruiken we je gegevens?</h2>
-<p>{{ APP_NAME }} biedt gebruikers binnen de community van onderwijs en onderzoek
-de mogelijkheid om url's te verkorten op een veilige en privacyvriendelijke
-manier. Om een dergelijke url-verkorter aan te kunnen bieden, is het nodig dat
-de aanmaker van de link te herleiden is naar een persoon binnen de community.
-Voor dit doel is het nodig een zeer beperkte set aan pseudonieme
-persoonsgegevens te verwerken.</p>
-
-<h5>Rechtsgrond</h5>
-<p>Persoonsgegevens worden verwerkt op grond van gerechtvaardigd belang.
-Gebruikers, instellingen en SURF hebben een gerechtvaardigd belang bij het
-kunnen gebruiken van een veilige en privacyvriendelijke url verkorter. Dit
-belang weegt zwaarder dan de zeer beperkte inbreuk op de privacy. Van een
-aanmaker van een link wordt namelijk enkel een pseudonieme identifier verwerkt.</p>
-
-<h5>Bewaartermijn</h5>
-<ul>
-<li>IP-adres via webserver-logging: 1 week</li>
-<li>Pseudonieme identifier: zo lang een link bestaat. Een link verdwijnt niet
-  automatisch, pas als gebruiker deze verwijdert.</li>
-</ul>
-
-<h5>Aan wie verstrekken we de gegevens?</h5>
-<p>Gegevens worden niet verstrekt aan derde partijen.</p>
-
-<h2>Beveiliging</h2>
-
-<p>We hebben onder andere de volgende veiligheidsmaatregelen getroffen
-om de persoonsgegevens te beschermen:</p>
-
-<ul>
-<li>Dataminimalisatie</li>
-<li>Enkel verwerken van een pseudonieme identifier</li>
-<li>Federatieve inlog (via SURFconext)</li>
-<li>Domeinnaam is DNSSEC gesignd</li>
-<li>Versleutelde verbindingen middels TLS (https)</li>
-<li>Security http-headers</li>
-<li>Beheerinterface afgeschermd conform SURF-normen</li>
-</ul>
-
-<h2>Je rechten met betrekking tot je gegevens</h2>
-Je hebt de volgende rechten met betrekking tot je persoonsgegevens:
-<ul>
-<li>Je kunt een verzoek indienen tot wijziging, aanvulling of verwijdering
-  van je gegevens wanneer deze onjuist of niet (meer) relevant zijn.</li>
-<li>Je kunt een verzoek indienen om inzage te verkrijgen in de gegevens
-  die we van jou verwerken.</li>
-<li>Je kunt bezwaar maken tegen verwerking van je gegevens, als we je
-  gegevens verwerken op basis van een eigen gerechtvaardigd belang of
-  op basis van de uitvoering van een taak van algemeen belang.</li>
-<li>Je kunt een verzoek indienen tot beperking van de verwerking van je
-  gegevens ten aanzien van de verwerking van gegevens waartegen je bezwaar
-  hebt gemaakt, die je onrechtmatig acht, waarvan je de juistheid van de
-  persoonsgegevens hebt betwist of wanneer we de persoonsgegevens niet
-  meer nodig hebben, maar je ze nodig hebt in het kader van een rechtsvordering.</li>
-<li>Je kunt een overzicht, in een gestructureerde en gangbare vorm opvragen
-  van de gegevens die we van jou verwerken en je hebt het recht op
-  overdraagbaarheid van deze gegevens naar een andere dienstverlener.</li>
-<li>Je kunt de door jou gegeven toestemming voor het verwerken van je
-  persoonsgegevens intrekken. Het intrekken van je toestemming doet echter
-  geen afbreuk aan de rechtmatigheid van de verwerking op basis van je
-  toestemming vóór de intrekking daarvan.</li>
-<li>Als je van mening bent dat SURF niet goed omgaat met je
-  persoonsgegevens kun je een klacht indienen bij SURF. Als jij en SURF
-  er echter niet samen uitkomen en het antwoord van SURF op je klacht niet
-  leidt tot een acceptabel resultaat, heb je het recht om een klacht over
-  SURF in te dienen bij de Autoriteit Persoonsgegevens. Meer informatie
-  over de Autoriteit Persoonsgegevens en het indienen van klachten vind je op
-  <a href="https://www.autoriteitpersoonsgegevens.nl/">www.autoriteitpersoonsgegevens.nl</a>.</li>
-</ul>
-
-<p>Om deze rechten uit te kunnen oefenen, kun je contact opnemen met SURF
-via de contactgegevens onderaan deze privacyverklaring.</p>
-
-<h2>Wijziging privacyverklaring</h2>
-
-<p>SURF kan wijzigingen aanbrengen in deze privacyverklaring. We raden je
-daarom aan om deze privacyverklaring geregeld te raadplegen.</p>
-
-<h2>Contactgegevens</h2>
-
-<address>
-<strong>SURF B.V.</strong><br>
-Moreelsepark 48<br>
-3511 EP  Utrecht<br>
-+31-887873000<br>
-<a href="mailto:kort@surf.nl">kort@surf.nl</a>
-</address>
-
-        <p><a href="{{ path('app_info_index') }}">Terug naar {{ APP_URLDOMAIN }}</a></p>
+    <p><a href="{{ path('app_info_index') }}">{{ 'button.back_to' | trans({'%value%': APP_URLDOMAIN}) }}</a></p>
 {% endblock %}
