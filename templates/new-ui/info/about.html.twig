@@ -10,6 +10,8 @@
 
 {% extends 'new-ui/base.html.twig' %}
 
+{% block title %}{{ parent() }} - {{ 'menu.about' | trans }}{% endblock %}
+
 {% block hero %}
     {{ 'menu.about' | trans }}
 {% endblock %}
