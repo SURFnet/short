@@ -3,6 +3,7 @@
 namespace App\MessageHandler\ShortUrl;
 
 use App\Entity\ShortUrl;
+use App\Exception\ShortUrlNotFoundException;
 use App\Message\ShortUrl\DeleteShortUrlMessage;
 use App\Repository\ShortUrlRepository;
 use Symfony\Component\Messenger\Handler\MessageHandlerInterface;
@@ -26,7 +27,7 @@ final class DeleteShortUrlMessageHandler implements MessageHandlerInterface
         $shortUrl = $this->shortUrlRepository->find($id);
 
         if (!$shortUrl instanceof ShortUrl || $shortUrl->getDeleted()) {
-            throw new \RuntimeException('ShortUrl does not exist');
+            throw ShortUrlNotFoundException::becauseIsDeleted();
         }
 
         $shortUrl->setDeleted(true);

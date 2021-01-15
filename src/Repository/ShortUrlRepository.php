@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @method ShortUrl[]    findAll()
  * @method ShortUrl[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-final class ShortUrlRepository extends ServiceEntityRepository
+class ShortUrlRepository extends ServiceEntityRepository
 {
     /**
      * @var PaginatorInterface

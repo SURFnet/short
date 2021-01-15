@@ -56,7 +56,7 @@ final class CreateShortUrlMessageHandler implements MessageHandlerInterface
      */
     private function getUniqueCode(CreateShortUrlMessage $message): string
     {
-        $code = $message->getShorUrl();
+        $code = $message->getShortUrl();
 
         if (!$code) {
             return $this->generateUniqueShortUrl->getUniqueShortUrlCode();

@@ -4,15 +4,12 @@
 namespace App\Services;
 
 
-use App\Entity\ShortUrl;
-use App\Entity\User;
 use App\Exception\ShortCodeNotAvailableException;
-use App\Exception\ShortUserException;
 use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-final class GenerateUniqueShortUrl
+class GenerateUniqueShortUrl
 {
     /**
      * @var EntityManagerInterface
@@ -68,7 +65,7 @@ final class GenerateUniqueShortUrl
         $code = "";
 
         for($i=0; $i < $this->shortcodeLength; ++$i) {
-            $code .= $this->shortcodeChars[mt_rand(0, $shortCodeCharsLength - 1)];
+            $code .= $this->shortcodeChars[random_int(0, $shortCodeCharsLength - 1)];
         }
 
         return $code;

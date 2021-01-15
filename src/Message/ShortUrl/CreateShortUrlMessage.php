@@ -15,13 +15,13 @@ final class CreateShortUrlMessage
     /**
      * @var string|null
      */
-    private $shorUrl;
+    private $shortUrl;
 
-    public function __construct(string $ownerId, string $longUrl, ?string $shorUrl)
+    public function __construct(string $ownerId, string $longUrl, ?string $shortUrl)
     {
         $this->ownerId = $ownerId;
         $this->longUrl = $longUrl;
-        $this->shorUrl = $shorUrl;
+        $this->shortUrl = $shortUrl;
     }
 
     /**
@@ -43,8 +43,8 @@ final class CreateShortUrlMessage
     /**
      * @return string|null
      */
-    public function getShorUrl(): ?string
+    public function getShortUrl(): ?string
     {
-        return $this->shorUrl;
+        return $this->shortUrl;
     }
 }
