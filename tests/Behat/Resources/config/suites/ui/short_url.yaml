@@ -5,7 +5,11 @@ default:
                 - 'App\Tests\Behat\Context\Hook\DatabaseContext'
 
                 - 'App\Tests\Behat\Context\Setup\SecurityContext'
+                - 'App\Tests\Behat\Context\Setup\ShortUrlContext'
 
                 - 'App\Tests\Behat\Context\Ui\ShortUrlContext'
+
+                - 'App\Tests\Behat\Context\Transform\SharedStorageContext'
+                - 'App\Tests\Behat\Context\Transform\ShortUrlContext'
             filters:
                 tags: '@short_url && @ui'

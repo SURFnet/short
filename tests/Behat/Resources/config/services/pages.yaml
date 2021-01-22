@@ -21,3 +21,11 @@ services:
     App\Tests\Behat\Page\ShortUrlIndexPage:
         parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
         public: false
+
+    App\Tests\Behat\Page\ShortUrlUpdatePage:
+        parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
+        public: false
+
+    App\Tests\Behat\Page\AdminShortUrlIndexPage:
+        parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
+        public: false
