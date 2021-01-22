@@ -10,16 +10,21 @@ use Behat\Mink\Exception\ElementNotFoundException;
 use FriendsOfBehat\PageObjectExtension\Page\SymfonyPage;
 use function Symfony\Component\String\u;
 
-final class ShortUrlIndexPage extends SymfonyPage
+final class AdminShortUrlIndexPage extends SymfonyPage
 {
     public function getRouteName(): string
     {
-        return 'app_manage_index';
+        return 'app_manage_admin';
     }
 
     public function specifyLongUrl(string $longUrl): void
     {
         $this->getDocument()->fillField('Enter the original link (URL) here', $longUrl);
+    }
+
+    public function specifyCode(string $code): void
+    {
+        $this->getDocument()->fillField('The desired short code (empty for autogenerate)', $code);
     }
 
     public function shortIt(): void
@@ -89,6 +94,13 @@ final class ShortUrlIndexPage extends SymfonyPage
         throw new \Exception('Short Url not found');
     }
 
+    public function shortUrlExists(ShortUrl $shortUrl): bool
+    {
+        $row = $this->getShortUrlRow($shortUrl);
+
+        return $row instanceof NodeElement;
+    }
+
     protected function getShortUrlRow(ShortUrl $shortUrl): ?NodeElement
     {
         $rows = $this->getDocument()->findAll('css', 'tr');
@@ -105,6 +117,7 @@ final class ShortUrlIndexPage extends SymfonyPage
 
         return null;
     }
+
 
     protected function getDefinedElements(): array
     {
