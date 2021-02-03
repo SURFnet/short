@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Validator\LongUrl;
 use App\Validator\NotBannedDomain;
 use App\Validator\NotForbiddenChars;
 use Doctrine\ORM\Mapping as ORM;
@@ -46,8 +47,8 @@ class ShortUrl
      * @var string
      *
      * @ORM\Column(name="long_url", type="text", length=65535)
-     * @Assert\Url(message="shorturl.invalid_url")
      * @Assert\NotBlank()
+     * @LongUrl()
      * @NotBannedDomain()
      */
     private $longUrl;
