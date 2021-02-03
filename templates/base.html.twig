@@ -16,11 +16,11 @@
 {% if is_granted('IS_AUTHENTICATED_FULLY') %}
     <div class="systray">
     {% if is_granted('ROLE_ADMIN') %}
-        <a href="{{ path('app_manage_admin') }}" class="mr-2"><i class="fas fa-cog"></i></a>
-        <a href="{{ path('app_manage_stats') }}" class="mr-2"><i class="fas fa-chart-bar"></i></a>
-        <a href="{{ path('app_manage_index') }}" class="mr-2"><i class="fas fa-undo"></i></a>
+        <a href="{{ path('app_manage_admin') }}" class="mr-2" aria-label="Admin"><i class="fas fa-cog"></i></a>
+        <a href="{{ path('app_manage_stats') }}" class="mr-2" aria-label="Stats"><i class="fas fa-chart-bar"></i></a>
+        <a href="{{ path('app_manage_index') }}" class="mr-2" aria-label="Back to public view"><i class="fas fa-undo"></i></a>
     {% endif %}
-        <a href="{{ path('logout') }}"><i class="fas fa-power-off"></i></a>
+        <a href="{{ path('logout') }}" aria-label="Logout"><i class="fas fa-power-off"></i></a>
     </div>
 {% endif %}
 
@@ -29,10 +29,10 @@
     <div class="py-3 text-center">
 
         {% if app.request.attributes.get('_route') == 'app_info_index' %}
-            <h1 class="SCblauw display-4">{{ APP_NAME }}</h1>
+            <h1 class="SCblauw display-4" id="homebrand">{{ APP_NAME }}</h1>
             <p class="lead">{{ APP_PAYOFF }}</p>
         {% else %}
-            <h2 class="SCblauw">{{ APP_NAME }}{% if app.request.get('_route') == 'app_manage_admin' or app.request.get('_route') == 'app_manage_stats'  %} <span class="SURForanje">{{ 'action.admin' | trans }}</span>{% endif %}</h2>
+            <h1 class="SCblauw">{{ APP_NAME }}{% if app.request.get('_route') == 'app_manage_admin' or app.request.get('_route') == 'app_manage_stats'  %} <span class="SURForanje">{{ 'action.admin' | trans }}</span>{% endif %}</h1>
             <p class="">{{ APP_PAYOFF }}</p>
         {% endif %}
     </div>

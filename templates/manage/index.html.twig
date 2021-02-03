@@ -7,7 +7,7 @@
     {% include 'manage/partials/linkform.html.twig' %}
 
     {% if pagination|length > 0 or pagination.params()['filterValue'] is defined %}
-        <h4 class="mb-3">{{ 'title.previous_links'|trans }}</h4>
+        <h2 class="mb-3">{{ 'title.previous_links'|trans }}</h2>
 
         <div class="mb-4">
         {{

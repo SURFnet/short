@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-md-12 mb-4">
-            <h4 class="mb-3">{{ 'title.edit_link' | trans({'%shorturlshort%': shorturlshort}) }}</h4>
+            <h2 class="mb-3">{{ 'title.edit_link' | trans({'%shorturlshort%': shorturlshort}) }}</h2>
             {{ form_start(form) }}
                 <input type="hidden" name="_token" value="{{ csrf_token('edit-form') }}">
                 <input type="hidden" name="url" value="{{ short_url.shortUrl }}">

@@ -18,18 +18,18 @@
         <tr {% if url.deleted %}class="deleted"{% endif %}>
             <td>
                 {% if not disablebutton %}
-                    <button class="fabutton actieknop cpy" type="button" data-clipboard-text="{{ shorturlfull }}" data-toggle="tooltip" data-original-title="{{ 'tooltip.copy_url'|trans }}">
+                    <button class="fabutton actieknop cpy" type="button" data-clipboard-text="{{ shorturlfull }}" data-toggle="tooltip" data-original-title="{{ 'tooltip.copy_url'|trans }}" aria-label="{{ 'tooltip.copy_url'|trans }}">
                         <i class="fa fa-clipboard beetjezwart"></i>
                     </button>
-                    <a href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}">
+                    <a href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}" aria-label="{{ 'tooltip.edit_url'|trans }}">
                         <i class="fa fa-edit SCblauw"></i>
                     </a>
-                    <a href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}">
+                    <a href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}" aria-label="{{ 'tooltip.show_qr'|trans }}">
                         <i class="fa fa-qrcode SCblauw"></i>
                     </a>
                     <form style="display: inline-block" action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}" method="post">
-                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}" />
-                        <button type="submit" name="delete" class="actieknop fabutton" data-toggle="confirmation" data-title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}">
+                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
+                        <button type="submit" name="delete" class="actieknop fabutton" data-toggle="confirmation" data-title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}" aria-label="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}">
                             <i class="fa fa-trash-alt SURForanje" title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}"></i>
                         </button>
                     </form>

@@ -18,8 +18,17 @@
 	margin: 0 auto;
 }
 
-.container h1,h2{
+.container h1 {
 	font-family: Nunito, sans-serif;
+	font-size: 2rem;
+}
+
+.container h2 {
+	font-size: 1.5rem;
+}
+
+#homebrand {
+	font-size: 3.5rem;
 }
 
 .SCknop{
