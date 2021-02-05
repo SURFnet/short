@@ -5,10 +5,11 @@ namespace App\Controller\Manage;
 
 
 use App\Entity\ShortUrl;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Message\ShortUrl\DeleteShortUrlMessage;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -18,13 +19,13 @@ use Symfony\Component\Routing\Annotation\Route;
 final class DeleteManageController extends AbstractController
 {
     /**
-     * @var EntityManagerInterface
+     * @var MessageBusInterface
      */
-    private $entityManager;
+    private $messageBus;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(MessageBusInterface $messageBus)
     {
-        $this->entityManager = $entityManager;
+        $this->messageBus = $messageBus;
     }
 
     public function __invoke(Request $request, ShortUrl $instance)
@@ -37,9 +38,11 @@ final class DeleteManageController extends AbstractController
             return $this->redirectToRoute('app_manage_index');
         }
 
-        $instance->setDeleted(true);
-        $instance->setUpdated();
-        $this->entityManager->flush();
+        $this->messageBus->dispatch(
+            new DeleteShortUrlMessage(
+                $instance->getId()
+            )
+        );
 
         $this->addFlash('success', 'short_url.deleted_successfully');
 

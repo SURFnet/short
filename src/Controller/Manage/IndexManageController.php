@@ -3,17 +3,19 @@
 
 namespace App\Controller\Manage;
 
-use App\Entity\ShortUrl;
+use App\Component\Messenger\HandleTrait;
 use App\Entity\User;
+use App\Form\Model\ShortUrlModel;
 use App\Form\ShortUrlType;
+use App\Message\ShortUrl\CreateShortUrlMessage;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @Route("/manage/", defaults={"page": "1"}, name="app_manage_index", methods={"GET", "POST"})
@@ -21,6 +23,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 final class IndexManageController extends AbstractController
 {
+    use HandleTrait;
+
     /**
      * @var ShortUrlRepository
      */
@@ -30,10 +34,10 @@ final class IndexManageController extends AbstractController
      */
     private $generateShortUrlCode;
 
-    public function __construct(ShortUrlRepository $repository, GenerateUniqueShortUrl $generateShortUrlCode)
+    public function __construct(ShortUrlRepository $repository, MessageBusInterface $messageBus)
     {
         $this->repository = $repository;
-        $this->generateShortUrlCode = $generateShortUrlCode;
+        $this->messageBus = $messageBus;
     }
 
     public function __invoke(Request $request, int $page): Response
@@ -41,14 +45,19 @@ final class IndexManageController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
 
-        $shortUrl = new ShortUrl();
-        $shortUrl->setOwner($user);
+        $shortUrl = new ShortUrlModel();
 
         $form = $this->createForm(ShortUrlType::class, $shortUrl);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $shortUrl = $this->generateShortUrlCode->generate($shortUrl->getLongUrl(), $shortUrl->getOwner());
+            $shortUrl = $this->handle(
+                new CreateShortUrlMessage(
+                    $user->getId(),
+                    $shortUrl->longUrl,
+                    null
+                )
+            );
 
             return $this->redirectToRoute('app_manage_show', ['shortUrl' => $shortUrl->getShortUrl()]);
         }

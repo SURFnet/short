@@ -4,81 +4,70 @@
 namespace App\Services;
 
 
-use App\Entity\ShortUrl;
-use App\Entity\User;
+use App\Exception\ShortCodeNotAvailableException;
 use Doctrine\DBAL\LockMode;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
-final class GenerateUniqueShortUrl
+class GenerateUniqueShortUrl
 {
     /**
      * @var EntityManagerInterface
      */
     private $entityManager;
     /**
-     * @var ParameterBagInterface
+     * @var string
      */
-    private $parameterBag;
+    private $shortcodeChars;
+    /**
+     * @var int
+     */
+    private $shortcodeLength;
+    /**
+     * @var int
+     */
+    private $shortcodeMaxTries;
 
     public function __construct(EntityManagerInterface  $entityManager, ParameterBagInterface $parameterBag)
     {
         $this->entityManager = $entityManager;
-        $this->parameterBag = $parameterBag;
+        $this->shortcodeChars = $parameterBag->get('app.shortcode.chars');
+        $this->shortcodeLength = (int) $parameterBag->get('app.shortcode.length');
+        $this->shortcodeMaxTries = (int) $parameterBag->get('app.shortcode.maxtries');
+
     }
 
-    public function generate(string $longUrl, User $owner, string $shortUrl = null): ShortUrl
+    public function getUniqueShortUrlCode(): string
     {
-        $this->entityManager->beginTransaction();
-        try {
-            $entity = new ShortUrl();
-            $entity->setLongUrl($longUrl);
-            $entity->setOwner($owner);
-
-            $shortUrl = $shortUrl ?? $this->findUniqueShortUrlCode();
-            $entity->setShortUrl($shortUrl);
-
-            $this->entityManager->persist($entity);
-            $this->entityManager->flush();
-            $this->entityManager->commit();
-        } catch (\Exception $e) {
-            $this->entityManager->rollback();
-            throw $e;
-        }
-
-        return $entity;
-    }
-
-    private function findUniqueShortUrlCode(): string
-    {
-        $shortcodeMaxTries = $this->parameterBag->get('app.shortcode.maxtries');
-
-        for ($i = 0 ; $i < $shortcodeMaxTries; $i++) {
+        for ($i = 0 ; $i < $this->shortcodeMaxTries; $i++) {
             $code = $this->generateCode();
 
-            $query = $this->entityManager->createQuery('SELECT o FROM \App\Entity\ShortUrl o WHERE o.shortUrl = :code');
-            $query->setParameter('code', $code);
-            $query->setLockMode(LockMode::PESSIMISTIC_WRITE);
-
-            if (null === $query->getOneOrNullResult()) {
+            if ($this->checkShortUrlCodeIsAvailable($code)) {
                 return $code;
             }
         }
 
-        // TODO: Catch exception in controller
-        throw new \RuntimeException("Too many tries to create shortcode");
+        throw ShortCodeNotAvailableException::becauseTooManyTries();
     }
 
-    public function generateCode() : string
+    public function checkShortUrlCodeIsAvailable(string $code): bool
     {
-        $shortcodeChars = $this->parameterBag->get('app.shortcode.chars');
-        $shortcodeLength = $this->parameterBag->get('app.shortcode.length');
+        $query = $this->entityManager->createQuery('SELECT o FROM \App\Entity\ShortUrl o WHERE o.shortUrl = :code');
+        $query->setParameter('code', $code);
+        $query->setLockMode(LockMode::PESSIMISTIC_WRITE);
 
+        return $query->getOneOrNullResult() === null;
+    }
+
+    private function generateCode() : string
+    {
+        $shortCodeCharsLength = strlen($this->shortcodeChars);
         $code = "";
 
-        for($i=0; $i < $shortcodeLength; ++$i) {
-            $code .= $shortcodeChars[mt_rand(0, strlen($shortcodeChars) - 1)];
+        for($i=0; $i < $this->shortcodeLength; ++$i) {
+            $code .= $this->shortcodeChars[random_int(0, $shortCodeCharsLength - 1)];
         }
+
         return $code;
     }
 }

@@ -4,13 +4,14 @@
 namespace App\Controller\Manage;
 
 use App\Entity\ShortUrl;
+use App\Form\Model\ShortUrlModel;
 use App\Form\ShortUrlType;
-use Doctrine\ORM\EntityManagerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Message\ShortUrl\UpdateShortUrlMessage;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -20,13 +21,13 @@ use Symfony\Component\Routing\Annotation\Route;
 final class EditManageController extends AbstractController
 {
     /**
-     * @var EntityManagerInterface
+     * @var MessageBusInterface
      */
-    private $entityManager;
+    private $messageBus;
 
-    public function __construct(EntityManagerInterface $entityManager)
+    public function __construct(MessageBusInterface $messageBus)
     {
-        $this->entityManager = $entityManager;
+        $this->messageBus = $messageBus;
     }
 
     public function __invoke(Request $request, ShortUrl $instance): Response
@@ -35,12 +36,17 @@ final class EditManageController extends AbstractController
             throw $this->createNotFoundException();
         }
 
-        $form = $this->createForm(ShortUrlType::class, $instance);
+        $shortUrl = ShortUrlModel::fromShortUrl($instance);
+        $form = $this->createForm(ShortUrlType::class, $shortUrl);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $instance->setUpdated();
-            $this->entityManager->flush();
+            $this->messageBus->dispatch(
+                new UpdateShortUrlMessage(
+                    $instance->getId(),
+                    $shortUrl->longUrl
+                )
+            );
 
             $this->addFlash('success', 'short_url.updated_successfully');
 

@@ -1,0 +1,31 @@
+imports:
+    - 'pages/short_url.yaml'
+
+services:
+    _defaults:
+        public: false
+        autowire: true
+
+    FriendsOfBehat\PageObjectExtension\Page\Page:
+        abstract: true
+        arguments:
+            - '@behat.mink.default_session'
+            - '@behat.mink.parameters'
+
+    FriendsOfBehat\PageObjectExtension\Page\SymfonyPage:
+        parent: 'FriendsOfBehat\PageObjectExtension\Page\Page'
+        abstract: true
+        arguments:
+            - '@router'
+
+    App\Tests\Behat\Page\ShortUrlIndexPage:
+        parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
+        public: false
+
+    App\Tests\Behat\Page\ShortUrlUpdatePage:
+        parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
+        public: false
+
+    App\Tests\Behat\Page\AdminShortUrlIndexPage:
+        parent: FriendsOfBehat\PageObjectExtension\Page\SymfonyPage
+        public: false

@@ -10,7 +10,7 @@
         <th scope="col">{{ 'title.original_link'|trans }}</th>
     </tr>
     </thead>
-    <tbody>
+    <tbody data-test="links">
     {% for url in pagination %}
         {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
         {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ url.shortUrl %}
