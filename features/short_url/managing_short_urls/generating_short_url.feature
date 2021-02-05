@@ -7,8 +7,16 @@ Feature: Generating a new short url
     Background:
         Given I am logged as an user
 
-    Scenario: Generate a new short url
+    Scenario Outline: Generate a new short url
         When I want to generate a new short url
-        And I write the long url "https://long.url/example"
+        And I write the long url "<url>"
         And I short it
         Then I should see 1 shortened urls on my list
+
+        Examples:
+            | url |
+            | https://example.com/example |
+            | http://example.com/example |
+            | ftp://example.com/example |
+            | ftps://example.com/example |
+            | mailto:example@example.com |

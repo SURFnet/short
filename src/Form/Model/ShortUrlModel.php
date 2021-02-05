@@ -5,14 +5,15 @@ namespace App\Form\Model;
 
 
 use App\Entity\ShortUrl;
+use App\Validator\LongUrl;
 use App\Validator\NotBannedDomain;
 use Symfony\Component\Validator\Constraints as Assert;
 
 final class ShortUrlModel
 {
     /**
-     * @Assert\Url(message="shorturl.invalid_url")
      * @Assert\NotBlank()
+     * @LongUrl()
      * @NotBannedDomain()
      * @var string
      */

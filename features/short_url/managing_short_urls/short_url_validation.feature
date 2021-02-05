@@ -21,7 +21,6 @@ Feature: Short URL validation
             | url                    |
             | long.url/example       |
             | //long.url/example     |
-            | ftp://long.url/example |
 
     Scenario Outline: Adding a forbidden domain
         When I want to generate a new short url

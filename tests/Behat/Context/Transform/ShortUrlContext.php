@@ -22,24 +22,6 @@ class ShortUrlContext implements Context
     }
 
     /**
-     * @Transform :code
-     */
-    public function getShortUrlByShortUrl(string $code): ShortUrl
-    {
-        $shortUrls = $this->shortUrlRepository->findBy([
-            'shortUrl' => $code,
-        ]);
-
-        Assert::eq(
-            count($shortUrls),
-            1,
-            sprintf('%d short urls has been found with short url', count($shortUrls), $code)
-        );
-
-        return $shortUrls[0];
-    }
-
-    /**
      * @Transform :shortUrl
      */
     public function getShortUrlByLongUrl(string $longUrl): ShortUrl
@@ -51,7 +33,7 @@ class ShortUrlContext implements Context
         Assert::eq(
             count($shortUrls),
             1,
-            sprintf('%d short urls has been found with long url', count($shortUrls), $longUrl)
+            sprintf('%d short urls has been found with long url %s', count($shortUrls), $longUrl)
         );
 
         return $shortUrls[0];

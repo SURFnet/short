@@ -195,12 +195,4 @@ final class ShortUrlContext implements Context
     {
         $this->adminShortUrlIndexPage->specifyCode($code);
     }
-
-    /**
-     * @Then the short url with code (:code) should be on my list
-     */
-    public function theShortUrlShouldBeOnMyList(ShortUrl $shortUrl)
-    {
-        Assert::true($this->adminShortUrlIndexPage->shortUrlExists($shortUrl));
-    }
 }

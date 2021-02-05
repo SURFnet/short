@@ -12,4 +12,4 @@ Feature: Generating a new short url
         And I write the long url "https://long.url/example"
         And I write the short code "example"
         And I short it
-        Then the short url with code "example" should be on my list
+        Then I should see 1 shortened urls on my list
