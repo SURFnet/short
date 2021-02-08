@@ -1,12 +1,19 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.31.0",
+        "@symfony/stimulus-bridge": "^2.0.0",
+        "@symfony/webpack-encore": "^1.0.0",
+        "@tailwindcss/forms": "^0.2.1",
         "@tailwindcss/ui": "^0.7.2",
-        "alpinejs": "^2.7.3",
+        "alpinejs": "^2.8.0",
+        "balloon-css": "^1.2.0",
         "core-js": "^3.0.0",
-        "postcss-loader": "^3.0.0",
+        "postcss": "^8.2.5",
+        "postcss-loader": "^4.0.0",
         "regenerator-runtime": "^0.13.2",
-        "tailwindcss": "^1.9.6",
+        "stimulus": "^2.0.0",
+        "stimulus-clipboard": "^1.0.0",
+        "stimulus-popover": "^4.0.0",
+        "tailwindcss": "^2.0.2",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
