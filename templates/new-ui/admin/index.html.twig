@@ -1,0 +1,16 @@
+{% extends "new-ui/base.html.twig" %}
+
+{% block title %}{{ 'title.admin' | trans({'%parent%': parent()}) }}{% endblock %}
+
+{% block block_hero %}{% endblock %}
+
+{% block content %}
+    {% include 'new-ui/manage/_form.html.twig'  with {'is_admin': true } %}
+
+    {% if pagination|length > 0 or pagination.params()['filterValue'] is defined %}
+
+        <h2 class="mt-4">{{ 'title.previous_links'|trans }}</h2>
+
+        {% include 'new-ui/manage/_table.html.twig' with {'is_admin': true }  %}
+    {% endif %}
+{% endblock %}

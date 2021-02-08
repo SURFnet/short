@@ -1,0 +1,18 @@
+{% use "form_div_layout.html.twig" %}
+
+{%- block textarea_widget -%}
+    <textarea
+        class="shadow-sm focus:ring-blue-500 focus:border-blue-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+        {{ block('widget_attributes') }}>{{ value }}</textarea>
+{%- endblock textarea_widget -%}
+
+{%- block form_widget_simple -%}
+    {%- set type = type|default('text') -%}
+    {%- if type == 'range' or type == 'color' -%}
+        {# Attribute "required" is not supported #}
+        {%- set required = false -%}
+    {%- endif -%}
+    <input
+        class="shadow-sm focus:ring-blue-500 flex-1 focus:border-blue-500 sm:text-sm border border-gray-300 rounded-md rounded-l-none"
+        type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}/>
+{%- endblock form_widget_simple -%}

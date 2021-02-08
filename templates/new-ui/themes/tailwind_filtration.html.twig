@@ -1,0 +1,28 @@
+<div class="p-2 bg-gray-50">
+    <form id="form-filter" class="form-inline" method="get" action="{{ action }}"
+          enctype="application/x-www-form-urlencoded">
+        <div class="col-span-3 sm:col-span-2">
+            <div class="mt-1 flex rounded-md shadow-sm">
+                <input
+                    class="focus:ring-blue-500 focus:border-blue-500 flex-1 block w-full rounded-l-md sm:text-sm border-gray-300"
+                    id="filter" type="search"
+                    value="{{ selectedValue }}" name="{{ filterValueName }}"
+                    placeholder="{{ 'input.help_filter' | trans }}"/>
+                {% if fields|length > 1 %}
+                    <select class="custom-select" name="{{ filterFieldName }}">
+                        {% for field, label in fields %}
+                            <option
+                                value="{{ field }}"{% if selectedField == field %} selected="selected"{% endif %}>{{ label }}</option>
+                        {% endfor %}
+                    </select>
+                {% else %}
+                    <input type="hidden" name="{{ filterFieldName }}" value="{{ fields|keys|first }}"/>
+                {% endif %}
+                <button class="button rounded-none" style="">{{ options.button }}</button>
+                <button class="button rounded-l-none"
+                        onclick="document.getElementById('filter').value=null; document.getElementById('form-filter').submit();  return false;"
+                        type="reset"><i class="fa fa-refresh"></i> {{ 'button.reset' | trans }}</button>
+            </div>
+        </div>
+    </form>
+</div>

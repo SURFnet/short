@@ -1,0 +1,9 @@
+{% extends "new-ui/base.html.twig" %}
+
+{% block title %}{{ 'title.edit' | trans({'%parent%': parent()}) }}{% endblock %}
+
+{% block block_hero %}{% endblock %}
+
+{% block content %}
+    {% include 'new-ui/manage/_form.html.twig' with {'button': 'action.modify'} %}
+{% endblock %}

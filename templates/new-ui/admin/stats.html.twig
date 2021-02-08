@@ -1,0 +1,30 @@
+{% extends "new-ui/base.html.twig" %}
+
+{% block title %}{{ 'title.stats' | trans({'%parent%': parent()}) }}{% endblock %}
+
+{% block block_hero %}{% endblock %}
+
+{% block content %}
+    <h3 class="mb-3">Stats</h3>
+
+    <h4>{{ 'title.all_time' | trans }}</h4>
+    <p>
+        {{ 'stats.links_count' | trans({'%value%': stats.total.cnt}) }}<br/>
+        {{ 'stats.clicks_count' | trans({'%value%': stats.total.clk}) }}<br/>
+        {{ 'stats.users_count' | trans({'%value%': stats.total.uniqueusers}) }}
+    </p>
+
+    <h4>{{ 'title.date_range' | trans }}</h4>
+    <form>
+        {{ 'input.date_range' | trans({'%from%': from ?? '', '%to%': to ?? ''}) | raw }}
+        <input class="button" type="submit">
+    </form>
+
+    {% if from %}
+        <p>
+            {{ 'stats.date_range_links_count' | trans({'%value%': stats.period.cnt}) }}<br/>
+            {{ 'stats.date_range_clicks_count' | trans({'%value%': stats.period.clk}) }}<br/>
+            {{ 'stats.date_range_users_count' | trans({'%value%': stats.period.uniqueusers}) }}
+        </p>
+    {% endif %}
+{% endblock %}

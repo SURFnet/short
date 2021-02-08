@@ -2,7 +2,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\ShortUrl;
-use App\Exception\ShortUserException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -37,6 +36,11 @@ final class StatsAdminController extends AbstractController
             $q_unique->where("s.created >= :from")->setParameter('from', $from)->andWhere("s.created <= :to")->setParameter('to', $to);
             $unique = $q_unique->getQuery()->getResult();
             $stats['period'] = $total[0] + $unique[0];
+        }
+
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/admin/stats.html.twig',
+                ['stats' => $stats, 'from' => $from, 'to' => $to]);
         }
 
         return $this->render('admin/stats.html.twig',

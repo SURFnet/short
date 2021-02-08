@@ -1,0 +1,44 @@
+{% form_theme form "new-ui/themes/tailwind_layout.html.twig" %}
+
+<div class="w-full">
+    {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
+    <div class="shadow sm:rounded-md sm:overflow-hidden">
+        <input type="hidden" name="_token" value="{{ csrf_token('create-form') }}">
+
+        <div class="px-4 bg-white sm:p-4">
+            <div>
+                <label for="about" class="block text-sm font-medium text-gray-700">
+                    {{ 'title.shorten_link'|trans }}
+                </label>
+                <div class="mt-1">
+                    {{ form_widget(form.longUrl) }}
+                    {{ form_errors(form.longUrl) }}
+                </div>
+            </div>
+        </div>
+
+        {% if is_admin is defined %}
+            <div class="px-4 bg-white sm:pb-4">
+                <div>
+                    <div class="flex flex-wrap items-stretch w-full relative">
+                        <div class="flex -mr-px">
+                            <span class="flex items-center leading-normal rounded rounded-r-none border border-r-0 border-gray-300 px-3 whitespace-no-wrap text-grey-dark text-sm">
+                                {{ APP_BASEDOMAIN }}/
+                            </span>
+                        </div>
+                        {{ form_widget(form.shortUrl) }}
+                        {{ form_errors(form.shortUrl) }}
+                    </div>
+                </div>
+            </div>
+
+        {% endif %}
+
+        <div class="px-4 py-3 bg-gray-50 text-right sm:px-6">
+            <button type="submit" class="button">
+                {{ button | default('button.shorten_it') |trans }}
+            </button>
+        </div>
+    </div>
+    {{ form_end(form) }}
+</div>

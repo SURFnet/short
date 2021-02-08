@@ -53,6 +53,13 @@ final class EditManageController extends AbstractController
             return $this->redirectToRoute('app_manage_index');
         }
 
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/manage/edit.html.twig', [
+                'short_url' => $instance,
+                'form' => $form->createView()
+            ]);
+        }
+
         return $this->render('manage/edit.html.twig', [
             'short_url' => $instance,
             'form' => $form->createView()
