@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Form\Model\CustomShortUrlModel;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,8 +15,7 @@ final class CustomShortUrlType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('longUrl', UrlType::class, [
-                'default_protocol' => null,
+            ->add('longUrl', TextareaType::class, [
                 'attr' => [
                     'class' => 'form-control',
                     'autocomplete' => 'off',
