@@ -55,9 +55,18 @@ class RedirectController extends AbstractController
     {
         $shortUrl = $this->lookup(rtrim($req,'+'));
 
+
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/redirect/preview.html.twig', [
+                    'url' => $shortUrl,
+                ]
+            );
+        }
+
         return $this->render('redirect/preview.html.twig', [
             'url' => $shortUrl
-            ] );
+            ]
+        );
     }
 
     public function quickResponseAction(string $req, Request $request) : Response

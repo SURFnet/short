@@ -1,0 +1,151 @@
+<div class="flex flex-col pt-4 pb-12">
+    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                {{ knp_pagination_filter(pagination, {},{ 'button': 'button.filter' }, [], 'new-ui/themes/tailwind_filtration.html.twig') }}
+                <table class="divide-y divide-gray-200 table-fixed">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="w-8/12 px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{ 'title.all_links' |trans }}
+                        </th>
+                        <th scope="col"
+                            class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{ 'title.clicks' | trans }}
+                        </th>
+                        <th scope="col"
+                            class="w-1/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{ 'title.status' | trans }}
+                        </th>
+                        <th scope="col"
+                            class="w-2/12 px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{ 'title.actions' | trans }}
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    {% for url in pagination %}
+                        {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
+                        {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ url.shortUrl %}
+                        <tr>
+                            <td class="w-1/12 px-6 py-4 break-all">
+                                <div class="text-xs text-gray-400">
+                                    {{ url.created|date("Y-m-d") }}
+                                    {% if is_admin is defined %}
+                                        | {{ url.owner }}
+                                    {% endif %}
+                                </div>
+                                <div class="text-sm font-medium text-gray-900 whitespace-normal">
+                                    {{ url.longUrl | u.truncate(100, '...') }}
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    {% if not url.deleted %}
+                                        <a href="{{ path('redirect', {'req': url.shortUrl}) }}">
+                                            {{ shorturlshort }}
+                                        </a>
+                                    {% else %}
+                                        {{ shorturlshort }}
+                                    {% endif %}
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                                {{ url.clicks }}
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-center">
+                                {% if not url.deleted %}
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                      {{ 'label.active' | trans }}
+                                    </span>
+                                {% else %}
+                                    <span
+                                        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                                      {{ 'label.deleted' | trans }}
+                                    </span>
+                                {% endif %}
+                            </td>
+
+                            <td
+                                class="flex justify-center px-6 py-8 whitespace-nowrap text-right text-sm font-medium">
+                                {% if not url.deleted %}
+                                    <!-- copy action -->
+                                    <span
+                                        aria-label="{{ 'tooltip.copy_url'|trans }}" data-balloon-pos="up"
+                                        data-controller="clipboard"
+                                        data-clipboard-success-content="Copied!"
+                                        data-clipboard-target="source"
+                                        data-clipboard-value="{{ shorturlfull }}"
+                                    >
+                                    <a
+                                        data-action="clipboard#copy"
+                                        data-clipboard-target="button"
+                                        class="text-blue-600 hover:text-blue-900"
+                                    >
+                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                                        </svg>
+                                    </a>
+                                </span>
+
+                                    <!-- edit action -->
+                                    <a
+                                        aria-label="{{ 'tooltip.edit_url'|trans }}" data-balloon-pos="up"
+                                        href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}"
+                                        class="text-blue-600 hover:text-blue-900"
+                                        data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}"
+                                    >
+                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- qr action -->
+                                    <a
+                                        aria-label="{{ 'tooltip.show_qr'|trans }}" data-balloon-pos="up"
+                                        href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}"
+                                        class="text-blue-600 hover:text-blue-900">
+                                        <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+                                        </svg>
+                                    </a>
+                                    <!-- delete action -->
+                                    <form style="display: inline-block"
+                                          action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}"
+                                          method="post">
+                                        <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
+                                        <button
+                                            type="submit" name="delete" class="text-blue-600 hover:text-blue-900"
+                                            aria-label="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}"
+                                            data-balloon-pos="up-right"
+                                        >
+                                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                 viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+                                            </svg>
+                                        </button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot class="bg-gray-50">
+                    <tr>
+                        <th scope="col" colspan="4"
+                            class="w-4/6 px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            {{ knp_pagination_render(pagination, 'new-ui/themes/tailwind_pagination.html.twig') }}
+                        </th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

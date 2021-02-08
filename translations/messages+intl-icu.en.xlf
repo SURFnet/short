@@ -6,6 +6,10 @@
                 <source>button.login</source>
                 <target>Login with {value}</target>
             </trans-unit>
+            <trans-unit id="button.logout">
+                <source>button.logout</source>
+                <target>Logout</target>
+            </trans-unit>
             <trans-unit id="menu.about">
                 <source>menu.about</source>
                 <target>Privacy (by design)</target>
@@ -162,6 +166,10 @@
                 <source>title.stats</source>
                 <target>{parent} - stats</target>
             </trans-unit>
+            <trans-unit id="title.admin">
+                <source>title.admin</source>
+                <target>{parent} - admin</target>
+            </trans-unit>
             <trans-unit id="title.all_time">
                 <source>title.all_time</source>
                 <target>All time</target>
@@ -298,6 +306,26 @@
             <trans-unit id="button.back_to">
                 <source>button.back_to</source>
                 <target>Back to { value }</target>
+            </trans-unit>
+            <trans-unit id="label.active">
+                <source>label.active</source>
+                <target>Active</target>
+            </trans-unit>
+            <trans-unit id="label.deleted">
+                <source>label.deleted</source>
+                <target>Deleted</target>
+            </trans-unit>
+            <trans-unit id="title.status">
+                <source>title.status</source>
+                <target>Status</target>
+            </trans-unit>
+            <trans-unit id="label.showing_results">
+                <source>label.showing_results</source>
+                <target>Showing { from } to { to } of { total } results</target>
+            </trans-unit>
+            <trans-unit id="button.stats">
+                <source>button.stats</source>
+                <target>Statistics</target>
             </trans-unit>
         </body>
     </file>

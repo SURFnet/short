@@ -44,7 +44,8 @@
         "symfony/webpack-encore-bundle": "^1.8",
         "symfony/yaml": "5.2.*",
         "twbs/bootstrap": "^4.4",
-        "web-token/jwt-framework": "^2.2"
+        "web-token/jwt-framework": "^2.2",
+        "twig/string-extra": "^3.2"
     },
     "require-dev": {
         "behat/behat": "^3.8",
