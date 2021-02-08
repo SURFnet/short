@@ -13,6 +13,16 @@
 
 @import "tailwindcss/utilities";
 
+
+@layer base {
+    h1 {
+        @apply text-2xl;
+    }
+    h2 {
+        @apply text-xl;
+    }
+}
+
 @layer components {
     h1.hero > span {
         @apply bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-blue-500;
@@ -33,4 +43,17 @@
     .content a:hover {
         @apply text-blue-900;
     }
+
+    .button {
+        @apply inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600;
+    }
+
+    .button:hover {
+        @apply bg-blue-700;
+    }
+
+    .button:focus {
+        @apply outline-none ring-2 ring-offset-2 ring-blue-500
+    }
 }
+
