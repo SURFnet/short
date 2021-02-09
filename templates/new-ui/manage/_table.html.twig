@@ -116,6 +116,7 @@
                                     </a>
                                     <!-- delete action -->
                                     <form style="display: inline-block"
+                                          onsubmit="document.activeElement.blur(); return confirm('{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}');"
                                           action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}"
                                           method="post">
                                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
