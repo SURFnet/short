@@ -74,9 +74,17 @@
                 <source>tooltip.copy_url</source>
                 <target>Kopieer verkorte url naar het klembord</target>
             </trans-unit>
+            <trans-unit id="tooltip.copy_url_ext">
+                <source>tooltip.copy_url_ext</source>
+		<target>Kopieer verkorte url {shorturlshort} naar het klembord</target>
+            </trans-unit>
             <trans-unit id="tooltip.edit_url">
                 <source>tooltip.edit_url</source>
                 <target>Bewerk de originele url</target>
+            </trans-unit>
+            <trans-unit id="tooltip.edit_url_ext">
+                <source>tooltip.edit_url_ext</source>
+		<target>Bewerk de originele url voor {shorturlshort}</target>
             </trans-unit>
             <trans-unit id="tooltip.remove_url">
                 <source>tooltip.remove_url</source>
@@ -218,6 +226,14 @@
             <trans-unit id="tooltip.show_qr">
                 <source>tooltip.show_qr</source>
                 <target>Toon QR-code</target>
+            </trans-unit>
+            <trans-unit id="tooltip.show_qr_ext">
+                <source>tooltip.show_qr_ext</source>
+		<target>Toon QR-code voor { shorturlshort }</target>
+            </trans-unit>
+            <trans-unit id="tooltip.visit_long_url">
+                <source>tooltip.visit_long_url</source>
+		<target>Bezoek { longurl }</target>
             </trans-unit>
             <trans-unit id="input.help_filter">
                 <source>input.help_filter</source>

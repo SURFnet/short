@@ -18,13 +18,13 @@
         <tr {% if url.deleted %}class="deleted"{% endif %}>
             <td>
                 {% if not disablebutton %}
-                    <button class="fabutton actieknop cpy" type="button" data-clipboard-text="{{ shorturlfull }}" data-toggle="tooltip" data-original-title="{{ 'tooltip.copy_url'|trans }}" aria-label="{{ 'tooltip.copy_url'|trans }}">
+                    <button class="fabutton actieknop cpy" type="button" data-clipboard-text="{{ shorturlfull }}" data-toggle="tooltip" data-original-title="{{ 'tooltip.copy_url'|trans }}" aria-label="{{ 'tooltip.copy_url_ext'|trans({'%shorturlshort%': shorturlshort}) }}">
                         <i class="fa fa-clipboard beetjezwart"></i>
                     </button>
-                    <a href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}" aria-label="{{ 'tooltip.edit_url'|trans }}">
+                    <a href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}" aria-label="{{ 'tooltip.edit_url_ext'|trans({'%shorturlshort%': shorturlshort}) }}">
                         <i class="fa fa-edit SCblauw"></i>
                     </a>
-                    <a href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}" aria-label="{{ 'tooltip.show_qr'|trans }}">
+                    <a href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}" aria-label="{{ 'tooltip.show_qr_ext'|trans({'%shorturlshort%': shorturlshort}) }}">
                         <i class="fa fa-qrcode SCblauw"></i>
                     </a>
                     <form style="display: inline-block" action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}" method="post">
@@ -43,7 +43,7 @@
                     {{ url.owner }}
                 </td>
             {% endif %}
-            <td class="text-truncate telang"><a href="{{ url.longUrl }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i></a> {{url.longUrl }}</td>
+            <td class="text-truncate telang"><a href="{{ url.longUrl }}" target="_blank"><i class="fa fa-external-link-alt SURForanje" aria-label="{{ 'tooltip.visit_long_url' | trans({'%longurl%': url.longUrl}) }}"></i></a> {{url.longUrl }}</td>
         </tr>
     {% endfor %}
     </tbody>

@@ -78,9 +78,17 @@
                 <source>tooltip.copy_url</source>
                 <target>Copy short url to clipboard</target>
             </trans-unit>
+            <trans-unit id="tooltip.copy_url_ext">
+                <source>tooltip.copy_url_ext</source>
+		<target>Copy short url {shorturlshort} to clipboard</target>
+            </trans-unit>
             <trans-unit id="tooltip.edit_url">
                 <source>tooltip.edit_url</source>
                 <target>Edit the original url</target>
+            </trans-unit>
+            <trans-unit id="tooltip.edit_url_ext">
+                <source>tooltip.edit_url_ext</source>
+		<target>Edit the original url for {shorturlshort}</target>
             </trans-unit>
             <trans-unit id="tooltip.remove_url">
                 <source>tooltip.remove_url</source>
@@ -222,6 +230,14 @@
             <trans-unit id="tooltip.show_qr">
                 <source>tooltip.show_qr</source>
                 <target>Show QR code</target>
+            </trans-unit>
+            <trans-unit id="tooltip.show_qr_ext">
+                <source>tooltip.show_qr_ext</source>
+		<target>Show QR code for { shorturlshort }</target>
+            </trans-unit>
+            <trans-unit id="tooltip.visit_long_url">
+                <source>tooltip.visit_long_url</source>
+		<target>Visit { longurl }</target>
             </trans-unit>
             <trans-unit id="input.help_filter">
                 <source>input.help_filter</source>
