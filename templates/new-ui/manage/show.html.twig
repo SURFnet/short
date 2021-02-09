@@ -1,0 +1,86 @@
+{% extends "new-ui/base.html.twig" %}
+
+{% block title %}{{ 'title.created' | trans({'%parent%': parent()}) }}{% endblock %}
+
+{% block block_hero %}{% endblock %}
+
+{% block content %}
+
+    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ short_url.shortUrl %}
+
+    <section class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-col px-5 py-24 lg:flex-row items-center">
+            <div
+                class="lg:flex-grow lg:w-1/2 lg:pr-24 lg:pr-16 flex flex-col lg:items-start lg:text-left mb-16 lg:mb-0 items-center text-center">
+                <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
+                    {{ 'title.new_link_created' | trans }}
+                </h1>
+
+                <p class="leading-relaxed">
+                    {{ 'title.new_link_is' | trans }}
+                </p>
+                <p class="mb-8 leading-relaxed whitespace-normal break-all">
+                    <code>{{ shorturlfull }}</code>
+                </p>
+
+                <p class="leading-relaxed">
+                    {{ 'title.link_refers_to' | trans }}
+                </p>
+                <p class="mb-8 leading-relaxed whitespace-normal break-all">
+                    <code>
+                        {{ short_url.longUrl }}</a>
+                    </code>
+                </p>
+
+                <p class="leading-relaxed">
+                    {{ 'title.test_link' | trans }}
+                </p>
+                <p class="mb-8 leading-relaxed whitespace-normal break-all">
+                    <code>
+                        <a href="{{ shorturlfull }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i> {{ shorturlfull }}</a>
+                    </code>
+                </p>
+
+                <p class="leading-relaxed">
+                    {{ 'title.copy_link' | trans }}
+                </p>
+                <p
+                    aria-label="{{ 'tooltip.copy_url'|trans }}" data-balloon-pos="up"
+                    data-controller="clipboard"
+                    data-clipboard-success-content="Copied!"
+                    data-clipboard-target="source"
+                    data-clipboard-value="{{ shorturlfull }}"
+                    class="mb-8 leading-relaxed whitespace-normal"
+                >
+                    <a
+                        data-action="clipboard#copy"
+                        data-clipboard-target="button"
+                        class="cpy"
+                    >
+                        <svg class="h-6 w-6 inline" xmlns="http://www.w3.org/2000/svg" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                        </svg>
+                         {{ 'action.copy' | trans }}
+                    </a>
+                </p>
+
+                <div class="flex flex-col xl:flex-row justify-center space-y-2 xl:space-y-0">
+                    <a href="{{ path('app_manage_index') }}"
+                       class="xl:ml-4 inline-flex button text-gray-700 bg-gray-100 hover:bg-gray-200 text-lg">
+                        {{ 'action.back_to_overview' | trans }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="lg:max-w-lg lg:w-full lg:w-1/2 w-5/6 mb-4">
+                <img class="object-none object-center rounded mx-auto lg:mx-0"
+                     alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': path('redirect', {'req': short_url.shortUrl})}) }}"
+                     src="{{ path('quickresponse', {'req': short_url.shortUrl }) }}"
+                >
+            </div>
+        </div>
+    </section>
+{% endblock %}

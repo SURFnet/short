@@ -26,7 +26,8 @@
                 </p>
 
                 <div class="flex flex-col xl:flex-row justify-center space-y-2 xl:space-y-0">
-                    <button class="inline-flex button text-lg">
+                    <button onclick="window.location.href='{{ path('redirect', {'req': url.shortUrl}) }}'"
+                        class="inline-flex button text-lg">
                         {{ 'short_url.continue_to' | trans({'shorturlshort': shorturlshort}) }}
                     </button>
                     <a href="{{ path('app_manage_index') }}"

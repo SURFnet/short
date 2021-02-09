@@ -23,6 +23,12 @@ final class ShowManageController extends AbstractController
             throw $this->createNotFoundException();
         }
 
+        if ($_SERVER['APP_NEW_UI']) {
+            return $this->render('new-ui/manage/show.html.twig', [
+                'short_url' => $instance
+            ]);
+        }
+
         return $this->render('manage/show.html.twig', [
             'short_url' => $instance
         ]);
