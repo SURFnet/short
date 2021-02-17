@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class ApacheModAuthGuardPass implements CompilerPassInterface
 {
-    private const GUARD_SERVICE_CLASS = 'App\Security\Guard\ApacheModAuth%sGuardAuthenticator';
+    private const GUARD_SERVICE_CLASS = 'App\Security\Guard\%sGuardAuthenticator';
 
     public function process(ContainerBuilder $container)
     {

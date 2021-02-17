@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Submitting...</title>
+    <script type="text/javascript">
+        function postOnLoad() {
+            let encoded = location.hash.substring(1).split('&');
+            for (let i = 0; i < encoded.length; i++) {
+                encoded[i].replace(/\+/g, ' ');
+                let n = encoded[i].indexOf('=');
+                let input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = decodeURIComponent(encoded[i].substring(0, n));
+                input.name = input.name === 'id_token' ? 'code' : input.name;
+                input.value = decodeURIComponent(encoded[i].substring(n + 1));
+                document.forms[0].appendChild(input);
+            }
+            document.forms[0].action = window.location.href.substr(0, window.location.href.indexOf('#'));
+            document.forms[0].submit();
+        }
+    </script>
+</head>
+<body onload="postOnLoad()">
+<p>Submitting...</p>
+<form method="post" action="{{ path('connect_openidc_check') }}">
+    <p>
+        <input type="hidden" name="response_mode" value="fragment">
+    </p>
+</form>
+</body>
+</html>

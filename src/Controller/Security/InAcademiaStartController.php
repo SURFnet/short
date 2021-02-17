@@ -4,20 +4,18 @@
 namespace App\Controller\Security;
 
 
+use KnpU\OAuth2ClientBundle\Client\ClientRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
-/**
- * @Route("/connect/oidc", name="connect_openidc_start")
- */
-class ApacheModAuthOpenidcCheckStartController extends AbstractController
+class InAcademiaStartController extends AbstractController
 {
     use TargetPathTrait;
 
-    public function __invoke(Request $request)
+    public function __invoke(Request $request, ClientRegistry $clientRegistry)
     {
         if ($this->getParameter('app.security') !== 'openidc') {
             throw $this->createNotFoundException('Authentication method not available');
@@ -25,7 +23,16 @@ class ApacheModAuthOpenidcCheckStartController extends AbstractController
 
         $this->storeTargetPath($request);
 
-        return $this->redirectToRoute('connect_openidc_check');
+        $oAuth2Client = $clientRegistry
+            ->getClient('inacademia');
+
+        $redirectResponse = $oAuth2Client
+            ->redirect([], [
+                'response_type' => 'id_token',
+                'nonce' => md5(mt_rand()),
+            ]);
+
+        return $redirectResponse;
     }
 
     private function storeTargetPath(Request $request): void
