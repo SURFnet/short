@@ -6,13 +6,16 @@
     "license": "Apache-2",
     "require": {
         "php": "^7.2.5",
+        "ext-bcmath": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-json": "*",
         "components/font-awesome": "^5.12",
         "components/jquery": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "endroid/qr-code": "^3.8",
         "knplabs/knp-paginator-bundle": "^5.3",
+        "knpuniversity/oauth2-client-bundle": "^2.7",
         "sensio/framework-extra-bundle": "^5.1",
         "setasign/fpdf": "^1.8",
         "symfony/asset": "5.2.*",
@@ -38,7 +41,8 @@
         "symfony/validator": "5.2.*",
         "symfony/web-link": "5.2.*",
         "symfony/yaml": "5.2.*",
-        "twbs/bootstrap": "^4.4"
+        "twbs/bootstrap": "^4.4",
+        "web-token/jwt-framework": "^2.2"
     },
     "require-dev": {
         "behat/behat": "^3.8",
