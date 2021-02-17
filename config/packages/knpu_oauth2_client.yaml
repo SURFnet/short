@@ -1,0 +1,10 @@
+knpu_oauth2_client:
+    clients:
+        inacademia:
+            type: generic
+            provider_class: App\Security\OAuth2\Client\Provider\InAcademia
+            client_id: '%env(CLIENT_INACADEMIA_ID)%'
+            client_secret: '%env(CLIENT_INACADEMIA_SECRET)%'
+            redirect_route: 'connect_openidc_return'
+            provider_options:
+                discoverEndpoint: 'https://op.srv-test.inacademia.org/.well-known/openid-configuration'
