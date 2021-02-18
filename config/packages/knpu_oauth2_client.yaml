@@ -7,4 +7,4 @@ knpu_oauth2_client:
             client_secret: '%env(CLIENT_INACADEMIA_SECRET)%'
             redirect_route: 'connect_openidc_return'
             provider_options:
-                discoverEndpoint: 'https://op.srv-test.inacademia.org/.well-known/openid-configuration'
+                discoverEndpoint: '%env(CLIENT_INACADEMIA_DISCOVER)%'
