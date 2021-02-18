@@ -141,30 +141,10 @@ Protocols h2 h2c http/1.1
 </VirtualHost>
 ```
 
-### With OpenID Connect Authentication
+### With InAcademia Authentication
 
-OpenID Connect authentication uses the Apache [openidc authentication module](https://github.com/zmartzone/mod_auth_openidc).
-Install and configure mod_openidc according to its instructions. For example:
-
-```apacheconfig
-<IfModule auth_openidc_module>
-    OIDCProviderMetadataURL <issuer>/.well-known/openid-configuration
-    OIDCClientID <client_id>
-    OIDCClientSecret <client_secret>
-    # Configure your site hostname
-    OIDCRedirectURI https://<hostname>/connect/oidc/check
-    OIDCResponseType id_token
-    OIDCScope "openid member persistent"
-    OIDCCryptoPassphrase <password>
-    #OIDCAuthRequestParams <request_params>
-
-    # Don't change this
-    <LocationMatch /connect/oidc/(check|return)>
-        AuthType openid-connect
-        Require valid-user
-    </LocationMatch>
-</IfModule>
-```
+InAcademia authentication uses the [knpuniversity/oauth2-client-bundle](https://packagist.org/packages/knpuniversity/oauth2-client-bundle) bundle.
+So you don't need to do nothing special with your web server.
 
 ## Configure parameters
 
@@ -181,6 +161,9 @@ If you want to enable OpenID Connect authentication method set these parameters:
 
     APP_MOD_SECURITY=openidc
     APP_MOD_LOGOUT="/connect/oidc/return?logout=/"
+    CLIENT_INACADEMIA_ID=           # Set InAcademia Client Id
+    CLIENT_INACADEMIA_SECRET=       # Set InAcademia Client Secret
+    CLIENT_INACADEMIA_DISCOVER=     # Set InAcademia discover url
 
 ### Site personalization
 
