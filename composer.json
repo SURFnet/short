@@ -13,6 +13,7 @@
         "components/font-awesome": "^5.12",
         "components/jquery": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.0",
+        "easycorp/easyadmin-bundle": "^3.2",
         "endroid/qr-code": "^3.8",
         "knplabs/knp-paginator-bundle": "^5.3",
         "knpuniversity/oauth2-client-bundle": "^2.7",
