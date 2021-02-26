@@ -27,3 +27,13 @@ connect_openidc_start:
         domain: '%app.urldomain%'
     requirements:
         domain: '%app.urldomain%'
+
+login_check:
+    path: "/login_check"
+    defaults:
+        _controller: App\Controller\Security\LoginLinkCheckController
+
+login:
+    path: "/login"
+    defaults:
+        _controller: App\Controller\Security\LoginLinkController

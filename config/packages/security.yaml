@@ -1,4 +1,6 @@
 security:
+    enable_authenticator_manager: true
+
     providers:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
@@ -10,7 +12,9 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
+
         main:
+            host: '%app.urldomain%'
             pattern: '^/'
             user_checker: App\Security\UserChecker
             guard:
@@ -19,8 +23,24 @@ security:
             logout:
                 path: '/logout'
                 target: '/'
-            anonymous: true
             switch_user: true
+            login_link:
+                check_route: login_check
+                #max_uses: 1
+                used_link_cache: cache.app
+                signature_properties: [ 'id' ]
+            provider: app_user_provider
+
+        institutional:
+            pattern: '^/'
+            user_checker: App\Security\UserChecker
+            lazy: true
+            login_link:
+                check_route: login_check
+                #max_uses: 1
+                used_link_cache: cache.app
+                signature_properties: [ 'id' ]
+            provider: app_user_provider
 
     access_control:
         - { path: '^/admin', role: 'ROLE_ADMIN' }
@@ -29,7 +49,7 @@ security:
         - { path: '^/connect/(mellon|oidc)', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
         - { path: '^/connect/mellon/return$', methods: ['GET'], role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
         - { path: '^/connect/(mellon|oidc)/', role: 'ROLE_USER' }
-        - { path: '^/', role: 'IS_AUTHENTICATED_ANONYMOUSLY' }
+        - { path: '^/', role: 'PUBLIC_ACCESS' }
 
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER
