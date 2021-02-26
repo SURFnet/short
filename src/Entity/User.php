@@ -30,6 +30,12 @@ class User implements UserInterface
      */
     private $enabled;
 
+    /**
+     * @var Institution|null
+     * @ORM\ManyToOne(targetEntity=Institution::class)
+     */
+    private $institution;
+
     public function __construct()
     {
         $this->enabled = true;
@@ -118,5 +124,17 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // not needed for apps that do not check user passwords
+    }
+
+    public function getInstitution(): ?Institution
+    {
+        return $this->institution;
+    }
+
+    public function setInstitution(?Institution $institution): self
+    {
+        $this->institution = $institution;
+
+        return $this;
     }
 }

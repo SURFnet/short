@@ -4,11 +4,6 @@ namespace App\Message\User;
 
 final class AddUserMessage
 {
-    /*
-     * Add whatever properties & methods you need to hold the
-     * data for this message class.
-     */
-
     /**
      * @var string
      */
@@ -17,11 +12,16 @@ final class AddUserMessage
      * @var array
      */
     private $roles;
+    /**
+     * @var int|null
+     */
+    private $institutionId;
 
-    public function __construct(string $id, array $roles)
+    public function __construct(string $id, array $roles, ?int $institutionId = null)
     {
         $this->id = $id;
         $this->roles = $roles;
+        $this->institutionId = $institutionId;
     }
 
     /**
@@ -38,5 +38,13 @@ final class AddUserMessage
     public function getRoles(): array
     {
         return $this->roles;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getInstitutionId(): ?int
+    {
+        return $this->institutionId;
     }
 }
