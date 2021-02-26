@@ -1,0 +1,16 @@
+# http routing section
+http:
+    routers:
+        {{ service }}:
+            rule: Host(`{{ host }}`)
+            entryPoints:
+                - https
+            service: "{{ service }}"
+            tls:
+                certResolver: letsencrypt
+
+    services:
+        {{ service }}:
+            loadBalancer:
+                servers:
+                    - url: "http://httpd:80/"
