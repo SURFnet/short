@@ -8,6 +8,11 @@ use App\Validator\NotForbiddenChars;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiProperty;
+use Symfony\Component\Uid\Uuid;
+use Symfony\Component\Serializer\Normalizer\AbstractNormalizer;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * ShortUrl
@@ -23,12 +28,17 @@ use Symfony\Component\Validator\Constraints as Assert;
  * )
  * @UniqueEntity(fields={"shortUrl"})
  * @ORM\Entity
+ * @ApiResource(
+ *      normalizationContext={AbstractNormalizer::IGNORED_ATTRIBUTES={"id"},"groups"={"read"}},
+ *      denormalizationContext={"groups"={"write"}}
+ * )
  */
 class ShortUrl
 {
     /**
      * @var int
      *
+     * @ApiProperty(identifier=false)
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="IDENTITY")
@@ -38,8 +48,18 @@ class ShortUrl
     /**
      * @var string
      *
-     * @ORM\Column(name="short_url", type="string", length=32, unique=true)
+     * @ApiProperty(identifier=true)
+     * @ORM\Column(name="uuid", type="guid")
+     * @Groups({"read"})
+     */
+    public $uuid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="short_url", type="string", length=32)
      * @NotForbiddenChars()
+     * @Groups({"read"})
      */
     private $shortUrl;
 
@@ -50,6 +70,7 @@ class ShortUrl
      * @Assert\NotBlank()
      * @LongUrl()
      * @NotBannedDomain()
+     * @Groups({"read", "write"})
      */
     private $longUrl;
 
@@ -65,6 +86,7 @@ class ShortUrl
      * @var \DateTime
      *
      * @ORM\Column(name="created", type="datetime"))
+     * @Groups({"read"})
      */
     private $created;
 
@@ -72,6 +94,7 @@ class ShortUrl
      * @var \DateTime|null
      *
      * @ORM\Column(name="updated", type="datetime", nullable=true)
+     * @Groups({"read"})
      */
     private $updated;
 
@@ -79,6 +102,7 @@ class ShortUrl
      * @var int
      *
      * @ORM\Column(name="clicks", type="integer")
+     * @Groups({"read"})
      */
     private $clicks = 0;
 
@@ -86,12 +110,14 @@ class ShortUrl
      * @var bool
      *
      * @ORM\Column(name="deleted", type="boolean")
+     * @Groups({"write"})
      */
     private $deleted = 0;
 
     public function __construct()
     {
         $this->created = new \DateTime();
+        $this->uuid = (string) Uuid::v4();
     }
 
     public function getId(): int

@@ -1,4 +1,21 @@
 {
+    "api-platform/api-pack": {
+        "version": "v1.3.0"
+    },
+    "api-platform/core": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "a93061567140e386f107be75340ac2aee3f86cbf"
+        },
+        "files": [
+            "config/packages/api_platform.yaml",
+            "config/routes/api_platform.yaml",
+            "src/Entity/.gitignore"
+        ]
+    },
     "bacon/bacon-qr-code": {
         "version": "2.0.2"
     },
@@ -138,6 +155,9 @@
     "fgrosse/phpasn1": {
         "version": "v2.2.0"
     },
+    "fig/link-util": {
+        "version": "1.1.2"
+    },
     "friends-of-behat/mink": {
         "version": "v1.8.0"
     },
@@ -212,6 +232,18 @@
     },
     "myclabs/php-enum": {
         "version": "1.7.6"
+    },
+    "nelmio/cors-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "6bea22e6c564fba3a1391615cada1437d0bde39c"
+        },
+        "files": [
+            "config/packages/nelmio_cors.yaml"
+        ]
     },
     "nikic/php-parser": {
         "version": "v4.9.1"
@@ -540,6 +572,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.22.1"
+    },
     "symfony/process": {
         "version": "v5.0.11"
     },
@@ -650,6 +685,9 @@
     "symfony/twig-pack": {
         "version": "v1.0.0"
     },
+    "symfony/uid": {
+        "version": "v5.2.3"
+    },
     "symfony/validator": {
         "version": "4.3",
         "recipe": {
@@ -706,5 +744,8 @@
     },
     "webmozart/assert": {
         "version": "1.9.1"
+    },
+    "willdurand/negotiation": {
+        "version": "3.0.0"
     }
 }
