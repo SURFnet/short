@@ -33,7 +33,7 @@ services:
             array $locales: '%app.locales%'
             string $defaultLocale: '%app.default_locale%'
             string $traefikProvidersDirectory: '%kernel.project_dir%/var/providers'
-            Symfony\Component\Security\Http\LoginLink\LoginLinkHandlerInterface $institutionalLoginLinkHandler: '@security.authenticator.login_link.institutional'
+            Symfony\Component\Security\Http\LoginLink\LoginLinkHandlerInterface $institutionalLoginLinkHandler: '@security.authenticator.login_link_handler.institutional'
             Symfony\Component\Security\Http\LoginLink\LoginLinkHandlerInterface $mainLoginLinkHandler: '@security.authenticator.login_link_handler.main'
 
     # makes classes in src/ available to be used as services
