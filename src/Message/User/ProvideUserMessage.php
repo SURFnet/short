@@ -8,10 +8,15 @@ final class ProvideUserMessage
      * @var string
      */
     private $id;
+    /**
+     * @var string|null
+     */
+    private $institutionHash;
 
-    public function __construct(string $id)
+    public function __construct(string $id, string $institutionHash = null)
     {
         $this->id = $id;
+        $this->institutionHash = $institutionHash;
     }
 
     /**
@@ -20,5 +25,13 @@ final class ProvideUserMessage
     public function getId(): string
     {
         return $this->id;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getInstitutionHash(): ?string
+    {
+        return $this->institutionHash;
     }
 }
