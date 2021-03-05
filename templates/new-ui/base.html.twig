@@ -24,11 +24,19 @@
                 <div class="w-0 flex-1">
                     <a href="{{ path('app_info_index') }}"
                        class="text-3xl sm:text-4xl font-black align-middle">{{ APP_NAME }}</a>
+                    {% if institution %}
+                        <img
+                            class="h-11 sm:h-13 w-auto ml-5 inline-block"
+                            src="{{ asset(institution.logoUrl) }}"
+                            alt="Logo"
+                        />
+                    {% else %}
                     <img
                         class="h-11 sm:h-13 w-auto ml-5 inline-block"
                         src="{{ asset(APP_LOGO) }}"
                         alt="Logo"
                     />
+                    {% endif %}
                 </div>
                 <div class="-mr-2 -my-2 md:hidden">
                     <button
@@ -132,7 +140,7 @@
                         </div>
                         {% if not app.user %}
                             <a
-                                href="{{ path('app_manage_index') }}"
+                                href="{{ path(institution ? 'institutional_login' : 'login') }}"
                                 class="mt-4 inline-flex px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition ease-in-out duration-150"
                             >
                                 {{ 'button.login'|trans({'%value%': APP_IDP_NAME}) }}
@@ -221,11 +229,19 @@
                                 <a href="#" class="text-4xl font-black align-middle"
                                 >edulnk</a
                                 >
-                                <img
-                                    class="h-11 sm:h-13 w-auto ml-5 inline-block"
-                                    src="{{ asset(APP_LOGO) }}"
-                                    alt="Logo"
-                                />
+                                {% if institution %}
+                                    <img
+                                        class="h-11 sm:h-13 w-auto ml-5 inline-block"
+                                        src="{{ asset(institution.logoUrl) }}"
+                                        alt="Logo"
+                                    />
+                                {% else %}
+                                    <img
+                                        class="h-11 sm:h-13 w-auto ml-5 inline-block"
+                                        src="{{ asset(APP_LOGO) }}"
+                                        alt="Logo"
+                                    />
+                                {% endif %}
                             </div>
                             <div class="-mr-2">
                                 <button
@@ -339,7 +355,7 @@
                   <span class="w-full flex rounded-md shadow-sm">
                   {% if not app.user %}
                       <a
-                          href="{{ path('app_manage_index') }}"
+                          href="{{ path(institution ? 'institutional_login' : 'login') }}"
                           class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue-600 hover:bg-blue-500 focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition ease-in-out duration-150"
                       >
                         {{ 'button.login'|trans({'%value%': APP_IDP_NAME}) }}
@@ -451,11 +467,19 @@
                     </div>
                 </div>
                 <div class="sm:w-1/5">
-                    <img
-                        class="h-11 sm:h-13 w-auto float-right"
-                        src="{{ asset(APP_LOGO_BOTTOM) }}"
-                        alt="Logo"
-                    />
+                    {% if institution %}
+                        <img
+                            class="h-11 sm:h-13 w-auto float-right"
+                            src="{{ asset(institution.alternateLogoUrl) }}"
+                            alt="Logo"
+                        />
+                    {% else %}
+                        <img
+                            class="h-11 sm:h-13 w-auto float-right"
+                            src="{{ asset(APP_LOGO_BOTTOM) }}"
+                            alt="Logo"
+                        />
+                    {% endif %}
                 </div>
             </div>
         </div>
