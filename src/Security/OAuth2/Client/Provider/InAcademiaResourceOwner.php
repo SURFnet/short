@@ -34,6 +34,11 @@ class InAcademiaResourceOwner implements ResourceOwnerInterface
         );
     }
 
+    public function getIdpHint(): ?string
+    {
+        return $this->getValueByKey($this->response, 'idp_hint');
+    }
+
     /**
      * @inheritDoc
      */

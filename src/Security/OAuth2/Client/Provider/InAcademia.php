@@ -3,6 +3,7 @@
 namespace App\Security\OAuth2\Client\Provider;
 
 
+use App\Security\OAuth2\Checker\IdpHintChecker;
 use Jose\Component\Checker\AudienceChecker;
 use Jose\Component\Checker\ClaimCheckerManager;
 use Jose\Component\Checker\ExpirationTimeChecker;
@@ -18,9 +19,13 @@ use League\OAuth2\Client\Provider\AbstractProvider;
 use League\OAuth2\Client\Provider\Exception\IdentityProviderException;
 use League\OAuth2\Client\Token\AccessToken;
 use Psr\Http\Message\ResponseInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class InAcademia extends AbstractProvider
 {
+    /**
+     * @var string
+     */
     protected $discoverEndpoint;
 
     public function __construct(array $options = [], array $collaborators = [])
@@ -97,8 +102,9 @@ class InAcademia extends AbstractProvider
     public function getAccessToken($grant, array $options = [])
     {
         $idToken = $options['code'];
+        $idpHint = $options['idp_hint'];
 
-        $this->checkClaims($idToken);
+        $this->checkClaims($idToken, $idpHint);
         $this->checkJsonWebSignature($idToken);
 
         return new AccessToken(['access_token' => $idToken]);
@@ -117,13 +123,14 @@ class InAcademia extends AbstractProvider
         return $attributes[$attribute];
     }
 
-    private function checkClaims(string $idToken): void
+    private function checkClaims(string $idToken, ?string $idpHint): void
     {
         $checker = new ClaimCheckerManager([
             new IssuerChecker([$this->getIssuer()]),
             new AudienceChecker($this->clientId),
             new ExpirationTimeChecker(),
             new IssuedAtChecker(),
+            new IdpHintChecker($idpHint)
         ]);
 
         $checker->check($this->getClaims($idToken));
