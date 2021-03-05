@@ -64,5 +64,9 @@ final class IdpHintChecker implements ClaimChecker, HeaderChecker
         if (is_string($value) && $value !== $this->idpHint) {
             throw new $class('Bad idp_hint.', self::CLAIM_NAME, $value);
         }
+
+        if (empty($value) && !empty($this->idpHint)) {
+            throw new $class('Bad idp_hint.', self::CLAIM_NAME, $value);
+        }
     }
 }

@@ -133,7 +133,12 @@ class InAcademia extends AbstractProvider
             new IdpHintChecker($idpHint)
         ]);
 
-        $checker->check($this->getClaims($idToken));
+        $mandatoryClaims = [];
+        if ($idpHint) {
+            $mandatoryClaims[] = 'idp_hint';
+        }
+
+        $checker->check($this->getClaims($idToken), $mandatoryClaims);
     }
 
     private function checkJsonWebSignature(string $idToken)
