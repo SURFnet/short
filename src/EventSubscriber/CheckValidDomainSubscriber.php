@@ -2,8 +2,8 @@
 
 namespace App\EventSubscriber;
 
-use App\Repository\InstitutionRepository;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use App\Entity\Institution;
+use App\Services\InstitutionalDomainService;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -11,18 +11,13 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 final class CheckValidDomainSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var string
+     * @var InstitutionalDomainService
      */
-    private $appURLdomain;
-    /**
-     * @var InstitutionRepository
-     */
-    private $institutionRepository;
+    private $institutionalDomainService;
 
-    public function __construct(ParameterBagInterface $parameterBag, InstitutionRepository $institutionRepository)
+    public function __construct(InstitutionalDomainService $institutionalDomainService)
     {
-        $this->appURLdomain = $parameterBag->get('app.urldomain');
-        $this->institutionRepository = $institutionRepository;
+        $this->institutionalDomainService = $institutionalDomainService;
     }
 
     public function onKernelRequest(RequestEvent $event)
@@ -31,13 +26,11 @@ final class CheckValidDomainSubscriber implements EventSubscriberInterface
             return;
         }
 
-        $host = $event->getRequest()->getHost();
-
-        if ($host === $this->appURLdomain) {
+        if ($this->institutionalDomainService->isMainDomain()) {
             return;
         }
 
-        if ($this->institutionRepository->findOneBy(['domain' => $host])) {
+        if ($this->institutionalDomainService->getCurrentInstitution() instanceof Institution) {
             return;
         }
 
