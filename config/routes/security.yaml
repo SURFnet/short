@@ -22,8 +22,8 @@ connect_openidc_check:
 connect_openidc_start:
     host: "{domain}"
     path: "/connect/oidc"
+    controller: App\Controller\Security\InAcademiaStartController
     defaults:
-        _controller: App\Controller\Security\InAcademiaStartController
         domain: '%app.urldomain%'
     requirements:
         domain: '%app.urldomain%'
@@ -33,7 +33,8 @@ login_check:
     defaults:
         _controller: App\Controller\Security\LoginLinkCheckController
 
-login:
-    path: "/login"
+login_link:
+    path: "/login_link"
     defaults:
         _controller: App\Controller\Security\LoginLinkController
+
