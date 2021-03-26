@@ -10,6 +10,7 @@ use App\Form\ShortUrlType;
 use App\Message\ShortUrl\CreateShortUrlMessage;
 use App\Repository\ShortUrlRepository;
 use App\Services\GenerateUniqueShortUrl;
+use App\Services\InstitutionalDomainService;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,11 +34,19 @@ final class IndexManageController extends AbstractController
      * @var GenerateUniqueShortUrl
      */
     private $generateShortUrlCode;
+    /**
+     * @var InstitutionalDomainService
+     */
+    private $institutionalDomainService;
 
-    public function __construct(ShortUrlRepository $repository, MessageBusInterface $messageBus)
-    {
+    public function __construct(
+        ShortUrlRepository $repository,
+        MessageBusInterface $messageBus,
+        InstitutionalDomainService $institutionalDomainService
+    ) {
         $this->repository = $repository;
         $this->messageBus = $messageBus;
+        $this->institutionalDomainService = $institutionalDomainService;
     }
 
     public function __invoke(Request $request, int $page): Response
@@ -51,11 +60,13 @@ final class IndexManageController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $institution = $this->institutionalDomainService->getCurrentInstitution();
             $shortUrl = $this->handle(
                 new CreateShortUrlMessage(
                     $user->getId(),
                     $shortUrl->longUrl,
-                    null
+                    null,
+                    $institution ? $institution->getDomain() : null
                 )
             );
 
@@ -85,7 +96,14 @@ final class IndexManageController extends AbstractController
 
         $itemsPerPage = $this->getParameter('app.shortlink.pagination');
         $user = $this->getUser();
+        $institution = $this->institutionalDomainService->getCurrentInstitution();
 
-        return $this->repository->findLatest($page, $itemsPerPage, $filterValue, $user);
+        return $this->repository->findLatest(
+            $page,
+            $itemsPerPage,
+            $filterValue,
+            $user,
+            $institution
+        );
     }
 }

@@ -4,9 +4,9 @@
 namespace App\Repository;
 
 
+use App\Entity\Institution;
 use App\Entity\ShortUrl;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\DBAL\LockMode;
 use Doctrine\Persistence\ManagerRegistry;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -37,7 +37,13 @@ class ShortUrlRepository extends ServiceEntityRepository
         $this->_em->persist($shortUrl);
     }
 
-    public function findLatest(int $page, int $itemsPerPage, string $filter = null, UserInterface $user = null): PaginationInterface
+    public function findLatest(
+        int $page,
+        int $itemsPerPage,
+        string $filter = null,
+        UserInterface $user = null,
+        Institution $institution = null
+    ): PaginationInterface
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.created', 'DESC');
@@ -56,6 +62,14 @@ class ShortUrlRepository extends ServiceEntityRepository
             $qb->andWhere('o.owner = :owner')
                 ->setParameter('owner', $user->getUsername())
             ;
+        }
+
+        if ($institution) {
+            $qb->andWhere('o.institution = :institution')
+                ->setParameter('institution', $institution)
+            ;
+        } else {
+            $qb->andWhere('o.institution IS NULL');
         }
 
         return $this->paginator->paginate(
