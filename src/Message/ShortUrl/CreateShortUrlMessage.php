@@ -16,12 +16,17 @@ final class CreateShortUrlMessage
      * @var string|null
      */
     private $shortUrl;
+    /**
+     * @var string|null
+     */
+    private $domain;
 
-    public function __construct(string $ownerId, string $longUrl, ?string $shortUrl)
+    public function __construct(string $ownerId, string $longUrl, ?string $shortUrl, ?string $domain)
     {
         $this->ownerId = $ownerId;
         $this->longUrl = $longUrl;
         $this->shortUrl = $shortUrl;
+        $this->domain = $domain;
     }
 
     /**
@@ -46,5 +51,13 @@ final class CreateShortUrlMessage
     public function getShortUrl(): ?string
     {
         return $this->shortUrl;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDomain(): ?string
+    {
+        return $this->domain;
     }
 }
