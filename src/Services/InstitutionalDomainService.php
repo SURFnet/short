@@ -57,4 +57,13 @@ final class InstitutionalDomainService
 
         return $this->institutionRepository->findOneBy(['domain' => $request->getHost()]);
     }
+
+    public function getCurrentDomain(): string
+    {
+        if (!$this->getCurrentInstitution()) {
+            return $this->getMainDomain();
+        }
+
+        return $this->getCurrentInstitution()->getDomain();
+    }
 }
