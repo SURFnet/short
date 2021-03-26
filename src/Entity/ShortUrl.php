@@ -36,6 +36,14 @@ class ShortUrl
     private $id;
 
     /**
+     * @var Institution|null
+     *
+     * @ORM\ManyToOne(targetEntity="App\Entity\Institution")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $institution;
+
+    /**
      * @var string
      *
      * @ORM\Column(name="short_url", type="string", length=32, unique=true)
@@ -97,6 +105,18 @@ class ShortUrl
     public function getId(): int
     {
         return $this->id;
+    }
+
+    public function getInstitution(): ?Institution
+    {
+        return $this->institution;
+    }
+
+    public function setInstitution(?Institution $institution): ShortUrl
+    {
+        $this->institution = $institution;
+
+        return $this;
     }
 
     public function getShortUrl(): ?string
