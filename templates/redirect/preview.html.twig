@@ -3,9 +3,8 @@
 {% block title %}{{ parent() }} - preview{% endblock %}
 
 {% block body %}
-
-  {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short %}
-  {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ short %}
+    {% set shorturlshort = short_path(url, true)  %}
+    {% set shorturlfull = short_path(url) %}
 
   <div class="row justify-content-center">
       <div class="col-sm">
@@ -15,7 +14,7 @@
 
            <div class="mt-4">{{ 'short_url.refers_to' | trans({'shorturlshort': shorturlshort}) | raw }}</div>
 
-           <div class="m-2"><code>{{ long }}</code></div>
+           <div class="m-2"><code>{{ url.longUrl }}</code></div>
 
            <div>
                <a href="{{ shorturlfull }}" class="btn btn-primary btn-lg mt-4 SCknop"><i class="fas fa-external-link-alt"></i>
@@ -24,7 +23,7 @@
            </div>
       </div>
       <div class="col-sm">
-          <img src="/{{ short }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
+          <img src="{{qr_short_path(url) }}" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
       </div>
   </div>
 

@@ -4,8 +4,8 @@
 
 {% block body %}
 
-    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
-    {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlshort = short_path(short_url, true)  %}
+    {% set shorturlfull = short_path(short_url) %}
 
     <div class="row">
         <div class="col-md-12 mb-4">

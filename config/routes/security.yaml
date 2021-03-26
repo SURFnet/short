@@ -38,3 +38,5 @@ login_link:
     defaults:
         _controller: App\Controller\Security\LoginLinkController
 
+logout:
+    path: /logout

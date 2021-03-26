@@ -15,7 +15,7 @@
                 {% if form.shortUrl is defined %}
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">{{ APP_BASEDOMAIN }}/</span>
+                            <span class="input-group-text">{{ domain }}/</span>
                         </div>
                         {{ form_widget(form.shortUrl) }}
                         {{ form_errors(form.shortUrl) }}

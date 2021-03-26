@@ -3,9 +3,8 @@
 {% block title %}{{ 'title.created' | trans({'%parent%': parent()}) }}{% endblock %}
 
 {% block body %}
-
-    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
-    {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlshort = short_path(short_url, true)  %}
+    {% set shorturlfull = short_path(short_url) %}
 
     <div class="row">
         <div class="col-md-12 mb-3">
@@ -26,7 +25,7 @@
                     <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a>
                 </div>
                 <div class="col-md-6 ">
-                    <img class="mx-auto d-block" src="/{{ short_url.shortUrl }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
+                    <img class="mx-auto d-block" src="{{ qr_short_path(short_url) }}" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
                 </div>
             </div>
             <hr class="mb-3">

@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\ShortUrl;
+use App\Services\InstitutionalDomainService;
 use Endroid\QrCode\QrCode;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,6 +13,16 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class RedirectController extends AbstractController
 {
+    /**
+     * @var InstitutionalDomainService
+     */
+    private $institutionalDomainService;
+
+    public function __construct(InstitutionalDomainService $institutionalDomainService)
+    {
+        $this->institutionalDomainService = $institutionalDomainService;
+    }
+
     private function lookup(string $req) : ShortUrl
     {
         $repository = $this->getDoctrine()->getRepository(ShortUrl::class);
@@ -45,8 +56,7 @@ class RedirectController extends AbstractController
         $shortUrl = $this->lookup(rtrim($req,'+'));
 
         return $this->render('redirect/preview.html.twig', [
-            'short' => $shortUrl->getShortUrl(),
-            'long' => $shortUrl->getLongUrl(),
+            'url' => $shortUrl
             ] );
     }
 
@@ -54,7 +64,8 @@ class RedirectController extends AbstractController
     {
         $shortUrl = $this->lookup(rtrim($req,'~'));
 
-        $url = $this->getParameter('app.urldomain') . '/' . $shortUrl->getShortUrl();
+        $domain = $this->institutionalDomainService->getCurrentDomain();
+        $url = $domain . '/' . $shortUrl->getShortUrl();
         $protocol = $this->getParameter('app.protocol');
         $fullurl = $protocol . '://' . $url;
 
@@ -83,5 +94,4 @@ class RedirectController extends AbstractController
 
         return $response;
     }
-
 }

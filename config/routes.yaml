@@ -1,20 +1,29 @@
 quickresponse:
+  host: "{domain}"
   path: /{req}~
   controller: App\Controller\RedirectController::quickResponseAction
   requirements:
-      req: "[a-zA-Z0-9-]+"
+      req: "[a-zA-Z0-9-]+~"
+      domain: '.*'
+  defaults:
+      domain: '%app.urldomain%'
 
 preview:
+  host: "{domain}"
   path: /{req}
   controller: App\Controller\RedirectController::previewAction
   requirements:
       req: "[a-zA-Z0-9-]+\\+"
+      domain: '.*'
+  defaults:
+      domain: '%app.urldomain%'
 
 redirect:
+  host: "{domain}"
   path: /{req}
   controller: App\Controller\RedirectController::redirectAction
   requirements:
       req: "[a-zA-Z0-9).!:,;-]+"
-
-logout:
-    path: /logout
+      domain: '.*'
+  defaults:
+      domain: '%app.urldomain%'

@@ -12,8 +12,8 @@
     </thead>
     <tbody data-test="links">
     {% for url in pagination %}
-        {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
-        {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ url.shortUrl %}
+        {% set shorturlshort = short_path(url, true)  %}
+        {% set shorturlfull = short_path(url) %}
         {% set disablebutton = url.deleted and not is_admin is defined ? 'disabled':'' %}
         <tr {% if url.deleted %}class="deleted"{% endif %}>
             <td>
@@ -24,7 +24,7 @@
                     <a href="{{ path('app_manage_edit', {'shortUrl': url.shortUrl}) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.edit_url'|trans }}" aria-label="{{ 'tooltip.edit_url_ext'|trans({'%shorturlshort%': shorturlshort}) }}">
                         <i class="fa fa-edit SCblauw"></i>
                     </a>
-                    <a href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}" aria-label="{{ 'tooltip.show_qr_ext'|trans({'%shorturlshort%': shorturlshort}) }}">
+                    <a href="{{ preview_short_path(url) }}" {{ disablebutton }} class="actieknop fabutton" data-toggle="tooltip" data-original-title="{{ 'tooltip.show_qr'|trans }}" aria-label="{{ 'tooltip.show_qr_ext'|trans({'%shorturlshort%': shorturlshort}) }}">
                         <i class="fa fa-qrcode SCblauw"></i>
                     </a>
                     <form style="display: inline-block" action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}" method="post">
