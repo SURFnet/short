@@ -26,8 +26,8 @@
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     {% for url in pagination %}
-                        {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ url.shortUrl %}
-                        {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ url.shortUrl %}
+                        {% set shorturlshort = short_path(url, true)  %}
+                        {% set shorturlfull = short_path(url) %}
                         <tr>
                             <td class="w-1/12 px-6 py-4 break-all">
                                 <div class="text-xs text-gray-400">
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="text-sm text-gray-500">
                                     {% if not url.deleted %}
-                                        <a href="{{ path('redirect', {'req': url.shortUrl}) }}">
+                                        <a href="{{ short_path(url) }}">
                                             {{ shorturlshort }}
                                         </a>
                                     {% else %}
@@ -106,7 +106,7 @@
                                     <!-- qr action -->
                                     <a
                                         aria-label="{{ 'tooltip.show_qr'|trans }}" data-balloon-pos="up"
-                                        href="{{ path('preview', {'req': url.shortUrl ~ '+' }) }}"
+                                        href="{{ qr_short_path(url) }}"
                                         class="text-blue-600 hover:text-blue-900">
                                         <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none"
                                              viewBox="0 0 24 24" stroke="currentColor">

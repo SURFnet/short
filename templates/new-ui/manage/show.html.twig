@@ -6,8 +6,8 @@
 
 {% block content %}
 
-    {% set shorturlshort = APP_URLDOMAIN ~ '/' ~ short_url.shortUrl %}
-    {% set shorturlfull = APP_BASEDOMAIN ~ '/' ~ short_url.shortUrl %}
+    {% set shorturlshort = short_path(short_url, true)  %}
+    {% set shorturlfull = short_path(short_url) %}
 
     <section class="text-gray-600 body-font">
         <div class="container mx-auto flex flex-col px-5 py-24 lg:flex-row items-center">
@@ -29,7 +29,7 @@
                 </p>
                 <p class="mb-8 leading-relaxed whitespace-normal break-all">
                     <code>
-                        {{ short_url.longUrl }}</a>
+                        {{ short_url.longUrl }}
                     </code>
                 </p>
 
@@ -78,7 +78,7 @@
             <div class="lg:max-w-lg lg:w-full lg:w-1/2 w-5/6 mb-4">
                 <img class="object-none object-center rounded mx-auto lg:mx-0"
                      alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': path('redirect', {'req': short_url.shortUrl})}) }}"
-                     src="{{ path('quickresponse', {'req': short_url.shortUrl }) }}"
+                     src="{{ qr_short_path(short_url) }}"
                 >
             </div>
         </div>
