@@ -5,8 +5,9 @@ namespace App\EventSubscriber;
 
 
 use App\Entity\Institution;
+use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityPersistedEvent;
+use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityDeletedEvent;
-use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityPersistedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Event\BeforeEntityUpdatedEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Filesystem\Filesystem;
@@ -15,6 +16,8 @@ use Twig\Environment;
 
 class EasyAdminSubscriber implements EventSubscriberInterface
 {
+    private const TRAEFIK_PROVIDER_FILE_PATH = '%s/service-%s.yaml';
+
     /**
      * @var Environment
      */
@@ -43,13 +46,21 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            BeforeEntityPersistedEvent::class => ['onBeforeEntityPersistedEvent'],
-            BeforeEntityUpdatedEvent::class =>  ['onBeforeEntityUpdatedEvent'],
+            AfterEntityPersistedEvent::class => ['onAfterEntityPersistedEvent'],
+            AfterEntityUpdatedEvent::class => ['onAfterEntityUpdatedEvent'],
+            BeforeEntityUpdatedEvent::class => ['onBeforeEntityUpdatedEvent'],
             BeforeEntityDeletedEvent::class => ['onBeforeEntityDeletedEvent'],
         ];
     }
 
-        public function onBeforeEntityPersistedEvent(BeforeEntityPersistedEvent $event)
+    public function onAfterEntityPersistedEvent(AfterEntityPersistedEvent $event)
+    {
+        if ($event->getEntityInstance() instanceof Institution) {
+            $this->configureTraefikDomain($event->getEntityInstance());
+        }
+    }
+
+    public function onAfterEntityUpdatedEvent(AfterEntityUpdatedEvent $event)
     {
         if ($event->getEntityInstance() instanceof Institution) {
             $this->configureTraefikDomain($event->getEntityInstance());
@@ -59,7 +70,7 @@ class EasyAdminSubscriber implements EventSubscriberInterface
     public function onBeforeEntityUpdatedEvent(BeforeEntityUpdatedEvent $event)
     {
         if ($event->getEntityInstance() instanceof Institution) {
-            $this->configureTraefikDomain($event->getEntityInstance());
+            $this->deleteTraefikDomain($event->getEntityInstance());
         }
     }
 
@@ -70,9 +81,9 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         }
     }
 
-    public function configureTraefikDomain(Institution $institution)
+    private function configureTraefikDomain(Institution $institution)
     {
-        $filename = sprintf('%s/service-%s.yaml', $this->traefikProvidersDirectory, $institution->getId());
+        $filename = $this->getFilename($institution);
         $serviceName = $this->slugger->slug($institution->getDomain());
 
         $render = $this->twig->render('security/traefik.yaml.twig', [
@@ -83,7 +94,19 @@ class EasyAdminSubscriber implements EventSubscriberInterface
         $this->fs->dumpFile($filename, $render);
     }
 
-    public function deleteTraefikDomain(Institution $institution)
+    private function deleteTraefikDomain(Institution $institution)
     {
+        $filename = $this->getFilename($institution);
+
+        $this->fs->remove($filename);
+    }
+
+    private function getFilename(Institution $institution): string
+    {
+        return sprintf(
+            self::TRAEFIK_PROVIDER_FILE_PATH,
+            $this->traefikProvidersDirectory,
+            $institution->getHash()
+        );
     }
 }
