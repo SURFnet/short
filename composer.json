@@ -11,7 +11,7 @@
         "components/font-awesome": "^5.12",
         "components/jquery": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "endroid/qr-code": "^3.8",
+        "endroid/qr-code": "dev-master#0f1613a",
         "knplabs/knp-paginator-bundle": "^5.3",
         "sensio/framework-extra-bundle": "^5.1",
         "setasign/fpdf": "^1.8",
