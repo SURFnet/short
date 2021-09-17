@@ -54,7 +54,8 @@ final class LocaleController extends AbstractController
 
         $redirectUrl = $request->query->get('redirect');
 
-        if ($redirectUrl[0] !== '/') {
+        // Prevent open redirect: URL must start with slash but not double slash
+        if ($redirectUrl[0] !== '/' || $redirectUrl[1] === '/') {
             return null;
         }
 
