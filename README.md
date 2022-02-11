@@ -3,7 +3,7 @@
 Code running SURFshort.
 
 It requires:
-- Apache with PHP >= 7.2
+- Apache with PHP >= 7.3
 - Apache module Mod_auth_mellon
 - A MySQL database (can be easily generalised but not necessary right now)
 
