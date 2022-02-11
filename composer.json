@@ -5,13 +5,13 @@
     "homepage": "https://github.com/SURFnet/short",
     "license": "Apache-2",
     "require": {
-        "php": "^7.2.5",
+        "php": "^7.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "components/font-awesome": "^5.12",
         "components/jquery": "^3.4",
         "doctrine/doctrine-migrations-bundle": "^3.0",
-        "endroid/qr-code": "dev-master#0f1613a",
+        "endroid/qr-code": "3.*",
         "knplabs/knp-paginator-bundle": "^5.3",
         "sensio/framework-extra-bundle": "^5.1",
         "setasign/fpdf": "^1.8",
@@ -58,6 +58,9 @@
     "config": {
         "preferred-install": {
             "*": "dist"
+        },
+        "platform": {
+            "php": "7.3"
         },
         "sort-packages": true
     },
