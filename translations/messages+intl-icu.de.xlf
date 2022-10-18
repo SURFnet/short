@@ -74,6 +74,14 @@
         <source>tooltip.remove_url</source>
         <target>Entfernen {shorturlshort}?</target>
       </trans-unit>
+      <trans-unit id="tooltip.button_yes">
+          <source>tooltip.button_yes</source>
+          <target>Ja</target>
+      </trans-unit>
+      <trans-unit id="tooltip.button_no">
+          <source>tooltip.button_no</source>
+          <target>Nein</target>
+      </trans-unit>
       <trans-unit id="title.all_links">
         <source>title.all_links</source>
         <target>Alle Links:</target>

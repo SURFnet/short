@@ -90,6 +90,14 @@
         <source>tooltip.remove_url</source>
         <target>¿Borrar {shorturlshort}?</target>
       </trans-unit>
+      <trans-unit id="tooltip.button_yes">
+        <source>tooltip.button_yes</source>
+        <target>Si</target>
+      </trans-unit>
+      <trans-unit id="tooltip.button_no">
+        <source>tooltip.button_no</source>
+        <target>No</target>
+      </trans-unit>
       <trans-unit id="title.all_links">
         <source>title.all_links</source>
         <target>Todos los enlaces:</target>

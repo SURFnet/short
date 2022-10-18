@@ -29,7 +29,13 @@
                     </a>
                     <form style="display: inline-block" action="{{ url('app_manage_delete', {shortUrl: url.shortUrl}) }}" method="post">
                         <input type="hidden" name="token" value="{{ csrf_token('delete') }}">
-                        <button type="submit" name="delete" class="actieknop fabutton" data-toggle="confirmation" data-title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}" aria-label="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}">
+                        <button type="submit" name="delete" class="actieknop fabutton" data-toggle="confirmation"
+                             data-title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}"
+                             aria-label="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}"
+                             data-btn-ok-label="{{ 'tooltip.button_yes'|trans }}"
+                             data-btn-cancel-label="{{ 'tooltip.button_no'|trans }}"
+                             data-btn-ok-class="btn-danger"
+                        >
                             <i class="fa fa-trash-alt SURForanje" title="{{ 'tooltip.remove_url'|trans({'%shorturlshort%': shorturlshort}) }}"></i>
                         </button>
                     </form>
