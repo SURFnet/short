@@ -18,7 +18,7 @@ parameters:
     app.shortcode.chars: 'abcdefghjkmnpqrtuvwxy346789'
     # note: should match routes.yaml regexp
     app.shortcode.forbiddenchars: '/[^a-z0-9-]/'
-    app.targeturl.forbiddendomains: ['u.nu', 'bit.ly', 'is.gd', 'tinyurl.com']
+    app.targeturl.forbiddendomains: ['u.nu', 'bit.ly', 'is.gd', 'tinyurl.com', 't.co', 'rplg.co', 'pxlme.me', 'lnkd.in']
     app.health.minimumurls: 10
     app.default_locale: 'en'
     app.locales: ["de","en","es","nl"]
