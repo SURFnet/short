@@ -11,8 +11,8 @@ framework:
         cookie_secure: auto
         cookie_samesite: none
 
-    #esi: true
-    #fragments: true
+    esi: false
+    fragments: false
     php_errors:
         log: true
 
