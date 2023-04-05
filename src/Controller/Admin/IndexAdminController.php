@@ -77,11 +77,11 @@ final class IndexAdminController extends AbstractController
         }
 
         $pagination = $this->getPaginationWithSearchFilter($request, $page);
+        $pagination->setUsedRoute('app_manage_admin_paginated');
 
         return $this->render('admin/index.html.twig', [
             'form' => $form->createView(),
             'pagination' => $pagination,
-            'route' => 'app_manage_admin_paginated',
         ]);
     }
 
