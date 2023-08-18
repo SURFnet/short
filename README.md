@@ -9,6 +9,8 @@ It requires:
 
 ## Installation
 
+On a Debian(like) system:
+
 ```bash
 apt install git composer php-fpm apache2 libapache2-mod-auth-mellon \
     php-xml php-intl  php-mysql mariadb-server
