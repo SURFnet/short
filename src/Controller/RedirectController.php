@@ -27,15 +27,18 @@ class RedirectController extends AbstractController
         return $shortUrl;
     }
 
-    public function redirectAction(string $req) : Response
+    public function redirectAction(Request $request, string $req) : Response
     {
         $req = rtrim($req, ").!:,;");
         $shortUrl = $this->lookup($req);
 
-        $shortUrl->addClick();
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($shortUrl);
-        $em->flush();
+        $method = $request->getMethod();
+        if ($method === $request::METHOD_GET || $method === $request::METHOD_POST) {
+            $shortUrl->addClick();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($shortUrl);
+            $em->flush();
+        }
 
         return $this->redirect($shortUrl->getLongUrl(), 307);
     }
