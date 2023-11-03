@@ -100,3 +100,9 @@ ol.list-group {
 .list-group-item {
 	display: list-item;
 }
+
+.qrimage {
+	display: inline-block;
+	text-align: right;
+	color: silver;
+}

@@ -23,8 +23,14 @@
                </a>
            </div>
       </div>
-      <div class="col-sm">
+      <div class="col-sm qrimage">
           <img src="/{{ short }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
+          <small>[
+          {% for format in ['svg','pdf','eps','png'] %}
+              {{ loop.first ? '' : '|' }}
+              <a href="/{{ short }}~?format={{ format }}">{{ format }}</a>
+          {% endfor %}
+          ]</small>
       </div>
   </div>
 

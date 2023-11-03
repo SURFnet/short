@@ -25,9 +25,15 @@
                     {{ 'title.copy_link' | trans }}<br/>
                     <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a>
                 </div>
-                <div class="col-md-6 ">
+                <div class="col-md-6"><div class="qrimage">
                     <img class="mx-auto d-block" src="/{{ short_url.shortUrl }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">
-                </div>
+                    <small>[
+                    {% for format in ['svg','pdf','eps','png'] %}
+                        {{ loop.first ? '' : '|' }}
+                        <a href="/{{ short_url.shortUrl }}~?format={{ format }}">{{ format }}</a>
+                    {% endfor %}
+                    ]</small>
+                </div></div>
             </div>
             <hr class="mb-3">
             <a class="btn btn-primary btn-lg btn-block SCknop" href="{{ path('app_manage_index') }}">{{ 'action.back_to_overview' | trans }}</a>
