@@ -30,6 +30,10 @@
         <source>placeholder.enter_url</source>
         <target>Geben Sie hier den ursprünglichen Link (URL) ein</target>
       </trans-unit>
+      <trans-unit id="placeholder.label">
+          <source>placeholder.label</source>
+          <target>Optionale Beschriftung, damit Sie diesen Kurzlink erkennen können</target>
+      </trans-unit>
       <trans-unit id="placeholder.enter_short_code">
         <source>placeholder.enter_short_code</source>
         <target>Das gewünschte Kürzel des resultierenden Links (zur Autogenerierung leer lassen)</target>
@@ -61,6 +65,10 @@
       <trans-unit id="title.original_link">
         <source>title.original_link</source>
         <target>Ursprünglicher Link</target>
+      </trans-unit>
+      <trans-unit id="title.label">
+          <source>title.label</source>
+          <target>Etikett</target>
       </trans-unit>
       <trans-unit id="tooltip.copy_url">
         <source>tooltip.copy_url</source>
@@ -105,6 +113,10 @@
       <trans-unit id="action.copy">
         <source>action.copy</source>
         <target>Kopie</target>
+      </trans-unit>
+      <trans-unit id="title.label_link">
+        <source>title.label_link</source>
+        <target>Bringen Sie ein Etikett an:</target>
       </trans-unit>
       <trans-unit id="action.back_to_overview">
         <source>action.back_to_overview</source>

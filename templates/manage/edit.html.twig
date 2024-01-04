@@ -16,10 +16,17 @@
                 <div class="mb-3">
                     <div class="input-group">
                         <div class="input-group-prepend">
-                            <span class="input-group-text"><i class="fa fa-map-signs SURForanje"></i></span>
+                            <span class="input-group-text form-icon"><i class="fa fa-map-signs SURForanje"></i></span>
                         </div>
                         {{ form_widget(form.longUrl) }}
                         {{ form_errors(form.longUrl) }}
+                    </div>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text form-icon"><i class="fa fa-tags SURForanje"></i></span>
+                        </div>
+                        {{ form_widget(form.label) }}
+                        {{ form_errors(form.label) }}
                     </div>
                 </div>
                 <hr class="mb-3">

@@ -38,6 +38,10 @@
                 <source>placeholder.enter_url</source>
                 <target>Enter the original link (URL) here</target>
             </trans-unit>
+            <trans-unit id="placeholder.label">
+                <source>placeholder.label</source>
+                <target>Optional label for you to recognise this short link</target>
+            </trans-unit>
             <trans-unit id="placeholder.enter_short_code">
                 <source>placeholder.enter_short_code</source>
                 <target>The desired short code (empty for autogenerate)</target>
@@ -74,6 +78,10 @@
                 <source>title.short_link</source>
                 <target>Short link</target>
             </trans-unit>
+            <trans-unit id="title.label">
+                <source>title.label</source>
+                <target>Label</target>
+            </trans-unit>
             <trans-unit id="tooltip.copy_url">
                 <source>tooltip.copy_url</source>
                 <target>Copy short url to clipboard</target>
@@ -84,11 +92,11 @@
             </trans-unit>
             <trans-unit id="tooltip.edit_url">
                 <source>tooltip.edit_url</source>
-                <target>Edit the original url</target>
+                <target>Edit the url and label</target>
             </trans-unit>
             <trans-unit id="tooltip.edit_url_ext">
                 <source>tooltip.edit_url_ext</source>
-		<target>Edit the original url for {shorturlshort}</target>
+		<target>Edit the original url or set a label for {shorturlshort}</target>
             </trans-unit>
             <trans-unit id="tooltip.remove_url">
                 <source>tooltip.remove_url</source>
@@ -125,6 +133,10 @@
             <trans-unit id="title.copy_link">
                 <source>title.copy_link</source>
                 <target>Copy link to clipboard:</target>
+            </trans-unit>
+            <trans-unit id="title.label_link">
+                <source>title.label_link</source>
+                <target>Add a label to it:</target>
             </trans-unit>
             <trans-unit id="action.copy">
                 <source>action.copy</source>

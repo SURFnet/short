@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Form\Model\ShortUrlModel;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,6 +20,14 @@ final class ShortUrlType extends AbstractType
                 'autocomplete' => 'off',
                 'autofocus' => 'autofocus',
                 'placeholder' => 'placeholder.enter_url',
+            ],
+        ]);
+        $builder->add('label', TextType::class, [
+            'required' => false,
+            'attr' => [
+                'class' => 'form-control',
+                'placeholder' => 'placeholder.label',
+                'maxlength' => 255,
             ],
         ]);
     }

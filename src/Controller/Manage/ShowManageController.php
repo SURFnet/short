@@ -5,6 +5,8 @@ namespace App\Controller\Manage;
 
 
 use App\Entity\ShortUrl;
+use App\Form\Model\ShortUrlModel;
+use App\Form\ShortUrlType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,8 +25,12 @@ final class ShowManageController extends AbstractController
             throw $this->createNotFoundException();
         }
 
+        $shortUrl = ShortUrlModel::fromShortUrl($instance);
+        $form = $this->createForm(ShortUrlType::class, $shortUrl);
+
         return $this->render('manage/show.html.twig', [
-            'short_url' => $instance
+            'short_url' => $instance,
+            'form' => $form->createView(),
         ]);
     }
 }

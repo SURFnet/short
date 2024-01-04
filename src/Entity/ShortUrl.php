@@ -89,6 +89,13 @@ class ShortUrl
      */
     private $deleted = 0;
 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="label", type="text", length=255)
+     */
+    private $label;
+
     public function __construct()
     {
         $this->created = new \DateTime();
@@ -172,6 +179,18 @@ class ShortUrl
     public function setDeleted(bool $deleted): self
     {
         $this->deleted = $deleted;
+
+        return $this;
+    }
+
+    public function getLabel(): ?string
+    {
+        return $this->label;
+    }
+
+    public function setLabel(string $label = null): self
+    {
+        $this->label = $label;
 
         return $this;
     }

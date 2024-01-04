@@ -45,6 +45,7 @@ class ShortUrlRepository extends ServiceEntityRepository
         if ($filter) {
             $qb
                 ->where('o.longUrl LIKE :pattern')
+                ->orWhere('o.label LIKE :pattern')
                 ->orWhere('o.shortUrl = :filter')
                 ->orWhere('o.owner = :filter')
                 ->setParameter('pattern', '%'.$filter.'%')

@@ -24,6 +24,7 @@ final class UpdateShortUrlMessageHandler implements MessageHandlerInterface
     {
         $id = $message->getId();
         $longUrl = $message->getLongUrl();
+        $label = $message->getLabel();
 
         $shortUrl = $this->shortUrlRepository->find($id);
 
@@ -32,6 +33,7 @@ final class UpdateShortUrlMessageHandler implements MessageHandlerInterface
         }
 
         $shortUrl->setLongUrl($longUrl);
+        $shortUrl->setLabel($label);
         $shortUrl->setUpdated();
     }
 }

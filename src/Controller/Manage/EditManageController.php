@@ -44,7 +44,8 @@ final class EditManageController extends AbstractController
             $this->messageBus->dispatch(
                 new UpdateShortUrlMessage(
                     $instance->getId(),
-                    $shortUrl->longUrl
+                    $shortUrl->longUrl,
+                    $shortUrl->label
                 )
             );
 

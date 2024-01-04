@@ -19,10 +19,16 @@ final class ShortUrlModel
      */
     public $longUrl;
 
+    /**
+     * @var string
+     */
+    public $label;
+
     public static function fromShortUrl(ShortUrl $shortUrl): self
     {
         $instance = new self();
         $instance->longUrl = $shortUrl->getLongUrl();
+        $instance->label = $shortUrl->getLabel();
 
         return $instance;
     }

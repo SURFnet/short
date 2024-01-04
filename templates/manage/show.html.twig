@@ -23,7 +23,17 @@
                     <a href="{{ shorturlfull }}" target="_blank"><i class="fa fa-external-link-alt SURForanje"></i> {{ shorturlfull }}</a><br/><br/>
 
                     {{ 'title.copy_link' | trans }}<br/>
-                    <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a>
+                    <a href="#" class="cpy" data-clipboard-text="{{ shorturlfull }}"><i class="fa fa-copy beetjezwart"></i> {{ 'action.copy' | trans }} </a><br/><br/>
+
+                    <label for="labelfield">{{ 'title.label_link' | trans }}</label><br/>
+                    {{ form_start(form, {'action': path('app_manage_edit', {'shortUrl': short_url.shortUrl}), 'attr': {'class': 'form-inline' }}) }}
+                        <input type="hidden" name="_token" value="{{ csrf_token('edit-form') }}">
+                        <input type="hidden" name="{{ field_name(form.longUrl) }}" value="{{ field_value(form.longUrl) }}">
+                        {% do form.longUrl.setRendered %}
+                        <input type="text" id="labelfield" name="{{ field_name(form.label) }}" value="{{ field_value(form.label) }}"
+                            placeholder="{{ field_label(form.label) }}" class="form-control form-control-sm" required maxlength="255">
+                        <button type="submit" class="btn btn-sm btn-secondary"><i class="fas fa-save"></i></button>
+                    {{ form_end(form) }}
                 </div>
                 <div class="col-md-6"><div class="qrimage">
                     <img class="mx-auto d-block" src="/{{ short_url.shortUrl }}~" alt="{{ 'qr_code.alt_message' | trans({'shorturlshort': shorturlshort}) }}">

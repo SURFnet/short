@@ -38,6 +38,10 @@
                 <source>placeholder.enter_url</source>
                 <target>Geef hier de originele link (URL) in</target>
             </trans-unit>
+            <trans-unit id="placeholder.label">
+                <source>placeholder.label</source>
+		<target>Optioneel label waar je zelf de korte link aan kunt herkennen</target>
+            </trans-unit>
             <trans-unit id="placeholder.enter_short_code">
                 <source>placeholder.enter_short_code</source>
                 <target>De gewenste shortcode (leeg voor autogenerate)</target>
@@ -70,6 +74,10 @@
                 <source>title.original_link</source>
                 <target>Originele link</target>
             </trans-unit>
+            <trans-unit id="title.label">
+                <source>title.label</source>
+                <target>Label</target>
+            </trans-unit>
             <trans-unit id="tooltip.copy_url">
                 <source>tooltip.copy_url</source>
                 <target>Kopieer verkorte url naar het klembord</target>
@@ -80,11 +88,11 @@
             </trans-unit>
             <trans-unit id="tooltip.edit_url">
                 <source>tooltip.edit_url</source>
-                <target>Bewerk de originele url</target>
+                <target>Bewerk url en label</target>
             </trans-unit>
             <trans-unit id="tooltip.edit_url_ext">
                 <source>tooltip.edit_url_ext</source>
-		<target>Bewerk de originele url voor {shorturlshort}</target>
+		<target>Bewerk de originele url of hang een label aan {shorturlshort}</target>
             </trans-unit>
             <trans-unit id="tooltip.remove_url">
                 <source>tooltip.remove_url</source>
@@ -125,6 +133,10 @@
             <trans-unit id="action.copy">
                 <source>action.copy</source>
                 <target>Kopieer</target>
+            </trans-unit>
+            <trans-unit id="title.label_link">
+                <source>title.label_link</source>
+                <target>Hang er een label aan:</target>
             </trans-unit>
             <trans-unit id="action.back_to_overview">
                 <source>action.back_to_overview</source>

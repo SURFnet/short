@@ -29,6 +29,7 @@ final class CustomShortUrlType extends AbstractType
                     'class' => 'form-control',
                     'autocomplete' => 'off',
                     'placeholder' => 'placeholder.enter_short_code',
+                    'maxlength' => 32,
                 ],
             ]);
     }
