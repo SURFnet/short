@@ -16,7 +16,7 @@ final class Version20240103153321 extends AbstractMigration
 
     public function up(Schema $schema) : void
     {
-        $this->addSql('ALTER TABLE short_urls ADD ADD COLUMN label VARCHAR(255) NULL');
+        $this->addSql('ALTER TABLE short_urls ADD COLUMN label VARCHAR(255) NULL');
     }
 
     public function down(Schema $schema) : void
