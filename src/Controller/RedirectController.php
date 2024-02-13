@@ -5,6 +5,7 @@ use App\Entity\ShortUrl;
 use Endroid\QrCode\QrCode;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\HeaderUtils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\GoneHttpException;
@@ -79,6 +80,11 @@ class RedirectController extends AbstractController
         $response = new Response();
         $response->headers->set('Content-Type', $qrCode->getContentType());
         $response->headers->set('Content-Length', strlen($image));
+        $disposition = HeaderUtils::makeDisposition(
+            HeaderUtils::DISPOSITION_INLINE,
+            'qr_' . $shortUrl->getShortUrl() . '.' . $format
+        );
+        $response->headers->set('Content-Disposition', $disposition);
         $response->setEtag(md5($image));
         $response->setPublic();
         $response->isNotModified($request);
