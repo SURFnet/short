@@ -15,7 +15,6 @@ On a Debian(like) system:
 apt install git composer php-fpm apache2 libapache2-mod-auth-mellon \
     php-xml php-intl  php-mysql mariadb-server
 a2enmod proxy_fcgi rewrite header ssl
-composer install
 ```
 
 Create a database and user and grant privileges:
@@ -35,6 +34,7 @@ DATABASE_URL=mysql://short:longpassword@127.0.0.1:3306/short?serverVersion=serve
 
 On the commandline:
 ```
+$ APP_ENV=prod composer install --no-dev -a
 $ php bin/console doctrine:migrations:migrate --allow-no-migration -n
 ```
 
