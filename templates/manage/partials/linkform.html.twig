@@ -2,8 +2,6 @@
     <div class="col-md-12 mb-4">
         <h2 class="mb-3">{{ 'title.shorten_link'|trans }}</h2>
         {{ form_start(form, {'attr': {'novalidate': 'novalidate'}}) }}
-            <input type="hidden" name="_token" value="{{ csrf_token('create-form') }}">
-            {% do form.label.setRendered %}
 
             <div class="mb-3">
                 <div class="input-group">
@@ -28,6 +26,7 @@
             <hr class="mb-3">
 
             <button class="btn btn-primary btn-lg btn-block SCknop" type="submit">{{ 'button.shorten_it'|trans }}</button>
-        {{ form_end(form) }}
+            {{ form_widget(form._token) }}
+        {{ form_end(form, {'render_rest' : false}) }}
     </div>
 </div>
