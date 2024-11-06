@@ -4615,16 +4615,16 @@
         },
         {
             "name": "symfony/http-client",
-            "version": "v5.4.43",
+            "version": "v5.4.46",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/http-client.git",
-                "reference": "4d547e5259221bd37685f4ddc8e8947acc2cb755"
+                "reference": "ebcaeeafc48b69f497f82b9700ddf54bfe975f71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/http-client/zipball/4d547e5259221bd37685f4ddc8e8947acc2cb755",
-                "reference": "4d547e5259221bd37685f4ddc8e8947acc2cb755",
+                "url": "https://api.github.com/repos/symfony/http-client/zipball/ebcaeeafc48b69f497f82b9700ddf54bfe975f71",
+                "reference": "ebcaeeafc48b69f497f82b9700ddf54bfe975f71",
                 "shasum": ""
             },
             "require": {
@@ -4686,7 +4686,7 @@
                 "http"
             ],
             "support": {
-                "source": "https://github.com/symfony/http-client/tree/v5.4.43"
+                "source": "https://github.com/symfony/http-client/tree/v5.4.46"
             },
             "funding": [
                 {
@@ -4702,7 +4702,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-08-20T14:48:02+00:00"
+            "time": "2024-10-25T11:45:42+00:00"
         },
         {
             "name": "symfony/http-client-contracts",
@@ -11554,5 +11554,5 @@
     "platform-overrides": {
         "php": "7.3"
     },
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
