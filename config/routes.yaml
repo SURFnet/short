@@ -14,7 +14,7 @@ redirect:
   path: /{req}
   controller: App\Controller\RedirectController::redirectAction
   requirements:
-      req: "[a-zA-Z0-9).!:,;-]+"
+      req: "[a-zA-Z0-9).\\s!:,;-]+"
 
 logout:
     path: /logout

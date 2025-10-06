@@ -30,7 +30,7 @@ class RedirectController extends AbstractController
 
     public function redirectAction(Request $request, string $req) : Response
     {
-        $req = rtrim($req, ").!:,;");
+        $req = rtrim($req, ").!:,;i \n\r\t\v\x00");
         $shortUrl = $this->lookup($req);
 
         $method = $request->getMethod();
