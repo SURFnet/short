@@ -37,7 +37,7 @@ class ShortUrlRepository extends ServiceEntityRepository
         $this->_em->persist($shortUrl);
     }
 
-    public function findLatest(int $page, int $itemsPerPage, string $filter = null, UserInterface $user = null): PaginationInterface
+    public function findLatest(int $page, int $itemsPerPage, string $filter = null, UserInterface $user = null, bool $includeDeleted = false): PaginationInterface
     {
         $qb = $this->createQueryBuilder('o')
             ->orderBy('o.created', 'DESC');
@@ -57,6 +57,10 @@ class ShortUrlRepository extends ServiceEntityRepository
             $qb->andWhere('o.owner = :owner')
                 ->setParameter('owner', $user->getUsername())
             ;
+        }
+
+        if (!$includeDeleted) {
+            $qb->andWhere('o.deleted = 0');
         }
 
         return $this->paginator->paginate(

@@ -95,6 +95,6 @@ final class IndexAdminController extends AbstractController
         $filterValue = $request->query->get('filterValue');
         $itemsPerPage = $this->getParameter('app.shortlink.pagination');
 
-        return $this->repository->findLatest($page, $itemsPerPage, $filterValue);
+        return $this->repository->findLatest($page, $itemsPerPage, $filterValue, null, true);
     }
 }
