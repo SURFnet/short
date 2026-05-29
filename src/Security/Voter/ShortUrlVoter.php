@@ -13,13 +13,13 @@ class ShortUrlVoter extends Voter
     public const EDIT = 'EDIT';
     public const SHOW = 'SHOW';
 
-    protected function supports($attribute, $subject)
+    protected function supports($attribute, $subject): bool
     {
         return in_array($attribute, [self::EDIT, self::DELETE, self::SHOW])
             && $subject instanceof ShortUrl;
     }
 
-    protected function voteOnAttribute($attribute, $subject, TokenInterface $token)
+    protected function voteOnAttribute($attribute, $subject, TokenInterface $token): bool
     {
         /** @var $subject ShortUrl */
 

@@ -51,12 +51,12 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
         $this->messageBus = $messageBus;
     }
 
-    public function supports(Request $request)
+    public function supports(Request $request): bool
     {
         return 'connect_mellon_check' === $request->attributes->get('_route');
     }
 
-    public function getCredentials(Request $request)
+    public function getCredentials(Request $request): mixed
     {
         return [
             'username' => $request->server->get('REDIRECT_REMOTE_USER'),
@@ -64,7 +64,7 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
         ];
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
     {
         $username = $credentials['username'];
         $hasAdminCredentials = $credentials['admin'];
@@ -92,19 +92,19 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
         return $user;
     }
 
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
         return true;
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Response
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
 
         return new Response($message, Response::HTTP_FORBIDDEN);
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Response
     {
         $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
 
@@ -117,7 +117,7 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
         return new RedirectResponse($targetPath);
     }
 
-    public function start(Request $request, AuthenticationException $authException = null)
+    public function start(Request $request, AuthenticationException $authException = null): Response
     {
         return new RedirectResponse(
             $this->router->generate('connect_mellon_start'),
@@ -126,7 +126,7 @@ final class ApacheModAuthMellonGuardAuthenticator extends AbstractGuardAuthentic
 
     }
 
-    public function supportsRememberMe()
+    public function supportsRememberMe(): bool
     {
         return false;
     }

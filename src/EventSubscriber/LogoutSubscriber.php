@@ -24,7 +24,7 @@ class LogoutSubscriber implements EventSubscriberInterface
         $event->setResponse(new RedirectResponse($this->appSecurityLogout));
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             LogoutEvent::class => 'onLogoutEvent',

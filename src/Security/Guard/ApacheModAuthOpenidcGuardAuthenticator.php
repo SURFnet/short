@@ -34,17 +34,17 @@ final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenti
         $this->messageBus = $messageBus;
     }
 
-    public function supports(Request $request)
+    public function supports(Request $request): bool
     {
         return 'connect_openidc_check' === $request->attributes->get('_route');
     }
 
-    public function getCredentials(Request $request)
+    public function getCredentials(Request $request): mixed
     {
         return $request->server->get('REDIRECT_REMOTE_USER');
     }
 
-    public function getUser($credentials, UserProviderInterface $userProvider)
+    public function getUser($credentials, UserProviderInterface $userProvider): ?UserInterface
     {
         if (null === $credentials) {
             return null;
@@ -55,19 +55,19 @@ final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenti
         );
     }
 
-    public function checkCredentials($credentials, UserInterface $user)
+    public function checkCredentials($credentials, UserInterface $user): bool
     {
         return true;
     }
 
-    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception): ?Request
     {
         $message = strtr($exception->getMessageKey(), $exception->getMessageData());
 
         return new Response($message, Response::HTTP_FORBIDDEN);
     }
 
-    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey)
+    public function onAuthenticationSuccess(Request $request, TokenInterface $token, string $providerKey): ?Request
     {
         $targetPath = $this->getTargetPath($request->getSession(), $providerKey);
 
@@ -78,7 +78,7 @@ final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenti
         return new RedirectResponse($targetPath);
     }
 
-    public function start(Request $request, AuthenticationException $authException = null)
+    public function start(Request $request, AuthenticationException $authException = null): Request
     {
         return new RedirectResponse(
             $this->router->generate('connect_openidc_start'),
@@ -86,7 +86,7 @@ final class ApacheModAuthOpenidcGuardAuthenticator extends AbstractGuardAuthenti
         );
     }
 
-    public function supportsRememberMe()
+    public function supportsRememberMe(): bool
     {
         return false;
     }
